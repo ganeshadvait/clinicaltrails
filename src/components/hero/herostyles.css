@@ -1,0 +1,32 @@
+.section.home-hero_image {
+    z-index: 1;
+    background-image: linear-gradient(to top, var(--purple) 10%, #fff0 85%), url(../../../public/62a180449a8eed53acc8f076_ARMedia-147-min.jpg);
+    background-position: 0 0, 50% 0;
+    background-repeat: repeat, no-repeat;
+    background-size: auto, cover;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+    min-height: 100vh;
+    margin-top: -110px;
+    padding-top: 275px;
+    padding-bottom: 10vh;
+    font-size: 24px;
+    display: flex
+;
+    position: relative;
+}
+.section {
+    background-color: var(--purple);
+    padding: 140px 0;
+    --purple: #4d41e3;
+}
+@media (max-width:500px) {
+    .mobile-box{
+        flex-direction: column !important;
+    }
+    .box1{
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

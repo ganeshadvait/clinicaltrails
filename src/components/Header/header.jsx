@@ -95,7 +95,7 @@ export default function Header() {
 
         {/* Login link */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold text-gray-900 px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700">
+          <a href="#" className="text-sm font-semibold text-gray-900 px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-[#4d41e3] rounded-md hover:bg-blue-700 focus:bg-blue-700">
             Contact now <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
