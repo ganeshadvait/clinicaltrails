@@ -4,85 +4,60 @@ import './herostyles.css';
 const HeroSection = () => {
     return (
        <>
-       <section className='section home-hero_image py-10 bg-gray-50 sm:pt-16 lg:pt-24'>
-       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-  <div className="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0">    
-    <div className="left flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:w-1/2">
-      <h2 className="text-white text-3xl font-bold sm:text-4xl xl:text-5xl" style={{
-        marginBottom: '14px'
-      }}>
-        Science-First GMP Manufacturing
-      </h2>
-      <p className="text-lg text-gray-300" style={{
-        marginBottom:'8px'
-      }}>
-        A modern approach to delivering advanced therapies
-      </p>
-      <a
-        href="#"
-        className="text-sm font-semibold text-[#4d41e3] px-6 py-4 mt-3 bg-white rounded-md transition-all duration-200 hover:text-white hover:bg-blue-700 focus:bg-blue-700"
-      >
-        Contact now <span aria-hidden="true">&rarr;</span>
-      </a>
-    </div>
+      <section class="pt-12 pb-12 sm:pb-16 lg:pt-8">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="grid max-w-lg grid-cols-1 mx-auto lg:max-w-full lg:items-center lg:grid-cols-2 gap-y-12 lg:gap-x-16">
+                <div>
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl font-bold leading-tight text-gray-900 sm:text-5xl sm:leading-tight lg:leading-tight lg:text-6xl font-pj">A special credit card made for Developers.</h1>
+                        <p class="mt-2 text-lg text-gray-600 sm:mt-8 font-inter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vehicula massa in enim luctus. Rutrum arcu.</p>
 
-    
-    <div className="right flex lg:w-1/2 space-x-6 ">
-    <a href="#" className="flex space-x-6  mobile-box">
-  
-  <div className="box1 flex-1 justify-between gap-[12px] bg-[#1a73e8] p-6 rounded-md shadow-lg cursor-pointer" style={{
-    border: '1px solid #fff'
-  }}>
-    <div className='boxes'>
-      {/* Add content for the box here */}
-    </div>
+                        <form action="#" method="POST" class="mt-8 sm:mt-10">
+                            <div class="relative p-2 sm:border sm:border-gray-400 group sm:rounded-xl sm:focus-within:ring-1 sm:focus-within:ring-gray-900 sm:focus-within:border-gray-900">
+                                <input
+                                    type="email"
+                                    name=""
+                                    id=""
+                                    placeholder="Enter email address"
+                                    class="block w-full px-4 py-4 text-gray-900 placeholder-gray-900 bg-transparent border border-gray-400 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 rounded-xl sm:border-none sm:focus:ring-0 sm:focus:border-transparent"
+                                    required=""
+                                />
+                                <div class="mt-4 sm:mt-0 sm:absolute sm:inset-y-0 sm:right-0 sm:flex sm:items-center sm:pr-2">
+                                    <button type="submit" class="inline-flex px-6 py-3 text-lg font-bold text-white transition-all duration-200 bg-[#1a73e8] cursor-pointer rounded-lg focus:outline-none focus:bg-gray-600 font-pj hover:bg-gray-600">Get Free Card</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
-    <p className="text-white font-semibold">New Expansion Automation</p>
-    <p className="text-gray-300" style={{
-      fontSize: '14px',
-      marginTop: '8px',
-      marginBottom : '12px'
-    }}>
-      Decades of breakthroughs in manufacturing, analytical and process development have equipped us to identify
-    </p>
-    <a
-        href="#"
-        className="text-sm font-semibold text-[#1a73e8] px-6 py-4 mt-3 bg-white rounded-md transition-all duration-200 hover:text-white hover:bg-blue-700 focus:bg-blue-700"
-      >
-        Sponser Info <span aria-hidden="true">&rarr;</span>
-      </a>
-  </div>
+                    <div class="flex items-center justify-center mt-10 space-x-6 lg:justify-start sm:space-x-8">
+                        <div class="flex items-center">
+                            <p class="text-3xl font-medium text-gray-900 sm:text-4xl font-pj">2943</p>
+                            <p class="ml-3 text-sm text-gray-900 font-pj">Cards<br />Delivered</p>
+                        </div>
 
-  
-  <div className="box2 flex-1 justify-between gap-[12px] bg-[#1a73e8] p-6 rounded-md shadow-lg cursor-pointer" style={{
-    border: '1px solid #fff'
-  }}>
-    <div className='boxes'>
-      {/* Add content for the box here */}
-    </div>
+                        <div class="hidden sm:block">
+                            <svg class="text-gray-400" width="16" height="39" viewBox="0 0 16 39" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="0.72265" y1="10.584" x2="15.7226" y2="0.583975"></line>
+                                <line x1="0.72265" y1="17.584" x2="15.7226" y2="7.58398"></line>
+                                <line x1="0.72265" y1="24.584" x2="15.7226" y2="14.584"></line>
+                                <line x1="0.72265" y1="31.584" x2="15.7226" y2="21.584"></line>
+                                <line x1="0.72265" y1="38.584" x2="15.7226" y2="28.584"></line>
+                            </svg>
+                        </div>
 
-    <p className="text-white font-semibold">Innovation is Built not bought</p>
-    <p className="text-gray-300" style={{
-      fontSize: '14px',
-      marginTop: '8px',
-      marginBottom : '12px'
-    }}>
-      Delighted to announce The Medicine Accelerator's €100M campus expansion with the creation of 300 new jobs.
-    </p>
-    <a
-        href="#"
-        className="text-sm font-semibold text-[#4d41e3] px-6 py-4 mt-3 bg-white rounded-md transition-all duration-200 hover:text-white hover:bg-blue-700 focus:bg-blue-700"
-      >
-        Patient Info <span aria-hidden="true">&rarr;</span>
-      </a>
-  </div>
-</a>
+                        <div class="flex items-center">
+                            <p class="text-3xl font-medium text-gray-900 sm:text-4xl font-pj">$1M+</p>
+                            <p class="ml-3 text-sm text-gray-900 font-pj">Transaction<br />Completed</p>
+                        </div>
+                    </div>
+                </div>
 
-    </div>
-  </div>
-</div>
-
-       </section>
+                <div>
+                    <img class="w-full" src="https://d33wubrfki0l68.cloudfront.net/d6f1462500f7670e0db6b76b35054a081679a5a0/0ce15/images/hero/5.1/illustration.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </section>
        </>
     );
 };
