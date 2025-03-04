@@ -11,7 +11,7 @@ export default function Clinical() {
   const [trails, setTrails] = useState([]);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
+  const [selectedTitle, setSelectedTitle] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
@@ -45,6 +45,12 @@ const clearFilters = () => {
 
     fetchData();
   }, [pageNumber]);
+  
+  const handleTitleClick = (title) => {
+    console.log("Clicked title:", title); 
+    alert('title:' + title);
+  };
+
 
   return (
     <>
@@ -125,7 +131,9 @@ const clearFilters = () => {
             <div key={ind} className="my-4 border p-4 trail_card">
                 <span className="featuredabsolute">Featured</span>
               <div className="flex justify-between title_status">
-                <h4 className="trail_title">
+                <h4 className="trail_title"
+                onClick={() => handleTitleClick(trail["Trial Name"]["Brief Title"])}
+                >
                   {String(trail["Trial Name"]["Brief Title"] || "No Title")}
                 </h4>
                 <div className="status_card">
