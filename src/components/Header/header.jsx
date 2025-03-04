@@ -25,11 +25,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img
-              alt=""
-              src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-              className="h-8 w-auto"
-            />
+            <h2 className='text-3xl text-[#4d41e3]'>Advaitlabs</h2>
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -43,59 +39,14 @@ export default function Header() {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-          {/* Popover Component for Product dropdown */}
-          <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold text-gray-900 cursor-pointer">
-              Services
-              <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
-            </PopoverButton>
-
-            <PopoverPanel
-              className="absolute top-full left-0 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5"
-            >
-              <div className="p-4">
-                {products.map((item) => (
-                  <div
-                    key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
-                  >
-                    <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                      <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
-                    </div>
-                    <div className="flex-auto">
-                      <a href={item.href} className="block font-semibold text-gray-900">
-                        {item.name}
-                      </a>
-                      <p className="mt-1 text-gray-600">{item.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                {callsToAction.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
-                  >
-                    <item.icon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </PopoverPanel>
-          </Popover>
-
-          {/* Additional Links */}
           <a href="/clinical-trials" className="text-sm font-semibold text-gray-900">Search Clinical Trails</a>
           <a href="/clinical-trials/listings" className="text-sm font-semibold text-gray-900">Clinical Trails Listing</a>
-          <a href="#" className="text-sm font-semibold text-gray-900">Marketplace</a>
-          <a href="#" className="text-sm font-semibold text-gray-900">Company</a>
+          <a href="#" className="text-sm font-semibold text-gray-900">About us</a>
         </PopoverGroup>
 
         {/* Login link */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold text-gray-900 px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-[#4d41e3] rounded-md hover:bg-blue-700 focus:bg-blue-700">
+          <a href="#" className="text-sm font-semibold text-gray-900 px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-[#1a73e8] rounded-md hover:bg-blue-700 focus:bg-blue-700">
             Contact now <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -150,17 +101,12 @@ export default function Header() {
                 >
                   Features
                 </a>
+              
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Company
+                  About us
                 </a>
               </div>
               <div className="py-6">

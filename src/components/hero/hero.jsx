@@ -30,7 +30,7 @@ const HeroSection = () => {
     <div className="right flex lg:w-1/2 space-x-6 ">
     <a href="#" className="flex space-x-6  mobile-box">
   
-  <div className="box1 flex-1 justify-between gap-[12px] bg-[#372EA5] p-6 rounded-md shadow-lg cursor-pointer" style={{
+  <div className="box1 flex-1 justify-between gap-[12px] bg-[#1a73e8] p-6 rounded-md shadow-lg cursor-pointer" style={{
     border: '1px solid #fff'
   }}>
     <div className='boxes'>
@@ -47,14 +47,14 @@ const HeroSection = () => {
     </p>
     <a
         href="#"
-        className="text-sm font-semibold text-[#4d41e3] px-6 py-4 mt-3 bg-white rounded-md transition-all duration-200 hover:text-white hover:bg-blue-700 focus:bg-blue-700"
+        className="text-sm font-semibold text-[#1a73e8] px-6 py-4 mt-3 bg-white rounded-md transition-all duration-200 hover:text-white hover:bg-blue-700 focus:bg-blue-700"
       >
         Sponser Info <span aria-hidden="true">&rarr;</span>
       </a>
   </div>
 
   
-  <div className="box2 flex-1 justify-between gap-[12px] bg-[#372EA5] p-6 rounded-md shadow-lg cursor-pointer" style={{
+  <div className="box2 flex-1 justify-between gap-[12px] bg-[#1a73e8] p-6 rounded-md shadow-lg cursor-pointer" style={{
     border: '1px solid #fff'
   }}>
     <div className='boxes'>

@@ -19,7 +19,7 @@
 .section {
     background-color: var(--purple);
     padding: 140px 0;
-    --purple: #4d41e3;
+    --purple: #1a73e8;
 }
 @media (max-width:500px) {
     .mobile-box{
