@@ -29,4 +29,10 @@
         margin-right: 0;
         margin-bottom: 10px;
     }
+    .mboxes{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }
+
