@@ -1,5 +1,5 @@
-"use client";
-
+"use client"; 
+import { useRouter } from 'next/navigation'
 import Search from "../../components/search/search";
 import { useEffect, useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
@@ -7,14 +7,18 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Loader from '../../components/loader/loader';
 import axios from "axios"; 
 
+
+
 export default function Clinical() {
   const [trails, setTrails] = useState([]);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState('');
+  const [generatedUrl, setGeneratedUrl] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+  const router = useRouter()
 
 
 
@@ -47,9 +51,22 @@ const clearFilters = () => {
   }, [pageNumber]);
   
   const handleTitleClick = (title) => {
-    console.log("Clicked title:", title); 
-    alert('title:' + title);
+    console.log("Clicked title:", title);     
+
+    const urlFriendlyTitle = title
+    .toLowerCase()            
+    .replace(/\s+/g, '-')     
+    .replace(/[^\w\-]+/g, '')  
+    .replace(/--+/g, '-')     
+    .trim();                   
+  
+  const url = `/${urlFriendlyTitle}`;
+  router.push(url);
+  
+  setGeneratedUrl(url);
+
   };
+   
 
 
   return (
@@ -133,6 +150,9 @@ const clearFilters = () => {
               <div className="flex justify-between title_status">
                 <h4 className="trail_title"
                 onClick={() => handleTitleClick(trail["Trial Name"]["Brief Title"])}
+                style={{
+                  cursor: 'pointer'
+                }}
                 >
                   {String(trail["Trial Name"]["Brief Title"] || "No Title")}
                 </h4>
