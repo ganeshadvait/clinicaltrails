@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const Footer = () => {        
     return (
@@ -7,7 +8,16 @@ const Footer = () => {
     <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
             <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-                <h2 className='text-3xl text-[#4d41e3]'>Advaitlabs</h2>
+                <a href="/" title="" className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
+                              <Image
+                                src="/Decentrailzlogo.svg"
+                                width={100}
+                                height={60}
+                                alt="Logo"
+                                 layout="responsive"
+                                loading="lazy"
+                              />
+                            </a>
 
                 <p className="text-base leading-relaxed text-gray-600 mt-7">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
 

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);  // State to manage the visibility of the mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);  
 
   return (
     <header className="py-4 md:py-6" style={{
@@ -44,7 +44,7 @@ export default function Header() {
             <a href="/clinical-trials/listings" className="text-base font-medium text-gray-900 hover:text-opacity-50">Clinical Trails Listings</a>
             <a href="#" className="text-base font-medium text-gray-900 hover:text-opacity-50">About Us</a>
             <a href="#" className="px-5 py-2 text-base font-bold text-white bg-[#1a73e8] rounded-xl hover:bg-gray-600">
-              Create free account
+              Contact now
             </a>
           </div>
         </div>
