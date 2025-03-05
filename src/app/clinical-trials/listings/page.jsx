@@ -10,9 +10,6 @@ export default function Home() {
             <p> Popular Listigns</p>
             </div>
             <div className="main">
-            
-           
-         
             </div>
         </div>
     </section>
