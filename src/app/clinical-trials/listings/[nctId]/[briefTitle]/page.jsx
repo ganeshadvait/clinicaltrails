@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import Loader from "../../../../../components/loader/loader";
 import axios from "axios";
 import Search from "../../../../../components/search/search";
+import Form from "../../../../../components/form/form";
 
 export default function ListingPage() {
   const params = useParams();
@@ -50,12 +51,12 @@ export default function ListingPage() {
       padding: '40px 0'
       
     }}>
-      <div className="inner_trailspage">
-          <div className="sidebar">
+      <div className="inner_trailspage single_brief_page">
+          <div className="sidebar single_trails_sidebar">
             <h3>Clinical Trials</h3>
             <p> Popular Listigns</p>
           </div>
-          <div className="main">
+          <div className="main single_trails_main">
             <Search /> 
             <div>
       <div className="trail_card">
@@ -259,6 +260,9 @@ export default function ListingPage() {
         </div>
       </div>
     </div>       
+          </div>
+          <div className="contact_form_main">
+          <Form />
           </div>
         </div>
    

@@ -43,7 +43,11 @@ export default function Header() {
             <a href="/clinical-trials" className="text-base font-medium text-gray-900 hover:text-opacity-50">Search Clinical Trails</a>
             <a href="/clinical-trials/listings" className="text-base font-medium text-gray-900 hover:text-opacity-50">Clinical Trails Listings</a>
             <a href="#" className="text-base font-medium text-gray-900 hover:text-opacity-50">About Us</a>
-            <a href="#" className="px-5 py-2 text-base font-bold text-white bg-[#1a73e8] rounded-xl hover:bg-gray-600">
+            <a href="#" className="px-5 py-2 text-base font-bold text-white   hover:bg-gray-600" style={{
+              background: 'hsl(208, 92%, 54%)',
+              borderRadius: '100px',
+              paddingBlock: "1rem"
+            }}>
               Contact now
             </a>
           </div>

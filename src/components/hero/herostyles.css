@@ -35,4 +35,41 @@
         justify-content: center;
     }
 }
+.hero-image{
+    height: 550px;
+    object-fit: cover;
+    border-radius: 14px;
+}
 
+.wp-element-button{
+    background-color: #5c4fe9;
+    border: 2px solid #5c4fe9;
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding: 1.25rem 3rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .25sease-out;
+    width: fit-content;
+}
+.hero_title{
+font-size: 46px;
+}
+@media (max-width:768px) {
+    .hero_title{
+     font-size: 32px !important;
+    }
+    .wp-element-button{
+        width: 100%;
+    }
+    .hero-image {
+        height: 395px;
+        object-fit: cover;
+        border-radius: 14px;
+    }
+}
