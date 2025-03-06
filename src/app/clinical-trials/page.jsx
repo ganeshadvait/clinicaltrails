@@ -12,18 +12,33 @@ export default function Clinical() {
   const [trails, setTrails] = useState([]);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(false);
-  const [selectedTitle, setSelectedTitle] = useState("");
+  const [searchResults, setSearchResults] = useState(false);
   const [generatedUrl, setGeneratedUrl] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedSuggestionData, setSelectedSuggestionData] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+  const backendUrl = process.env.NEXT_PUBLIC_SUGGESTIONS_URL || "";
   const router = useRouter();
 
-  const handleSearchChange = (query) => {
+  const handleSearchChange = (query, newQuery) => {
     setSearchQuery(query);
     setActive(query.length > 0);
+    setSearchQuery(newQuery);
   };
-
+  const handleSelectSuggestion = (suggestion) => {    
+    console.log('Selected suggestion:', suggestion);        
+    axios.get(`${backendUrl}/fetch_conditions?condition=${suggestion}`)
+      .then((response) => {
+        
+        setSelectedSuggestionData(response.data.response || []);
+        console.log('API Response:', response.data);
+        setSearchResults(true);
+      })
+      .catch((error) => {
+        console.error('Error fetching suggestion details:', error);
+        setSearchResults(false);
+      });
+  };
   const clearFilters = () => {
     setSearchQuery("");
     setActive(false);
@@ -61,7 +76,7 @@ export default function Clinical() {
 
     setGeneratedUrl(url);
   };
-
+ 
   return (
     <>
       <section className="trailspage">
@@ -71,7 +86,12 @@ export default function Clinical() {
             <p> Popular Listigns</p>
           </div>
           <div className="main">
-            <Search onSearchChange={handleSearchChange} />
+            <Search 
+               onSearchChange={handleSearchChange} 
+               searchQuery={searchQuery} 
+               onSelectSuggestion={handleSelectSuggestion} 
+             />
+
             <div className="filters_bar">
               <h3>Results for {searchQuery}</h3>
               <button
@@ -144,9 +164,13 @@ export default function Clinical() {
               </Menu>
             </div>
             <h3>Clinical Trials</h3>
-            <div className="result_box">
-              {loading ? (
-                // Render the loader while data is being fetched
+            {searchResults ? (
+             <div>
+              <p>searchResults</p>
+             </div>
+            ):(
+              <div className="result_box">
+              {loading ? (          
                 <Loader />
               ) : (
                 <div>
@@ -248,6 +272,8 @@ export default function Clinical() {
                 </div>
               )}
             </div>
+            )}
+            
           </div>
         </div>
       </section>
