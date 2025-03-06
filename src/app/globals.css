@@ -465,3 +465,6 @@ a{
   .login__input:focus ~ .login__icon {
     color: var(--first-color);
   }
+  .single_info .trail_card{
+    margin: 0;
+  }

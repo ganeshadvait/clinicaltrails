@@ -56,9 +56,8 @@ export default function ListingPage() {
             <h3>Clinical Trials</h3>
             <p> Popular Listigns</p>
           </div>
-          <div className="main single_trails_main">
-            <Search /> 
-            <div>
+          <div className="main single_trails_main">            
+            <div className="single_info">
       <div className="trail_card">
         <h4 className="summary-card__title">
           {trailData.protocolSection?.identificationModule?.officialTitle ||
