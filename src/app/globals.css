@@ -468,3 +468,12 @@ a{
   .single_info .trail_card{
     margin: 0;
   }
+  @media (max-width:768px) {
+    .contact_form_main{
+      width: 100%;
+    }
+    .single_trails_main{
+      width: 100%;
+      margin-top: 40px;
+    }
+  }

@@ -1,11 +1,12 @@
 "use client";
 import './searchstyles.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Loader from '../loader/loader';
+import debounce from 'lodash.debounce';
 
 
-export default function Search({  onSearchChange, searchQuery, onSelectSuggestion }) {
+export default function Search({ searchQuery, onSelectSuggestion }) {
     const [searchValue, setSearchValue] = useState('');
     const [suggestions, setSuggestions] = useState([]);  
     const [isLoading, setIsLoading] = useState(false); 
@@ -17,65 +18,54 @@ export default function Search({  onSearchChange, searchQuery, onSelectSuggestio
         setSearchValue(searchQuery);
     }, [searchQuery]);
 
-    const handleInputChange = (e) => {
-        const value = e.target.value;
+    const handleInputChange = (value) => {
         setSearchValue(value);
-        onSearchChange(value);
-    
-       
-        if (value.trim() === '') {            
-            setSuggestions([]); 
-            setActive(false); 
-        } else{
+
+        if (value.trim() === '') {
+            setSuggestions([]);
+            setActive(false);
+            return;
+        } else {
             setActive(true);
         }
-    
+
         setIsLoading(true);
-    
-        let config = {
-            method: 'get',
-            url: `${backendUrl}/fetch_suggestions?string=${value}`,
-            headers: {}
-        };
-    
-        axios.request(config)
-            .then((response) => {
-                console.log("API Response:", response.data); 
-                setSuggestions(response.data);
-                setSuggestions(response.data.suggestions || []); 
-                setIsLoading(false);
-            })
-            .catch((error) => {
+
+        fetchSuggestions(value);
+    };
+    const fetchSuggestions = useCallback(
+        debounce(async (value) => {
+            try {
+                const response = await axios.get(`${backendUrl}/fetch_suggestions?string=${value}`);
+                console.log("API Response:", response.data);
+                setSuggestions(response.data.suggestions || []);
+            } catch (error) {
                 console.error("Error fetching suggestions:", error);
+                setSuggestions([]);
+            } finally {
                 setIsLoading(false);
-                setActive(false);
-            });
-    };
+            }
+        }, 300),
+        []
+    );
     
 
-    function searchnow() {
-        console.log('Search value:', searchValue);
-        if (onSearchChange) {
-            onSearchChange(searchValue);
-        }
-    }
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            searchnow();
-        }
-    };
+    // const handleKeyDown = (e) => {
+    //     if (e.key === 'Enter') {
+    //         searchnow();
+    //     }
+    // };
 
     const selectnPass = (suggestion) => {
         if (typeof onSelectSuggestion === 'function') {
-          onSelectSuggestion(suggestion); 
+            onSelectSuggestion(suggestion);
         } else {
-          console.error('onSelectSuggestion is not a function');
+            console.error('onSelectSuggestion is not a function');
         }
-        setSearchValue(suggestion); 
-        setSuggestions([]);  
-        setActive(false);  
-        alert('Selected: ' + suggestion);  
+        setSearchValue(suggestion);
+        setSuggestions([]);
+        setActive(false);
     };
       
     return (
@@ -87,12 +77,10 @@ export default function Search({  onSearchChange, searchQuery, onSelectSuggestio
                     id="search" 
                     autoComplete="off" 
                     className="searchinput"
-                    value={searchValue}  
-                    onChange={handleInputChange} 
-                    onKeyDown={handleKeyDown} 
-                     
+                    value={searchValue}
+                    onChange={(e) => handleInputChange(e.target.value)}                                         
                 />
-                <span onClick={searchnow} className='searchicon' style={{ cursor: 'pointer' }}>
+                <span  className='searchicon' style={{ cursor: 'pointer' }}>
                     <svg className='searchiconscvg' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 16 16">
                         <circle cx="7" cy="7" r="5.5" stroke="currentColor"/>
                         <path stroke="currentColor" d="m11 11 4 4"/>
@@ -138,3 +126,5 @@ export default function Search({  onSearchChange, searchQuery, onSelectSuggestio
         </section>
     );
 }
+
+// setSuggestions(response.data.suggestions || []); 

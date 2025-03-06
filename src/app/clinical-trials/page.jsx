@@ -81,8 +81,7 @@ export default function Clinical() {
             <p> Popular Listigns</p>
           </div>
           <div className="main">
-            <Search 
-               onSearchChange={handleSearchChange} 
+            <Search                
                onSelectSuggestion={handleSelectSuggestion} 
              />
 
@@ -222,7 +221,7 @@ export default function Clinical() {
                         {trail.protocolSection.descriptionModule
                           ? trail.protocolSection.descriptionModule.briefSummary.substring(
                               0,
-                              400
+                              200
                             )
                           : "No Description"}
                       </p>
