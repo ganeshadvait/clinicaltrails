@@ -68,14 +68,15 @@ export default function Search({  onSearchChange, searchQuery, onSelectSuggestio
 
     const selectnPass = (suggestion) => {
         if (typeof onSelectSuggestion === 'function') {
-          onSelectSuggestion(suggestion);
+          onSelectSuggestion(suggestion); 
         } else {
           console.error('onSelectSuggestion is not a function');
         }
-        setSearchValue(suggestion);
-        alert('Selected: ' + suggestion);
+        setSearchValue(suggestion); 
         setSuggestions([]);  
-      };
+        setActive(false);  
+        alert('Selected: ' + suggestion);  
+    };
       
     return (
         <section className="search-box">
@@ -88,7 +89,8 @@ export default function Search({  onSearchChange, searchQuery, onSelectSuggestio
                     className="searchinput"
                     value={searchValue}  
                     onChange={handleInputChange} 
-                    onKeyDown={handleKeyDown}  
+                    onKeyDown={handleKeyDown} 
+                     
                 />
                 <span onClick={searchnow} className='searchicon' style={{ cursor: 'pointer' }}>
                     <svg className='searchiconscvg' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 16 16">

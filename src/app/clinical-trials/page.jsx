@@ -20,11 +20,6 @@ export default function Clinical() {
   const backendUrl = process.env.NEXT_PUBLIC_SUGGESTIONS_URL || "";
   const router = useRouter();
 
-  const handleSearchChange = (query, newQuery) => {
-    setSearchQuery(query);
-    setActive(query.length > 0);
-    setSearchQuery(newQuery);
-  };
   const handleSelectSuggestion = (suggestion) => {    
     console.log('Selected suggestion:', suggestion);        
     axios.get(`${backendUrl}/fetch_conditions?condition=${suggestion}`)
@@ -88,7 +83,6 @@ export default function Clinical() {
           <div className="main">
             <Search 
                onSearchChange={handleSearchChange} 
-               searchQuery={searchQuery} 
                onSelectSuggestion={handleSelectSuggestion} 
              />
 
@@ -162,12 +156,16 @@ export default function Clinical() {
                   </div>
                 </MenuItems>
               </Menu>
+            </div>            
+            {searchResults ? (              
+              <div>
+                <p>Search Results</p>
+                <div>
+                <h1>{response.TrialName.OfficialTitle}</h1>
+                </div>
+        
+            
             </div>
-            <h3>Clinical Trials</h3>
-            {searchResults ? (
-             <div>
-              <p>searchResults</p>
-             </div>
             ):(
               <div className="result_box">
               {loading ? (          
