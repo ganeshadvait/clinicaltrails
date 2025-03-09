@@ -120,7 +120,7 @@ const About = () => {
                 style={{
                   width: `${progress}%`,
                   height: "5px",
-                  background: "rgb(26, 115, 232)",
+                  background: "hsl(208, 92%, 54%)",
                   position: "absolute",
                   bottom: 0,
                   left: 0,
