@@ -82,7 +82,7 @@ export default function Clinical() {
             <p> Popular Listigns</p>
           </div>
           <div className="main">
-            {/* <Search onSelectSuggestion={handleSelectSuggestion} /> */}
+            <Search setTrails={setTrails} />
 
             <div className="filters_bar">
               <h3>Results for {searchQuery}</h3>
