@@ -19,7 +19,7 @@ const Footer = () => {
                               />
                             </a>
 
-                <p className="text-base leading-relaxed text-gray-600 mt-7">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+                <p className="text-base leading-relaxed text-gray-600 mt-7"> Search for Clinical Trials Near You – Contribute to Life-Changing Discoveries</p>
 
                 <ul className="flex items-center space-x-3 mt-9">
                     <li>
@@ -89,15 +89,15 @@ const Footer = () => {
             </div>
 
             <div>
-                <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Help</p>
+                <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Trialz</p>
 
                 <ul className="mt-6 space-y-4">
                     <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Customer Support </a>
+                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Search Clinical Trails </a>
                     </li>
 
                     <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Delivery Details </a>
+                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Clinical Trails Listings </a>
                     </li>
 
                     <li>
@@ -126,7 +126,7 @@ const Footer = () => {
 
         <hr className="mt-16 mb-10 border-gray-200" />
 
-        <p className="text-sm text-center text-gray-600">© Copyright 2021, All Rights Reserved by Advait</p>
+        <p className="text-sm text-center text-gray-600">© Copyright 2025, All Rights Reserved by Advait</p>
     </div>
 </section>
 

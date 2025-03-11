@@ -17,36 +17,37 @@ export default function Clinical() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSuggestionData, setSelectedSuggestionData] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const backendUrl = process.env.NEXT_PUBLIC_SUGGESTIONS_URL || "";
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
   const router = useRouter();
 
-  const handleSelectSuggestion = (suggestion) => {    
-    console.log('Selected suggestion:', suggestion);        
-    axios.get(`${backendUrl}/fetch_conditions?condition=${suggestion}`)
+  const handleSelectSuggestion = (suggestion) => {
+    console.log("Selected suggestion:", suggestion);
+    axios
+      .get(`${backendUrl}/fetch_conditions?condition=${suggestion}`)
       .then((response) => {
-        
         setSelectedSuggestionData(response.data.response || []);
-        console.log('API Response:', response.data);
+        console.log("API Response:", response.data);
         setSearchResults(true);
       })
       .catch((error) => {
-        console.error('Error fetching suggestion details:', error);
+        console.error("Error fetching suggestion details:", error);
         setSearchResults(false);
       });
   };
-  const clearFilters = () => {
-    setSearchQuery("");
-    setActive(false);
-  };
+
+  // const clearFilters = () => {
+  //   setSearchQuery("");
+  //   setActive(false);
+  // };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `https://clinicaltrials.gov/api/v2/studies`
+          `${backendUrl}/all?page_number=${pageNumber * 10}`
         );
-        setTrails(response.data.studies || []);
+        setTrails(response.data.trials || []);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -57,21 +58,21 @@ export default function Clinical() {
     fetchData();
   }, [pageNumber]);
 
-  const handleTitleClick = (title) => {
-    console.log("Clicked title:", title);
-    const urlFriendlyTitle = title
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w\-]+/g, "")
-      .replace(/--+/g, "-")
-      .trim();
+  // const handleTitleClick = (title) => {
+  //   console.log("Clicked title:", title);
+  //   const urlFriendlyTitle = title
+  //     .toLowerCase()
+  //     .replace(/\s+/g, "-")
+  //     .replace(/[^\w\-]+/g, "")
+  //     .replace(/--+/g, "-")
+  //     .trim();
 
-    const url = `/${urlFriendlyTitle}`;
-    router.push(url);
+  //   const url = `/${urlFriendlyTitle}`;
+  //   router.push(url);
 
-    setGeneratedUrl(url);
-  };
- 
+  //   setGeneratedUrl(url);
+  // };
+
   return (
     <>
       <section className="trailspage">
@@ -81,9 +82,7 @@ export default function Clinical() {
             <p> Popular Listigns</p>
           </div>
           <div className="main">
-            <Search                
-               onSelectSuggestion={handleSelectSuggestion} 
-             />
+            <Search setTrails={setTrails} />
 
             <div className="filters_bar">
               <h3>Results for {searchQuery}</h3>
@@ -155,122 +154,115 @@ export default function Clinical() {
                   </div>
                 </MenuItems>
               </Menu>
-            </div>            
-            {searchResults ? (              
+            </div>
+            {searchResults ? (
               <div>
                 <p>Search Results</p>
                 <div>
-                <h1>{response.TrialName.OfficialTitle}</h1>
+                  <h1>{response.TrialName.OfficialTitle}</h1>
                 </div>
-        
-            
-            </div>
-            ):(
+              </div>
+            ) : (
               <div className="result_box">
-              {loading ? (          
-                <Loader />
-              ) : (
-                <div>
-                  {trails.map((trail, ind) => (
-                    <div key={ind} className="trail_card my-4 border p-4">
-                      <span className="featuredabsolute">Featured</span>
-                      <div className="title_status flex justify-between">
-                        <Link
-                          href={`clinical-trials/listings/${trail.protocolSection.identificationModule.nctId}/${trail.protocolSection.identificationModule.briefTitle}`}
-                        >
-                          <h4
-                            className="trail_title"
-                            style={{
-                              cursor: "pointer",
-                            }}
+                {loading ? (
+                  <Loader />
+                ) : (
+                  <div>
+                    {trails.map((trail, ind) => (
+                      <div key={ind} className="trail_card my-4 border p-4">
+                        <span className="featuredabsolute">Featured</span>
+                        <div className="title_status flex justify-between">
+                          <Link
+                            href={`listings/${trail.nct_id}/${trail["Trial Name"]["Brief Title"]}`}
                           >
-                            {String(
-                              trail["protocolSection"]["identificationModule"][
-                                "briefTitle"
-                              ] || "No Title"
-                            )}
-                          </h4>
-                        </Link>
-                        <div className="status_card">
-                          <span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="12"
-                              height="12"
-                              fill="none"
-                              viewBox="0 0 16 16"
+                            <h4
+                              className="trail_title"
+                              style={{
+                                cursor: "pointer",
+                              }}
                             >
-                              <path
-                                stroke="currentColor"
-                                d="M2.359 11.638 1.5 14.5h13l-.859-2.862A3 3 0 0 0 10.768 9.5H5.232a3 3 0 0 0-2.873 2.138Z"
-                              />
-                              <circle
-                                cx="8"
-                                cy="4.5"
-                                r="3"
-                                stroke="currentColor"
-                              />
-                            </svg>
-                          </span>
-                          <p>
-                            {trail.protocolSection.statusModule.overallStatus}
-                          </p>
+                              {String(
+                                trail["Trial Name"]["Brief Title"] || "No Title"
+                              )}
+                            </h4>
+                          </Link>
+                          <div className="status_card">
+                            <span>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="12"
+                                height="12"
+                                fill="none"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  stroke="currentColor"
+                                  d="M2.359 11.638 1.5 14.5h13l-.859-2.862A3 3 0 0 0 10.768 9.5H5.232a3 3 0 0 0-2.873 2.138Z"
+                                />
+                                <circle
+                                  cx="8"
+                                  cy="4.5"
+                                  r="3"
+                                  stroke="currentColor"
+                                />
+                              </svg>
+                            </span>
+                            <p>{trail["Study Status"]["Overall Status"]}</p>
+                          </div>
                         </div>
-                      </div>
-                      <p className="trailsdescription">
-                        {trail.protocolSection.descriptionModule
-                          ? trail.protocolSection.descriptionModule.briefSummary.substring(
-                              0,
-                              200
-                            )
-                          : "No Description"}
-                      </p>
+                        <p className="trailsdescription">
+                          {trail["Basic Information"]["Description"].substring(
+                            0,
+                            200
+                          )}
+                        </p>
 
-                      <div className="additional_info">
-                        <div></div>
-                        <div>
-                          <button
-                            id="bottone1"
-                            style={{
-                              color: "#1a73e8",
-                              fontSize: "14px",
-                              cursor: "pointer",
-                            }}
-                          >
-                            Read more
-                          </button>
+                        <div className="additional_info">
+                          <div></div>
+                          <div>
+                            <button
+                              id="bottone1"
+                              style={{
+                                color: "#1a73e8",
+                                fontSize: "14px",
+                                cursor: "pointer",
+                              }}
+                            >
+                              Read more
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                  <div className="pagination">
-                    <button
-                      type="button"
-                      className="prev"
-                      onClick={() => {
-                        if (pageNumber > 1) {
-                          setPageNumber((prevPage) => prevPage - 10);
+                    ))}
+                    <div className="pagination">
+                      <button
+                        type="button"
+                        className="prev"
+                        onClick={() => {
+                          if (pageNumber > 1) {
+                            setPageNumber((prevPage) => prevPage - 1);
+                          }
+                        }}
+                      >
+                        Prev
+                      </button>
+
+                      <p className="count">{pageNumber}</p>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setPageNumber((prevPage) => prevPage + 1)
                         }
-                      }}
-                    >
-                      Prev
-                    </button>
-
-                    <p className="count">{pageNumber}</p>
-
-                    <button
-                      type="button"
-                      onClick={() => setPageNumber((prevPage) => prevPage + 1)}
-                      className="next"
-                    >
-                      Next
-                    </button>
+                        className="next"
+                      >
+                        Next
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
             )}
-            
           </div>
         </div>
       </section>

@@ -52,8 +52,7 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background: #fff;
 }
 
 body {
