@@ -106,3 +106,8 @@
     box-shadow: 0 .95px 2.85px #1f2f541a;
 }
 
+@media (max-width:768px) {
+    .search_page{
+        width: 92%;
+    }
+}

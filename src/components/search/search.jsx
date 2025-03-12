@@ -1,23 +1,27 @@
 "use client";
+import { useRouter } from "next/navigation";
 import "./searchstyles.css";
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Loader from "../loader/loader";
 import debounce from "lodash.debounce";
 
+
 export default function Search({ setTrails }) {
+  const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const [debouncedValue, setDebouncedValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [active, setActive] = useState(false);
+  const [passValue, setPassValue] = useState("");
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
 
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(searchValue);
-    }, 500);
+    }, 200);
 
     return () => {
       clearTimeout(handler);
@@ -36,7 +40,8 @@ export default function Search({ setTrails }) {
       .then((response) => {
         setSuggestions(response.data.suggestions || []);
         console.log("API Response:", response.data);
-
+        setPassValue(response.data.suggestions);
+        console.log("passValue:", passValue); 
         if (response.data.suggestions.length > 0) {
           setActive(true);
         } else {
@@ -51,19 +56,11 @@ export default function Search({ setTrails }) {
         setIsLoading(false);
       });
   };
-
-  const handleTrails = () => {
-    setActive(false);
-    axios
-      .get(`${backendUrl}/fetch_conditions?condition=${searchValue}`)
-      .then((response) => {
-        setTrails(response.data.response || []);
-        console.log("API Response:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching suggestion details:", error);
-      });
-  };
+ 
+  const navigatelistings = () => {
+    router.push(`/clinical-trials/listings?search=${encodeURIComponent(searchValue)}`);
+  }
+ 
 
   return (
     <section className="search-box">
@@ -81,7 +78,7 @@ export default function Search({ setTrails }) {
           type="button"
           className="searchicon"
           style={{ cursor: "pointer" }}
-          onClick={handleTrails}
+          onClick={navigatelistings}
         >
           <svg
             className="searchiconscvg"
