@@ -5,9 +5,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Loader from "../loader/loader";
 import debounce from "lodash.debounce";
+import { useStore } from "../../strore/useStore";
 
-
-export default function Search({ setTrails }) {
+export default function Search() {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const [debouncedValue, setDebouncedValue] = useState("");
@@ -16,7 +16,11 @@ export default function Search({ setTrails }) {
   const [active, setActive] = useState(false);
   const [passValue, setPassValue] = useState("");
 
+  const { updateTotalTrail, updateTrails, clearTrails, updateNextPageToken } =
+    useStore();
+
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+  const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -41,7 +45,7 @@ export default function Search({ setTrails }) {
         setSuggestions(response.data.suggestions || []);
         console.log("API Response:", response.data);
         setPassValue(response.data.suggestions);
-        console.log("passValue:", passValue); 
+        console.log("passValue:", passValue);
         if (response.data.suggestions.length > 0) {
           setActive(true);
         } else {
@@ -56,11 +60,28 @@ export default function Search({ setTrails }) {
         setIsLoading(false);
       });
   };
- 
-  const navigatelistings = () => {
-    router.push(`/clinical-trials/listings?search=${encodeURIComponent(searchValue)}`);
-  }
- 
+
+  const fetchData = async () => {
+    setActive(false);
+    try {
+      setIsLoading(true);
+      const response = await axios.get(
+        `${backendUrlGOVT}/studies?format=json&query.cond=${searchValue}&countTotal=true&pageSize=10`
+      );
+      console.log("check these", response.data.response);
+      clearTrails();
+      updateTotalTrail(response.data.totalCount);
+      updateTrails(response.data.studies);
+      updateNextPageToken(response.data.nextPageToken);
+      router.push(
+        `/clinical-trials/listings?search=${encodeURIComponent(searchValue)}`
+      );
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Error fetching data:", error);
+    }
+  };
 
   return (
     <section className="search-box">
@@ -78,7 +99,7 @@ export default function Search({ setTrails }) {
           type="button"
           className="searchicon"
           style={{ cursor: "pointer" }}
-          onClick={navigatelistings}
+          onClick={fetchData}
         >
           <svg
             className="searchiconscvg"

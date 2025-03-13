@@ -324,13 +324,13 @@ a{
   width: 50%;
 }
 .contact_form_main{
-  width: 20%;
-  height: fit-content;
+  /* width: 20%; */
+  /* height: fit-content; */
   padding: 24px;
   border: 1px solid #ebe7ff;
   border-radius: 24px;
   background: #f8f6ff;
-    min-height: 100%;
+    /* min-height: 100%; */
 }
 .single_brief_page{
   flex-wrap: unset;
