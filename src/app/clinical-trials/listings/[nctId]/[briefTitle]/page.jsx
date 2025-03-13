@@ -60,8 +60,8 @@ export default function ListingPage() {
       >
         <div className="inner_trailspage single_brief_page">
           <div className="sidebar single_trails_sidebar">
-            <h3>Clinical Trials</h3>
-            <p> Popular Listigns</p>
+            <h3 className="mb-8">Clinical Trials</h3>
+            <p className="mb-8"> Popular Listigns</p>
           </div>
           <div className="main single_trails_main">
             <div className="single_info">
@@ -298,24 +298,24 @@ export default function ListingPage() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col right_sidebar">
             <div className="contact_form_main">
               <Form />
             </div>
-            <div>
+            <div className="contact_details">
               {trailData?.protocolSection?.contactsLocationsModule?.locations &&
               trailData?.protocolSection?.contactsLocationsModule.locations
                 .length > 0 ? (
                 trailData?.protocolSection?.contactsLocationsModule?.locations.map(
                   (location, ind) => (
-                    <div key={ind}>
-                      <p>{location.facility}</p>
-                      <p>City:{location.city}</p>
-                      <p>State:{location.state}</p>
-                      <p>Country:{location.country}</p>
-                      <p>Zip:{location.zip}</p>
-                      <p>Latitude:{location.geoPoint.lat}</p>
-                      <p>Longitude:{location.geoPoint.lon}</p>
+                    <div key={ind} className="flex_column">
+                      <p className="location_facility">{location.facility}</p>
+                      <p> <span className="address"> City: </span>{location.city}</p>
+                      <p> <span className="address">State: </span>{location.state}</p>
+                      <p> <span className="address">Country: </span>{location.country}</p>
+                      <p><span className="address">Zip: </span>{location.zip}</p>
+                      <p><span className="address">Latitude: </span>{location.geoPoint.lat}</p>
+                      <p><span className="address">Longitude: </span>{location.geoPoint.lon}</p>
                     </div>
                   )
                 )

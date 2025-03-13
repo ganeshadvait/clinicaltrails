@@ -61,8 +61,8 @@ export default function Clinical() {
       <section className="trailspage">
         <div className="inner_trailspage">
           <div className="sidebar">
-            <h3>Clinical Trials</h3>
-            <p> Popular Listigns</p>
+            <h3 className="mb-8">Clinical Trials</h3>
+            <p className="mb-8"> Popular Listigns</p>
 
             <FilterButton
               text={"Actively recruiting"}
