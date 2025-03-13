@@ -119,14 +119,16 @@ a{
   width: 90%;
   height: auto;
   display: flex;
+  align-items: start;
   flex-wrap: wrap;
   margin: 60px auto;
   gap: 14px;
 }
 .sidebar{
-  width: 26%;
+  width: 24%;
   height: auto;
   border-radius: 16px;
+  margin: 20px 0;
 }
 .main{
   width: 70%;
@@ -140,7 +142,10 @@ a{
     border: 1px solid #e7e7e7;
     background-color: #fff;
     border-radius: 14px;
-  margin: 56px 0;
+  margin: 20px 0;
+  display: flex;
+      flex-direction: column;
+      row-gap: 20px;
 }
 .trail_card:hover{
   --tw-shadow: 0px 19px 0px -12px #bcbfff;
@@ -152,6 +157,9 @@ a{
     border: 1px solid rgb(137 132 255);
     background: oklch(.98 .016 73.684);
     transform: translate(0, -0.5rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+.trail_card:hover .trail_title:hover{
+  color: hsl(208, 92%, 54%);
 }
 
 .pagination{
@@ -213,6 +221,7 @@ a{
 }
 .status_card p{
   font-size: 13px;
+  font-weight: 500;
 }
 .result_box{
   width: auto;
@@ -223,7 +232,9 @@ a{
   font-size: 15px;
   line-height: 1.6em;
   letter-spacing: 0.2px;
+  margin-bottom: 20px;
 }
+
 .featuredabsolute{
   font-size: 12px;
   position: absolute;
@@ -246,7 +257,7 @@ a{
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  margin: 40px 0 40px 0;
+  margin: 25px 0 20px 0;
 }
 .clear-filters{
   display: flex;
@@ -525,4 +536,26 @@ a{
     border: 1px solid #d2cfea;
     border-radius: 20px;
     padding: 5px 10px;  
+}
+
+.headers{
+  width: 90%;
+  margin: auto;
+}
+.sidebar{
+  height: auto;
+  border: 1px solid #e7e7e7;
+    border-radius: 1.6rem;
+    padding: 1.5rem;
+    position: sticky;
+    top: 1.8rem;
+}
+.additional_title{
+  font-weight: 500;
+  font-size: 14px;
+}
+.additional_info {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 12px;
 }

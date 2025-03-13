@@ -6,7 +6,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);  
 
   return (
-    <header className="py-4 md:py-6" style={{
+    <header className="py-4 md:py-6 headers" style={{
         borderBottom: '1px solid #e0e0e0'
     }}>
       <div className="container px-4 mx-auto sm:px-6 lg:px-8">
