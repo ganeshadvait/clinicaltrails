@@ -538,7 +538,8 @@ a{
   background: #f6f5ff;
     border: 1px solid #d2cfea;
     border-radius: 20px;
-    padding: 5px 10px;  
+    padding: 5px 10px; 
+    font-size: 12px; 
 }
 
 .headers{
