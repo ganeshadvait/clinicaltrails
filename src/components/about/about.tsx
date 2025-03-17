@@ -47,7 +47,7 @@ const About = () => {
   const updateProgress = () => {
     const video = videoRefs.current[active];
     if (video) {
-      setProgress((prev) => (video.currentTime / video.duration) * 100);
+      setProgress(() => (video.currentTime / video.duration) * 100);
     }
   };
   
