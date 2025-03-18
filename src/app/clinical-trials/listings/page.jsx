@@ -9,7 +9,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useStore } from "../../../strore/useStore";
 import { FilterButton } from "../../../components/filterButton";
-
+import '../../index.scss';
 export default function Clinical() {
   const [pageNumber, setPageNumber] = useState(1);
   const [active, setActive] = useState(false);
@@ -21,6 +21,8 @@ export default function Clinical() {
   const [isError, setIsError] = useState("");
   const [age, setAge] = useState({ minAge: 16, maxAge: 90 });
   const [selectedPhases, setSelectedPhases] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
 
   console.log("searchValue:", searchValue);
   const {
@@ -140,75 +142,91 @@ export default function Clinical() {
     <>
       <section className="trailspage">
         <div className="inner_trailspage">
-          <div className="sidebar">
-            <h3 className="mb-8">Clinical Trials</h3>
-            <p className="mb-8"> Popular Listigns</p>
+        <div className="sidebar">
+  <div className="flex toggle_bar" onClick={() => setSidebarOpen(!sidebarOpen)}>
+    <p>Filters</p>
+    <span className={`flex arrow_btn ${sidebarOpen ? 'rotate-180' : ''}`}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+        <path stroke="currentColor" d="M13.5 5.5 8 11 2.5 5.5" />
+      </svg>
+    </span>
+  </div>
 
-            <FilterButton
-              text={"Actively recruiting"}
-              isSelect={isRecruit}
-              setIsSelect={setIsRecruit}
+  {/* Sidebar content */}
+  <div className={`h-auto ${sidebarOpen ? 'h-full block fade-in' : 'hidden'} lg:block ${sidebarOpen ? 'block' : 'hidden'}`} >
+    <div className="empty_box">
+      <div className="side_bar_item">
+        <FilterButton
+          text={"Actively recruiting"}
+          isSelect={isRecruit}
+          setIsSelect={setIsRecruit}
+        />
+      </div>
+      <div className="side_bar_item">
+        <h4 className="mb-6">Age Filter</h4>
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
+            <label htmlFor="min_age" className="text-nowrap font-[400]" style={{ fontSize: '14px' }}>
+              Minimum Age
+            </label>
+            <input
+              type="number"
+              value={age.minAge}
+              id="min_age"
+              onChange={(e) => setAge({ ...age, minAge: e.target.value })}
+              className="rounded-lg border p-1 minimum_age mb-4"
             />
-
-            <h4>Age Filter</h4>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <label htmlFor="min_age" className="text-nowrap">
-                  Minimum Age
-                </label>
-                <input
-                  type="number"
-                  name=""
-                  value={age.minAge}
-                  id="min_age"
-                  onChange={(e) => setAge({ ...age, minAge: e.target.value })}
-                  className="rounded-lg border p-1"
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <label htmlFor="max_age" className="text-nowrap">
-                  Maximum Age
-                </label>
-                <input
-                  type="number"
-                  name=""
-                  value={age.maxAge}
-                  id="max_age"
-                  onChange={(e) => setAge({ ...age, maxAge: e.target.value })}
-                  className="rounded-lg border p-1"
-                />
-              </div>
-            </div>
-
-            <h4>Gender</h4>
-
-            <FilterButton
-              text={"Female"}
-              isSelect={isFemale}
-              setIsSelect={setIsFemale}
-            />
-
-            <FilterButton
-              text={"Male"}
-              isSelect={isMale}
-              setIsSelect={setIsMale}
-            />
-
-            <h4>Phases</h4>
-            <div className="flex flex-col">
-              {["phase1", "phase2", "phase3", "phase4"].map((phase) => (
-                <label key={phase}>
-                  <input
-                    type="checkbox"
-                    name={phase}
-                    checked={selectedPhases.includes(phase)}
-                    onChange={handleCheckboxChange}
-                  />
-                  {phase}
-                </label>
-              ))}
-            </div>
           </div>
+          <div className="flex flex-col gap-3">
+            <label htmlFor="max_age" className="text-nowrap" style={{ fontSize: '14px' }}>
+              Maximum Age
+            </label>
+            <input
+              type="number"
+              value={age.maxAge}
+              id="max_age"
+              onChange={(e) => setAge({ ...age, maxAge: e.target.value })}
+              className="rounded-lg border p-1 minimum_age mb-2"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="side_bar_item">
+        <h4>Gender</h4>
+        <FilterButton
+          text={"Female"}
+          isSelect={isFemale}
+          setIsSelect={setIsFemale}
+        />
+        <FilterButton
+          text={"Male"}
+          isSelect={isMale}
+          setIsSelect={setIsMale}
+        />
+      </div>
+      <div className="side_bar_item">
+        <h4 className="mb-6">Phases</h4>
+        <div className="flex flex-col gap-3">
+          {["phase1", "phase2", "phase3", "phase4"].map((phase) => (
+            <label className="checkbox_container flex gap-4 items-center" key={phase}>
+              <input
+                type="checkbox"
+                name={phase}
+                checked={selectedPhases.includes(phase)}
+                onChange={handleCheckboxChange}
+              />
+              <svg viewBox="0 0 64 64" height="2em" width="2em">
+                <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
+              </svg>
+              {phase}
+            </label>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
           {/* //component by Ganesh is there before */}
           <div className="main">
@@ -274,7 +292,7 @@ export default function Clinical() {
               </div>
               <Menu as="div" className="relative inline-block text-left">
                 <div>
-                  <MenuButton className="shadow-xs inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                  <MenuButton className="cursor-pointer shadow-xs inline-flex w-full justify-center gap-x-1.5 rounded-full bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                     Sort by
                     <ChevronDownIcon
                       aria-hidden="true"

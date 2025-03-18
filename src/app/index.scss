@@ -1,0 +1,189 @@
+/* From Uiverse.io by Na3ar-17 */ 
+.radio-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .radio-input * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .radio-input label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 220px;
+    cursor: pointer;
+    height: 50px;
+    position: relative;
+  }
+  
+  .radio-input label::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 45px;
+    z-index: -1;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 10px;
+    border: 2px solid transparent;
+  }
+  
+//   .radio-input .label:has(input:checked)::before {
+//     background-color: #f5f7f6;
+//     border-color: #435dd8;
+//     height: 50px;
+//   }
+  .radio-input .label .text {
+    color: #000;
+  }
+  
+  .radio-input .label input[type="radio"] {
+    background-color: rgb(255 255 255);
+    border: 3px solid #435dd8;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+  }
+//   .radio-input .label input[type="radio"]:checked {
+//     background-color: #435dd8;
+//     -webkit-animation: puls 0.7s forwards;
+//     animation: pulse 0.7s forwards;
+//   }
+  
+  .radio-input .label input[type="radio"]:before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-color: #fff;
+    transform: scale(0);
+  }
+  
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+  
+  .small_font{
+    font-size: 14px;
+  }
+  /* checked */
+  
+  .radio-input_chcked .radio-input_chcked input[type="radio"]:checked {
+    background-color: #435dd8;
+    -webkit-animation: puls 0.7s forwards;
+    animation: pulse 0.7s forwards;
+  }
+  .radio-input_chcked .radio-input_chcked input[type="radio"]:before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-color: #fff;
+    transform: scale(0);
+  }
+  .radio-input_chcked .label_chcked input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+  .radio-input_chcked .label_chcked input[type="radio"] {
+    background-color: rgb(255 255 255);
+    border: 3px solid #435dd8;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+  }
+  .radio-input_chcked .label_chcked:has(input:checked)::before {
+    background-color: #f5f7f6;
+    border-color: #435dd8;
+    height: 50px;
+  }
+  .radio-input_chcked .label_chcked .text {
+    color: #000;
+  }
+  .radio-input_chcked {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .radio-input_chcked label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0px 20px;
+    width: 220px;
+    cursor: pointer;
+    height: 50px;
+    position: relative;
+  }
+ 
+  .label_checked input[type="radio"]{
+    background: #000;
+    box-shadow: 0 4px 12px 0 #14142b0f;
+  }
+ .selected-text{
+    color: #435dd8;
+ }
+ .checked-input {
+    background-color: #e7e7e7 !important;
+    border: 2px solid #435dd8 !important;
+    box-shadow: 0 4px 12px 0 #14142b0f;
+}
+.checkbox_container {
+  cursor: pointer;
+  text-transform: capitalize;
+  margin-bottom: 12px;
+}
+
+.checkbox_container input {
+  display: none;
+}
+
+.checkbox_container svg {
+  overflow: visible;
+  width: 16px;
+  height: 16px;
+}
+
+.path {
+  fill: none;
+  stroke: #435dd8;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.checkbox_container input:checked ~ svg .path {
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}

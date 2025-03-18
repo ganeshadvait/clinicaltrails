@@ -12,8 +12,7 @@
   --container-color: hsl(220, 50%, 97%);
 
   /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
-  --body-font: "Montserrat", system-ui;
+
   --big-font-size: 1rem;
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
@@ -80,21 +79,21 @@ a{
 
 @font-face {
   font-family: 'Parkinsans';
-  src: url('/fonts/Parkinsans-Regular.ttf') format('truetype');
+  src: url('/fonts/RethinkSans-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Parkinsans';
-  src: url('/fonts/Parkinsans-Medium.ttf') format('truetype');
+  src: url('/fonts/RethinkSans-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Parkinsans';
-  src: url('/fonts/Parkinsans-SemiBold.ttf') format('truetype');
+  src: url('/fonts/RethinkSans-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
@@ -117,21 +116,22 @@ a{
 }
 .inner_trailspage{
   width: 90%;
-  height: auto;
-  display: flex;
-  align-items: start;
-  flex-wrap: wrap;
-  margin: 60px auto;
-  gap: 14px;
+    height: auto;
+    display: flex
+;
+    align-items: start;
+    flex-wrap: wrap;
+    margin: 60px auto;
+    justify-content: space-between;
 }
 .sidebar{
-  width: 24%;
+  width: 20%;
   height: auto;
   border-radius: 16px;
   margin: 20px 0;
 }
 .main{
-  width: 70%;
+  width: 75%;
   height: auto;
 }
 .trail_card{
@@ -264,8 +264,12 @@ a{
   align-items: center;
 }
 @media (max-width:768px) {
+  .sidebar{
+    padding: 0.5rem !important;
+    position: relative;
+  }
   .inner_trailspage{
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin-top: 0;
   }
   .main{
@@ -495,18 +499,49 @@ a{
   margin: auto;
   padding: 50px 0 0 0;
 }
-.boxed_container{
-  background-color: #f6f5ff;
-    border-color: #d2cfea;
-    border: 1px solid #d2cfea;
-    width: 100%;
-    height: 600px;
-    margin-top: 50px;
-    border-radius: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+.boxed_container {
+  padding: 24px;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1.14fr;
+  grid-auto-columns: 1fr;
+  place-items: center stretch;
+  display: grid;
+  width: 100%;
+  height: 450px; /* You can change this as needed */
+  border-radius: 24px;
+  border: 1px solid #ebe7ff;
+  background-color: white;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 .95px 2.85px #1f2f541a;
+}
+
+/* Ensure sticky works */
+@media (min-width: 768px) {
+  .boxed_container {
+    position: sticky;
+    top: 1.8rem;
+    z-index: 10;
+  }
+  .boxed_container:nth-child(2){
+    top: 2.1rem;
+  }
+  .boxed_container:nth-child(3){
+    top: 2.4rem;
+  }
+}
+
+@media (max-width:768px) {
+  .boxed_container{
+    grid-template-columns: 1fr;
+    position: unset;
+    top: unset;
+  }
 }
 .boxed_container .tabs{
   width: 30%;
@@ -537,6 +572,7 @@ a{
 .resultsfor{
   background: #f6f5ff;
     border: 1px solid #d2cfea;
+    box-shadow: 0 4px 12px 0 #14142b0f;
     border-radius: 20px;
     padding: 5px 10px; 
     font-size: 12px; 
@@ -548,11 +584,9 @@ a{
 }
 .sidebar{
   height: auto;
-  border: 1px solid #e7e7e7;
+
     border-radius: 1.6rem;
     padding: 1.5rem;
-    position: sticky;
-    top: 1.8rem;
 }
 .additional_title{
   font-weight: 500;
@@ -568,9 +602,6 @@ a{
   row-gap: unset;
 }
 .right_sidebar{
-  border: 1px solid #e7e7e7;
-  border-radius: 1.6rem;
-  padding: 1.5rem;
   position: sticky;
   top: 1.8rem; 
 }
@@ -593,4 +624,142 @@ a{
 .address{
   font-weight: 700;
   margin-right: 6px;
+}
+.side_bar_item:hover {
+  transition: all 0.2s ease;
+  background-color: #f5f7f6;
+}
+.side_bar_item{
+  padding: 10px;
+  border-radius: 14px;
+}
+p{
+  color: #19213d;
+}
+.minimum_age{
+  padding: 14px;
+    border: 1px solid #ebe7ff;
+    border-radius: 14px;
+    background-color: #f8f6ff;
+    color: #0d0c54;
+    font-size: 16px;
+    line-height: 1.25em;
+    height: 52px;
+    margin-bottom: 0;
+    font-weight: 400;
+    transition: color .3s, border-color .3s;
+}
+.minimum_age:hover {
+  border-color: #6145ff;
+}
+.minimum_age:focus-visible{
+  border-color: #6145ff;
+}
+.minimum_age:checked{
+  border-color: #6145ff;
+}
+.toggle_bar{
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  padding: 0 10px;
+
+  border-radius: 12px;
+}
+@media (max-width:768px) {
+  .toggle_bar{
+    border: 1px solid #ebe7ff;
+  }
+}
+.height_full{
+  height: 100%;
+}
+.arrow_btn{
+  transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+/* Initial state */
+.empty_box {
+ 
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Fade-in animation */
+.fade-in {
+  animation: fadeInAnimation 0.5s forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Add this to your global styles */
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tailwind-like utility class for fade-in */
+.fade-in {
+  animation: fadeInAnimation 0.5s ease-in-out;
+}
+
+@media (min-width:768px) {
+  .arrow_btn{
+    display: none;
+  }
+}
+.image_for{
+  height: 400px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+.for_icon{
+  padding: 10px;
+  background: #fff;
+  width: fit-content;
+}
+.for_study{
+  font-size: 32px;
+}
+.fit_content{
+  width: fit-content;
+}
+
+
+.parent-container {
+  position: relative;
+  padding-top: 20px;
+  min-height: 100vh;
+}
+
+.description{
+  align-self: center;
+  width: 55%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.7em;
+}
+
+@media (max-width:768px) {
+  .description{
+    width: 90%;
+  }
+  .parent-container{
+    min-height: unset;
+  }
+  .boxed_container{
+    height: auto;
+    margin-bottom: 14px;
+  }
 }
