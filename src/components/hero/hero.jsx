@@ -13,13 +13,13 @@ const HeroSection = () => {
                     <div className="text-center lg:text-left flex flex-col gap-x-12" style={{
                         gap: '14px'
                     }}>
-                        <h2 className="hero_title font-bold leading-tight text-gray-900 sm:text-5xl sm:leading-tight lg:leading-tight lg:text-6xl font-pj" style={{
+                        <h2 className="hero_title font-500 leading-tight text-gray-900 sm:text-5xl sm:leading-tight lg:leading-tight lg:text-6xl font-pj" style={{
                             fontSize: '46px',
                             lineHeight: '1.4em'
                         }}
                         
                         >Search for Clinical Trials Near You – Contribute to Life-Changing Discoveries</h2>
-                        
+                        <p className='myclass-2'>Empowering research, advancing medicine. Join today as a volunteer or researcher.</p>
 
                         <a className="wp-block-button__link wp-element-button" href="#">Search 66,000+ Clinical Trials</a>
                     </div>

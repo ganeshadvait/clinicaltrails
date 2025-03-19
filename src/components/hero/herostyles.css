@@ -44,7 +44,7 @@
 .wp-element-button{
     background-color: hsl(208, 92%, 54%);
     border: 2px solid hsl(208, 92%, 54%);
-    border-radius: 100px;
+    border-radius: 14px;
     color: white;
     cursor: pointer;
     font-size: 0.875rem;

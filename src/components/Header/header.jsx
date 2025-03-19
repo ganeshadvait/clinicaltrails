@@ -32,20 +32,27 @@ export default function Header() {
             </button>
           </div>
 
-          <div className={`${isMenuOpen ? 'flex' : 'hidden'} flex-col lg:hidden absolute bg-white w-full left-0 top-[100px] z-1000 shadow-md transition-all duration-3000 ease-in-out`}>
-            <a href="/clinical-trials" className="p-4 text-gray-900 hover:bg-gray-100">Search Clinical Trails</a>
-            <a href="/clinical-trials/listings" className="p-4 text-gray-900 hover:bg-gray-100">Clinical Trails Listings</a>
-            <a href="#" className="p-4 text-gray-900 hover:bg-gray-100">About Us</a>
+          <div className={`${isMenuOpen ? 'flex' : 'hidden'} flex-col lg:hidden absolute bg-white w-full left-0 top-[100px] z-1000 shadow-md transition-all duration-3000 ease-in-out`}>            
+            <a href='/' className='p-4 text-gray-900 hover:bg-gray-100'>Home</a>
+            <a href='/' className='p-4 text-gray-900 hover:bg-gray-100'> How it works</a>
+          
+            <a href="/clinical-trials" className="p-4 text-gray-900 hover:bg-gray-100">Find Clinical Trails</a>
+            <a href="/clinical-trials/listings" className="p-4 text-gray-900 hover:bg-gray-100">Research & Sponsers</a>
+            <a href='/' className='p-4 text-gray-900 hover:bg-gray-100'>Blogs</a>
           </div>
 
           
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <a href="/clinical-trials" className="text-base font-medium text-gray-900 hover:text-opacity-50">Search Clinical Trails</a>
-            <a href="/clinical-trials/listings" className="text-base font-medium text-gray-900 hover:text-opacity-50">Clinical Trails Listings</a>
+            <a href='/' className='text-base font-medium text-gray-900 hover:text-opacity-50'>Home</a>
+            <a href='/' className='text-base font-medium text-gray-900 hover:text-opacity-50'> How it works</a>
+          
+            <a href="/clinical-trials" className="text-base font-medium text-gray-900 hover:text-opacity-50">Find Clinical Trails</a>
+            <a href="/clinical-trials/listings" className="text-base font-medium text-gray-900 hover:text-opacity-50">Research & Sponsers</a>
+            <a href='/' className='text-base font-medium text-gray-900 hover:text-opacity-50'>Blogs</a>
             <a href="#" className="text-base font-medium text-gray-900 hover:text-opacity-50">About Us</a>
             <a href="#" className="px-5 py-2 text-base font-bold text-white   hover:bg-gray-600" style={{
               background: 'hsl(208, 92%, 54%)',
-              borderRadius: '100px',
+              borderRadius: '14px',
               paddingBlock: "1rem"
             }}>
               Contact now

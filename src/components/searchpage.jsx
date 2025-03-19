@@ -290,7 +290,7 @@ export default function Clinical() {
                   style={{ cursor: "pointer" }}
                   className="resultsfor flex items-center"
                 >
-                  {locationValue.slice(0, 6) || "No search term"}{" "}
+                  {locationValue.slice(0, 6) || "location empty"}{" "}
                   {locationValue && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
