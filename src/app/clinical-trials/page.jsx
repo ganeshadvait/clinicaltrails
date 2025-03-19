@@ -1,271 +1,106 @@
 "use client";
-import { useRouter } from "next/navigation";
-import Search from "../../components/search/search";
-import { useEffect, useState } from "react";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import Loader from "../../components/loader/loader";
-import axios from "axios";
-import Link from "next/link";
+import React from "react";
+import Search from "@/components/search/search";
 
-export default function Clinical() {
-  const [trails, setTrails] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [active, setActive] = useState(false);
-  const [searchResults, setSearchResults] = useState(false);
-  const [generatedUrl, setGeneratedUrl] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedSuggestionData, setSelectedSuggestionData] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
-  const router = useRouter();
-
-  const handleSelectSuggestion = (suggestion) => {
-    console.log("Selected suggestion:", suggestion);
-    axios
-      .get(`${backendUrl}/fetch_conditions?condition=${suggestion}`)
-      .then((response) => {
-        setSelectedSuggestionData(response.data.response || []);
-        console.log("API Response:", response.data);
-        setSearchResults(true);
-      })
-      .catch((error) => {
-        console.error("Error fetching suggestion details:", error);
-        setSearchResults(false);
-      });
-  };
-
-  // const clearFilters = () => {
-  //   setSearchQuery("");
-  //   setActive(false);
-  // };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          `${backendUrl}/all?page_number=${pageNumber * 10}`
-        );
-        setTrails(response.data.trials || []);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [pageNumber]);
-
-  // const handleTitleClick = (title) => {
-  //   console.log("Clicked title:", title);
-  //   const urlFriendlyTitle = title
-  //     .toLowerCase()
-  //     .replace(/\s+/g, "-")
-  //     .replace(/[^\w\-]+/g, "")
-  //     .replace(/--+/g, "-")
-  //     .trim();
-
-  //   const url = `/${urlFriendlyTitle}`;
-  //   router.push(url);
-
-  //   setGeneratedUrl(url);
-  // };
-
+const Page = () => {
   return (
-    <>
-      <section className="trailspage">
-        <div className="inner_trailspage">
-          <div className="sidebar">
-            <h3>Clinical Trials</h3>
-            <p> Popular Listigns</p>
+    <section className="search_page">
+      <Search />
+      <div className="my-18">
+      <h2 className="text-center text-2xl lg:text-3xl font-semibold text-gray-800 mb-4">
+  Find a Trial Near You
+</h2>
+<p className="text-center text-base lg:text-lg text-gray-600 description">
+  Discover clinical research opportunities that work for you. Explore study details and locations, and take the first steps to participating.
+</p>
+
+      </div>
+      <div className="parent-container">
+      <div className="boxed_container sticky top-0 z-10">
+        <div className="content_image_box flex p-4">
+          <div className="flex flex-col gap-2">
+          <span className="for_icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M8 9.5H5.232a3 3 0 0 0-2.873 2.138L1.5 14.5H9"/><circle cx="8" cy="4.5" r="3" stroke="currentColor"/><path fill="currentColor" d="m11.5 7.5 1.131 2.869L15.5 11.5l-2.869 1.131L11.5 15.5l-1.131-2.869L7.5 11.5l2.869-1.131L11.5 7.5Z"/></svg>
+          </span>
+          <h3 className="for_study">
+          Find a study
+          </h3>
+          <p>
+          Search or browse for a clinical trial near you.
+          </p>
+          <a href="#" className="px-5 py-2 text-base font-bold text-white fit_content   hover:bg-gray-600" style={{
+              background: 'hsl(208, 92%, 54%)',
+              borderRadius: '100px',
+              paddingBlock: "1rem",
+              marginTop:'10px'
+            }}>
+              Get in touch
+            </a>
           </div>
-          <div className="main">
-            <Search setTrails={setTrails} />
-
-            <div className="filters_bar">
-              <h3>Results for {searchQuery}</h3>
-              <button
-                id="bottone1"
-                style={{
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                Disclaimer
-              </button>
-              <div className="clear-filters">
-                {active ? (
-                  <span
-                    className="clear-filters spa"
-                    style={{
-                      cursor: "pointer",
-                    }}
-                    onClick={clearFilters}
-                  >
-                    <p>Clear filters</p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path stroke="currentColor" d="m3 3 10 10M13 3 3 13" />
-                    </svg>
-                  </span>
-                ) : (
-                  <p>Clear filters</p>
-                )}
-              </div>
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <MenuButton className="shadow-xs inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                    Sort by
-                    <ChevronDownIcon
-                      aria-hidden="true"
-                      className="size-5 -mr-1 text-gray-400"
-                    />
-                  </MenuButton>
-                </div>
-
-                <MenuItems
-                  transition
-                  className="data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 transition focus:outline-hidden"
-                >
-                  <div className="py-1">
-                    <MenuItem>
-                      <a
-                        href="#"
-                        className="data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden block px-4 py-2 text-sm text-gray-700"
-                      >
-                        Top rated
-                      </a>
-                    </MenuItem>
-                    <MenuItem>
-                      <a
-                        href="#"
-                        className="data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden block px-4 py-2 text-sm text-gray-700"
-                      >
-                        Relavent
-                      </a>
-                    </MenuItem>
-                  </div>
-                </MenuItems>
-              </Menu>
-            </div>
-            {searchResults ? (
-              <div>
-                <p>Search Results</p>
-                <div>
-                  <h1>{response.TrialName.OfficialTitle}</h1>
-                </div>
-              </div>
-            ) : (
-              <div className="result_box">
-                {loading ? (
-                  <Loader />
-                ) : (
-                  <div>
-                    {trails.map((trail, ind) => (
-                      <div key={ind} className="trail_card my-4 border p-4">
-                        <span className="featuredabsolute">Featured</span>
-                        <div className="title_status flex justify-between">
-                          <Link
-                            href={`listings/${trail.nct_id}/${trail["Trial Name"]["Brief Title"]}`}
-                          >
-                            <h4
-                              className="trail_title"
-                              style={{
-                                cursor: "pointer",
-                              }}
-                            >
-                              {String(
-                                trail["Trial Name"]["Brief Title"] || "No Title"
-                              )}
-                            </h4>
-                          </Link>
-                          <div className="status_card">
-                            <span>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="12"
-                                height="12"
-                                fill="none"
-                                viewBox="0 0 16 16"
-                              >
-                                <path
-                                  stroke="currentColor"
-                                  d="M2.359 11.638 1.5 14.5h13l-.859-2.862A3 3 0 0 0 10.768 9.5H5.232a3 3 0 0 0-2.873 2.138Z"
-                                />
-                                <circle
-                                  cx="8"
-                                  cy="4.5"
-                                  r="3"
-                                  stroke="currentColor"
-                                />
-                              </svg>
-                            </span>
-                            <p>{trail["Study Status"]["Overall Status"]}</p>
-                          </div>
-                        </div>
-                        <p className="trailsdescription">
-                          {trail["Basic Information"]["Description"].substring(
-                            0,
-                            200
-                          )}
-                        </p>
-
-                        <div className="additional_info">
-                          <div></div>
-                          <div>
-                            <button
-                              id="bottone1"
-                              style={{
-                                color: "#1a73e8",
-                                fontSize: "14px",
-                                cursor: "pointer",
-                              }}
-                            >
-                              Read more
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                    <div className="pagination">
-                      <button
-                        type="button"
-                        className="prev"
-                        onClick={() => {
-                          if (pageNumber > 1) {
-                            setPageNumber((prevPage) => prevPage - 1);
-                          }
-                        }}
-                      >
-                        Prev
-                      </button>
-
-                      <p className="count">{pageNumber}</p>
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setPageNumber((prevPage) => prevPage + 1)
-                        }
-                        className="next"
-                      >
-                        Next
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
+          
         </div>
-      </section>
-    </>
+        <div className="content_image_box">
+          <img className="image_for" src="/62a180449a8eed53acc8f076_ARMedia-147-min.jpg" alt="find a study" />
+        </div>
+      </div>
+      <div className="boxed_container sticky top-0 z-10">
+        <div className="content_image_box flex p-4">
+          <div className="flex flex-col gap-2">
+          <span className="for_icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M8 9.5H5.232a3 3 0 0 0-2.873 2.138L1.5 14.5H9"/><circle cx="8" cy="4.5" r="3" stroke="currentColor"/><path fill="currentColor" d="m11.5 7.5 1.131 2.869L15.5 11.5l-2.869 1.131L11.5 15.5l-1.131-2.869L7.5 11.5l2.869-1.131L11.5 7.5Z"/></svg>
+          </span>
+          <h3 className="for_study">
+          Find a study
+          </h3>
+          <p>
+          Search or browse for a clinical trial near you.
+          </p>
+          <a href="#" className="px-5 py-2 text-base font-bold text-white fit_content   hover:bg-gray-600" style={{
+              background: 'hsl(208, 92%, 54%)',
+              borderRadius: '100px',
+              paddingBlock: "1rem",
+              marginTop:'10px'
+            }}>
+              Get in touch
+            </a>
+          </div>
+          
+        </div>
+        <div className="content_image_box">
+          <img className="image_for" src="/62a180449a8eed53acc8f076_ARMedia-147-min.jpg" alt="find a study" />
+        </div>
+      </div>
+      <div className="boxed_container sticky top-0 z-10">
+        <div className="content_image_box flex p-4">
+          <div className="flex flex-col gap-2">
+          <span className="for_icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M8 9.5H5.232a3 3 0 0 0-2.873 2.138L1.5 14.5H9"/><circle cx="8" cy="4.5" r="3" stroke="currentColor"/><path fill="currentColor" d="m11.5 7.5 1.131 2.869L15.5 11.5l-2.869 1.131L11.5 15.5l-1.131-2.869L7.5 11.5l2.869-1.131L11.5 7.5Z"/></svg>
+          </span>
+          <h3 className="for_study">
+          Find a study
+          </h3>
+          <p>
+          Search or browse for a clinical trial near you.
+          </p>
+          <a href="#" className="px-5 py-2 text-base font-bold text-white fit_content   hover:bg-gray-600" style={{
+              background: 'hsl(208, 92%, 54%)',
+              borderRadius: '100px',
+              paddingBlock: "1rem",
+              marginTop:'10px'
+            }}>
+              Get in touch
+            </a>
+          </div>
+          
+        </div>
+        <div className="content_image_box">
+          <img className="image_for" src="/62a180449a8eed53acc8f076_ARMedia-147-min.jpg" alt="find a study" />
+        </div>
+      </div>
+      </div>
+      
+    </section>
   );
-}
+};
+
+export default Page;

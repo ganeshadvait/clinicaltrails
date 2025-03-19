@@ -1,94 +1,98 @@
 "use client";
+import { useRouter } from "next/navigation";
 import "./searchstyles.css";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import axios from "axios";
-import Loader from "../loader/loader";
+import { useStore } from "../../strore/useStore";
+import { AutoComplete } from "../../components/autocompleteSearch";
 import debounce from "lodash.debounce";
 
-export default function Search({ setTrails }) {
+export default function Search() {
+  const router = useRouter();
+
   const [searchValue, setSearchValue] = useState("");
-  const [debouncedValue, setDebouncedValue] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [active, setActive] = useState(false);
+  const [location, setLocation] = useState("");
+
+  const { updateTotalTrail, updateTrails, clearTrails, updateNextPageToken } =
+    useStore();
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+  const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(searchValue);
-    }, 500);
+  const fetchData = useCallback(
+    debounce(async () => {
+      // Build the base URL
+      let apiUrl = `${backendUrlGOVT}/studies?format=json`;
 
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchValue]);
+      if (searchValue.trim()) {
+        apiUrl += `&query.cond=${encodeURIComponent(searchValue)}`;
+      }
+      if (location.trim()) {
+        apiUrl += `&query.locn=${encodeURIComponent(location)}`;
+      }
+      apiUrl += `&countTotal=true&pageSize=10`;
 
-  useEffect(() => {
-    if (debouncedValue) {
-      fetchResults(debouncedValue);
-    }
-  }, [debouncedValue]);
+      console.log("Final API URL:", apiUrl);
 
-  const fetchResults = (value) => {
-    axios
-      .get(`${backendUrl}/fetch_suggestions?string=${value}`)
-      .then((response) => {
-        setSuggestions(response.data.suggestions || []);
-        console.log("API Response:", response.data);
+      try {
+        const response = await axios.get(apiUrl);
+        console.log("API Response:", response.data.response);
 
-        if (response.data.suggestions.length > 0) {
-          setActive(true);
-        } else {
-          setActive(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching suggestions:", error);
-        setSuggestions([]);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+        clearTrails();
+        updateTotalTrail(response.data.totalCount);
+        updateTrails(response.data.studies);
+        updateNextPageToken(response.data.nextPageToken || "");
 
-  const handleTrails = () => {
-    setActive(false);
-    axios
-      .get(`${backendUrl}/fetch_conditions?condition=${searchValue}`)
-      .then((response) => {
-        setTrails(response.data.response || []);
-        console.log("API Response:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching suggestion details:", error);
-      });
-  };
+        router.push(
+          `/clinical-trials/listings/search?q=${encodeURIComponent(
+            searchValue
+          )}&location=${encodeURIComponent(location)}`
+        );
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }, 500),
+    [
+      searchValue,
+      location,
+      backendUrlGOVT,
+      clearTrails,
+      updateTotalTrail,
+      updateTrails,
+      updateNextPageToken,
+      router,
+    ]
+  );
 
   return (
     <section className="search-box">
-      <form action="" className="search-form">
+      <form className="search-form">
         <input
           type="text"
-          placeholder="condition treatment or keyword"
-          id="search"
-          autoComplete="off"
+          placeholder="Condition, treatment, or keyword"
           className="searchinput"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
+        />
+        <div className="border-2 border-r-black"></div>
+        <input
+          type="text"
+          placeholder="Location"
+          className="searchinput"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
         />
         <button
           type="button"
           className="searchicon"
           style={{ cursor: "pointer" }}
-          onClick={handleTrails}
+          onClick={fetchData}
         >
           <svg
             className="searchiconscvg"
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
-            fill="none"
             viewBox="0 0 16 16"
           >
             <circle cx="7" cy="7" r="5.5" stroke="currentColor" />
@@ -96,34 +100,23 @@ export default function Search({ setTrails }) {
           </svg>
         </button>
       </form>
-      {active && (
-        <div className="suggestions-dropdown active">
-          {isLoading ? (
-            <Loader />
-          ) : suggestions.length > 0 ? (
-            <ul className="suggestions-list">
-              {suggestions.map((suggestion, index) => (
-                <div
-                  key={index} // Move key to the outermost element
-                  className="suggestion-item"
-                  style={{ display: "flex", cursor: "pointer" }}
-                >
-                  <li
-                    onClick={() => {
-                      setActive(false);
-                      setSearchValue(suggestion);
-                    }}
-                  >
-                    {suggestion}
-                  </li>
-                </div>
-              ))}
-            </ul>
-          ) : (
-            <p>No results found.</p>
-          )}
-        </div>
-      )}
+
+      <AutoComplete
+        key="searchValue"
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        url={`${backendUrl}/fetch_suggestions?string=${encodeURIComponent(
+          searchValue
+        )}`}
+      />
+      <AutoComplete
+        key="location"
+        searchValue={location}
+        setSearchValue={setLocation}
+        url={`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+          location
+        )}&format=json&addressdetails=1&limit=5`}
+      />
     </section>
   );
 }

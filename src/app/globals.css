@@ -12,8 +12,7 @@
   --container-color: hsl(220, 50%, 97%);
 
   /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
-  --body-font: "Montserrat", system-ui;
+
   --big-font-size: 1rem;
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
@@ -80,21 +79,21 @@ a{
 
 @font-face {
   font-family: 'Parkinsans';
-  src: url('/fonts/Parkinsans-Regular.ttf') format('truetype');
+  src: url('/fonts/RethinkSans-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Parkinsans';
-  src: url('/fonts/Parkinsans-Medium.ttf') format('truetype');
+  src: url('/fonts/RethinkSans-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Parkinsans';
-  src: url('/fonts/Parkinsans-SemiBold.ttf') format('truetype');
+  src: url('/fonts/RethinkSans-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
@@ -117,19 +116,22 @@ a{
 }
 .inner_trailspage{
   width: 90%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 60px auto;
-  gap: 14px;
+    height: auto;
+    display: flex
+;
+    align-items: start;
+    flex-wrap: wrap;
+    margin: 60px auto;
+    justify-content: space-between;
 }
 .sidebar{
-  width: 26%;
+  width: 20%;
   height: auto;
   border-radius: 16px;
+  margin: 20px 0;
 }
 .main{
-  width: 70%;
+  width: 75%;
   height: auto;
 }
 .trail_card{
@@ -140,7 +142,10 @@ a{
     border: 1px solid #e7e7e7;
     background-color: #fff;
     border-radius: 14px;
-  margin: 56px 0;
+  margin: 20px 0;
+  display: flex;
+      flex-direction: column;
+      row-gap: 20px;
 }
 .trail_card:hover{
   --tw-shadow: 0px 19px 0px -12px #bcbfff;
@@ -152,6 +157,9 @@ a{
     border: 1px solid rgb(137 132 255);
     background: oklch(.98 .016 73.684);
     transform: translate(0, -0.5rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+.trail_card:hover .trail_title:hover{
+  color: hsl(208, 92%, 54%);
 }
 
 .pagination{
@@ -213,6 +221,7 @@ a{
 }
 .status_card p{
   font-size: 13px;
+  font-weight: 500;
 }
 .result_box{
   width: auto;
@@ -223,7 +232,9 @@ a{
   font-size: 15px;
   line-height: 1.6em;
   letter-spacing: 0.2px;
+  margin-bottom: 20px;
 }
+
 .featuredabsolute{
   font-size: 12px;
   position: absolute;
@@ -246,15 +257,19 @@ a{
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  margin: 40px 0 40px 0;
+  margin: 25px 0 20px 0;
 }
 .clear-filters{
   display: flex;
   align-items: center;
 }
 @media (max-width:768px) {
+  .sidebar{
+    padding: 0.5rem !important;
+    position: relative;
+  }
   .inner_trailspage{
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin-top: 0;
   }
   .main{
@@ -271,7 +286,7 @@ a{
     color: #4b5563;
   }
   .sidebar{
-    width: 100%;
+    width: 100% !important;
   }
   .filters_bar{
     gap: 16px;
@@ -324,13 +339,13 @@ a{
   width: 50%;
 }
 .contact_form_main{
-  width: 20%;
-  height: fit-content;
+  /* width: 20%; */
+  /* height: fit-content; */
   padding: 24px;
   border: 1px solid #ebe7ff;
   border-radius: 24px;
   background: #f8f6ff;
-    min-height: 100%;
+    /* min-height: 100%; */
 }
 .single_brief_page{
   flex-wrap: unset;
@@ -475,4 +490,276 @@ a{
       width: 100%;
       margin-top: 40px;
     }
+    .right_sidebar{
+      width: 100%;
+    }
   }
+.search_page{
+  width: 80%;
+  margin: auto;
+  padding: 50px 0 0 0;
+}
+.boxed_container {
+  padding: 24px;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1.14fr;
+  grid-auto-columns: 1fr;
+  place-items: center stretch;
+  display: grid;
+  width: 100%;
+  height: 450px; /* You can change this as needed */
+  border-radius: 24px;
+  border: 1px solid #ebe7ff;
+  background-color: white;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 .95px 2.85px #1f2f541a;
+}
+
+/* Ensure sticky works */
+@media (min-width: 768px) {
+  .boxed_container {
+    position: sticky;
+    top: 1.8rem;
+    z-index: 10;
+  }
+  .boxed_container:nth-child(2){
+    top: 2.1rem;
+  }
+  .boxed_container:nth-child(3){
+    top: 2.4rem;
+  }
+}
+
+@media (max-width:768px) {
+  .boxed_container{
+    grid-template-columns: 1fr;
+    position: unset;
+    top: unset;
+  }
+}
+.boxed_container .tabs{
+  width: 30%;
+}
+.boxed_container .images_box{
+  width: 35%;
+  height: auto;
+}
+.boxed_container .contentbox{
+  width: 35%;
+  height: auto;
+}
+.tab{
+  fill: none;
+    height: 52px;
+    left: -1px;
+    position: absolute;
+    width: calc(100% + 2px);
+    border-radius: 100px;
+}
+.progress{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.resultsfor{
+  background: #f6f5ff;
+    border: 1px solid #d2cfea;
+    box-shadow: 0 4px 12px 0 #14142b0f;
+    border-radius: 20px;
+    padding: 5px 10px; 
+    font-size: 12px; 
+}
+
+.headers{
+  width: 90%;
+  margin: auto;
+}
+.sidebar{
+  height: auto;
+
+    border-radius: 1.6rem;
+    padding: 1.5rem;
+}
+.additional_title{
+  font-weight: 500;
+  font-size: 14px;
+}
+.additional_info {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 12px;
+}
+.single_info .trail_card {
+  margin: 0;
+  row-gap: unset;
+}
+.right_sidebar{
+  position: sticky;
+  top: 1.8rem; 
+}
+.contact_details{
+  border: 1px solid #e7e7e7;
+  border-radius: 1.6rem;
+  padding: 1.5rem;
+}
+.contact_form_main{
+  margin-bottom: 16px;
+}
+.flex_column{
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+.location_facility{
+  font-weight: 700;
+}
+.address{
+  font-weight: 700;
+  margin-right: 6px;
+}
+.side_bar_item:hover {
+  transition: all 0.2s ease;
+  background-color: #f5f7f6;
+}
+.side_bar_item{
+  padding: 10px;
+  border-radius: 14px;
+}
+p{
+  color: #19213d;
+}
+.minimum_age{
+  padding: 14px;
+    border: 1px solid #ebe7ff;
+    border-radius: 14px;
+    background-color: #f8f6ff;
+    color: #0d0c54;
+    font-size: 16px;
+    line-height: 1.25em;
+    height: 52px;
+    margin-bottom: 0;
+    font-weight: 400;
+    transition: color .3s, border-color .3s;
+}
+.minimum_age:hover {
+  border-color: #6145ff;
+}
+.minimum_age:focus-visible{
+  border-color: #6145ff;
+}
+.minimum_age:checked{
+  border-color: #6145ff;
+}
+.toggle_bar{
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  padding: 0 10px;
+
+  border-radius: 12px;
+}
+@media (max-width:768px) {
+  .toggle_bar{
+    border: 1px solid #ebe7ff;
+  }
+}
+.height_full{
+  height: 100%;
+}
+.arrow_btn{
+  transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+/* Initial state */
+.empty_box {
+ 
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Fade-in animation */
+.fade-in {
+  animation: fadeInAnimation 0.5s forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Add this to your global styles */
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tailwind-like utility class for fade-in */
+.fade-in {
+  animation: fadeInAnimation 0.5s ease-in-out;
+}
+
+@media (min-width:768px) {
+  .arrow_btn{
+    display: none;
+  }
+}
+.image_for{
+  height: 400px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+.for_icon{
+  padding: 10px;
+  background: #fff;
+  width: fit-content;
+}
+.for_study{
+  font-size: 32px;
+}
+.fit_content{
+  width: fit-content;
+}
+
+
+.parent-container {
+  position: relative;
+  padding-top: 20px;
+  min-height: 100vh;
+}
+
+.description{
+  align-self: center;
+  width: 55%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.7em;
+}
+
+@media (max-width:768px) {
+  .description{
+    width: 90%;
+  }
+  .parent-container{
+    min-height: unset;
+  }
+  .boxed_container{
+    height: auto;
+    margin-bottom: 14px;
+  }
+}

@@ -4,7 +4,7 @@ import './herostyles.css';
 const HeroSection = () => {
     return (
        <>
-      <section className="pt-12 pb-12 sm:pb-16 lg:pt-8" style={{
+      <section className="pt-12 pb-12 sm:pb-16 lg:pt-8 bg-white" style={{
         marginTop: '40px'
       }}>
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -21,7 +21,7 @@ const HeroSection = () => {
                         >Search for Clinical Trials Near You – Contribute to Life-Changing Discoveries</h2>
                         
 
-                        <a class="wp-block-button__link wp-element-button" href="#">Search 66,000+ Clinical Trials</a>
+                        <a className="wp-block-button__link wp-element-button" href="#">Search 66,000+ Clinical Trials</a>
                     </div>
 
                  

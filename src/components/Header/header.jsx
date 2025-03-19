@@ -6,7 +6,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);  
 
   return (
-    <header className="py-4 md:py-6" style={{
+    <header className="py-4 md:py-6 headers" style={{
         borderBottom: '1px solid #e0e0e0'
     }}>
       <div className="container px-4 mx-auto sm:px-6 lg:px-8">
@@ -14,7 +14,7 @@ export default function Header() {
           <div className="flex-shrink-0">
             <a href="/" title="" className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
               <Image
-                src="/Decentrailzlogo.svg"
+                src="/Decen logo.svg"
                 width={160}
                 height={60}
                 alt="Logo"

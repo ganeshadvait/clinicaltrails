@@ -1,0 +1,21 @@
+.description {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s;
+}
+
+.description p {
+  min-height: 0;
+  transition: visibility 1s;
+  visibility: hidden;
+}
+
+.description.active {
+  margin-top: 1rem;
+  grid-template-rows: 1fr;
+}
+
+.description.active p {
+  visibility: visible;
+}

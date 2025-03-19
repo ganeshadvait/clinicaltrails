@@ -12,6 +12,7 @@ export default function ListingPage() {
   const [loading, setLoading] = useState(false);
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+  const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
 
   if (!params) return <p>Loading...</p>;
 
@@ -25,7 +26,7 @@ export default function ListingPage() {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${backendUrl}/extract?nct_id=${nctId}`
+          `${backendUrlGOVT}/studies/${nctId}?format=json`
         );
         console.log("Response:", response.data);
         setTrailData({ ...response.data });
@@ -43,9 +44,10 @@ export default function ListingPage() {
   }
 
   const result = extractEligibilityCriteria(
-    trailData?.nct_id?.protocolSection?.eligibilityModule
-      ?.eligibilityCriteria || ""
+    trailData?.protocolSection?.eligibilityModule?.eligibilityCriteria || ""
   );
+
+  console.log(result);
 
   return (
     <>
@@ -58,14 +60,15 @@ export default function ListingPage() {
       >
         <div className="inner_trailspage single_brief_page">
           <div className="sidebar single_trails_sidebar">
-            <h3>Clinical Trials</h3>
-            <p> Popular Listigns</p>
+            <h3 className="mb-8">Clinical Trials</h3>
+            <p className="mb-8"> Popular Listigns</p>
           </div>
           <div className="main single_trails_main">
             <div className="single_info">
               <div className="trail_card">
                 <h4 className="summary-card__title">
-                  {trailData?.["Trial Name"]?.["Official Title"] || "N/A"}
+                  {trailData?.protocolSection?.identificationModule
+                    ?.briefTitle || "N/A"}
                 </h4>
                 <div className="before_info">
                   <p
@@ -79,8 +82,23 @@ export default function ListingPage() {
                         marginLeft: "6px",
                       }}
                     >
-                      {trailData?.nct_id?.protocolSection?.statusModule
+                      {trailData?.protocolSection?.statusModule
                         ?.lastUpdateSubmitDate || "N/A"}
+                    </span>
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                    }}
+                  >
+                    <strong> Gender : </strong>{" "}
+                    <span
+                      style={{
+                        marginLeft: "6px",
+                      }}
+                    >
+                      {trailData?.protocolSection?.eligibilityModule?.sex ||
+                        "N/A"}
                     </span>
                   </p>
                   <p
@@ -94,9 +112,8 @@ export default function ListingPage() {
                         marginLeft: "6px",
                       }}
                     >
-                      {trailData?.nct_id?.protocolSection
-                        ?.sponsorCollaboratorsModule?.leadSponsor?.name ||
-                        "N/A"}
+                      {trailData?.protocolSection?.sponsorCollaboratorsModule
+                        ?.leadSponsor?.name || "N/A"}
                     </span>
                   </p>
                 </div>
@@ -113,8 +130,8 @@ export default function ListingPage() {
                       marginLeft: "6px",
                     }}
                   >
-                    {trailData?.nct_id?.protocolSection?.designModule
-                      .phases?.[0] || "N/A"}
+                    {trailData.protocolSection?.designModule?.phases?.[0] ||
+                      "N/A"}
                   </span>
                 </p>
                 <p
@@ -124,7 +141,7 @@ export default function ListingPage() {
                 >
                   <strong>Clinical Study Id: </strong> <span>{nctId}</span>{" "}
                   <span>
-                    {trailData?.nct_id?.protocolSection?.identificationModule
+                    {trailData.protocolSection?.identificationModule
                       ?.orgStudyIdInfo?.id || "N/A"}
                   </span>
                 </p>
@@ -150,9 +167,16 @@ export default function ListingPage() {
                 </h4>
 
                 <p>
-                  {trailData?.nct_id?.protocolSection?.identificationModule
+                  {trailData?.protocolSection?.identificationModule
                     ?.briefTitle || "N/A"}
                 </p>
+                <div className="mt-2">
+                  <h5>Study Population</h5>
+                  <p>
+                    {trailData?.protocolSection?.eligibilityModule
+                      ?.studyPopulation || "N/A"}
+                  </p>
+                </div>
               </div>
 
               <div
@@ -252,8 +276,8 @@ export default function ListingPage() {
                   }}
                   className="studypara"
                 >
-                  {trailData?.nct_id?.protocolSection?.descriptionModule
-                    ?.detailedDescription || "N/A"}
+                  {trailData?.protocolSection?.descriptionModule
+                    ?.detailedDescription || "Nope"}
                 </p>
               </div>
 
@@ -271,66 +295,34 @@ export default function ListingPage() {
                   Connect with a study center
                   <div className="longunderline underline"></div>
                 </h4>
-                <div>
-                  {trailData?.nct_id?.protocolSection?.contactsLocationsModule
-                    ?.locations &&
-                  trailData?.nct_id?.protocolSection?.contactsLocationsModule
-                    .locations.length > 0 ? (
-                    trailData?.nct_id?.protocolSection?.contactsLocationsModule?.locations.map(
-                      (location, ind) => (
-                        <div key={ind}>
-                          <li
-                            style={{
-                              margin: "14px 0",
-                              fontSize: "14px",
-                            }}
-                          >
-                            {location.facility || "N/A"}
-                          </li>
-                          <li
-                            style={{
-                              margin: "14px 0",
-                              fontSize: "14px",
-                            }}
-                          >
-                            {location.city || "N/A"}
-                          </li>
-                          <li
-                            style={{
-                              margin: "14px 0",
-                              fontSize: "14px",
-                            }}
-                          >
-                            {location.state || "N/A"}
-                          </li>
-                          <li
-                            style={{
-                              margin: "14px 0",
-                              fontSize: "14px",
-                            }}
-                          >
-                            {location.country || "N/A"}
-                          </li>
-                          <li
-                            style={{
-                              margin: "14px 0",
-                              fontSize: "14px",
-                            }}
-                          >
-                            {location.zip || "N/A"}
-                          </li>
-                        </div>
-                      )
-                    )
-                  ) : (
-                    <p>No study centers available</p>
-                  )}
-                </div>
               </div>
             </div>
           </div>
-          <div className="contact_form_main">
-            <Form />
+          <div className="flex flex-col right_sidebar">
+            <div className="contact_form_main">
+              <Form />
+            </div>
+            <div className="contact_details">
+              {trailData?.protocolSection?.contactsLocationsModule?.locations &&
+              trailData?.protocolSection?.contactsLocationsModule.locations
+                .length > 0 ? (
+                trailData?.protocolSection?.contactsLocationsModule?.locations.map(
+                  (location, ind) => (
+                    <div key={ind} className="flex_column">
+                      <p className="location_facility">{location.facility}</p>
+                      <p> <span className="address"> City: </span>{location.city}</p>
+                      <p> <span className="address">State: </span>{location.state}</p>
+                      <p> <span className="address">Country: </span>{location.country}</p>
+                      <p><span className="address">Zip: </span>{location.zip}</p>
+                      <p><span className="address">Latitude: </span>{location.geoPoint.lat}</p>
+                      <p><span className="address">Longitude: </span>{location.geoPoint.lon}</p>
+                    </div>
+                  )
+                )
+              ) : (
+                <p>No study centers available</p>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -338,32 +330,33 @@ export default function ListingPage() {
   );
 }
 
-// Updated function to handle both bullet points (*) and numbered points (e.g., 1.)
 function extractEligibilityCriteria(eligibilityText) {
+  console.log("eligibilityText Type", typeof eligibilityText);
+  console.log("eligibilityText", eligibilityText);
+
   const criteria = { inclusion: [], exclusion: [] };
 
-  if (!eligibilityText) return criteria;
+  if (!eligibilityText || eligibilityText.trim() === "") return criteria;
 
-  // Split the text into Inclusion and Exclusion sections
-  const sections = eligibilityText.split("Exclusion Criteria:");
-  if (sections.length < 2) return criteria;
+  // Split based on "Exclusion Criteria:", ensuring case insensitivity
+  const sections = eligibilityText.split(/Exclusion Criteria:/i);
+  const inclusionText = sections[0].replace(/Inclusion Criteria:/i, "").trim();
+  const exclusionText = sections[1]?.trim() || "";
 
-  const inclusionText = sections[0].replace("Inclusion Criteria:", "").trim();
-  const exclusionText = sections[1].trim();
-
-  // Combined regex: matches either a number followed by a dot or a bullet (*) followed by whitespace,
-  // then captures the text until a newline.
+  // Regex to match either numbered or bulleted items
   const regex = /(?:\d+\.\s+|\*\s+)([^\n]+)/g;
 
-  // Extract inclusion criteria
   let match;
+
+  // Extract inclusion criteria
   while ((match = regex.exec(inclusionText)) !== null) {
     criteria.inclusion.push(match[1].trim());
   }
 
-  // Reset regex for reuse
+  // Reset regex for exclusion extraction
   regex.lastIndex = 0;
-  // Extract exclusion criteria
+
+  // Extract exclusion criteria if present
   while ((match = regex.exec(exclusionText)) !== null) {
     criteria.exclusion.push(match[1].trim());
   }
