@@ -14,7 +14,7 @@ export default function Header() {
           <div className="flex-shrink-0">
             <a href="/" title="" className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
               <Image
-                src="/Decentrailzlogo.svg"
+                src="/Decen logo.svg"
                 width={160}
                 height={60}
                 alt="Logo"
