@@ -43,11 +43,25 @@ export default function Search() {
         updateTrails(response.data.studies);
         updateNextPageToken(response.data.nextPageToken || "");
 
-        router.push(
-          `/clinical-trials/listings/search?q=${encodeURIComponent(
-            searchValue
-          )}&location=${encodeURIComponent(location)}`
-        );
+        if (searchValue && location) {
+          router.push(
+            `/clinical-trials/listings/search?q=${encodeURIComponent(
+              searchValue
+            )}&location=${encodeURIComponent(location)}`
+          );
+        } else if (searchValue) {
+          router.push(
+            `/clinical-trials/listings/search?q=${encodeURIComponent(
+              searchValue
+            )}`
+          );
+        } else if (location) {
+          router.push(
+            `/clinical-trials/listings/search?location=${encodeURIComponent(
+              location
+            )}`
+          );
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -105,7 +119,7 @@ export default function Search() {
         key="searchValue"
         searchValue={searchValue}
         setSearchValue={setSearchValue}
-        url={`${backendUrl}/fetch_suggestions?string=${encodeURIComponent(
+        url={`${backendUrl}/conditions_suggestions?condition=${encodeURIComponent(
           searchValue
         )}`}
       />
@@ -113,9 +127,9 @@ export default function Search() {
         key="location"
         searchValue={location}
         setSearchValue={setLocation}
-        url={`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+        url={`${backendUrl}/locations_suggestions?area=${encodeURIComponent(
           location
-        )}&format=json&addressdetails=1&limit=5`}
+        )}`}
       />
     </section>
   );

@@ -1,0 +1,112 @@
+.featured_clinical_trails{
+    color: #000;
+font-size: 50px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-align: center;
+}
+button, a{
+    cursor: pointer;
+}
+.boxesof_code{
+    display: flex
+    ;
+        margin: auto;
+        gap: 14px;
+        justify-content: space-between;
+        width: 85%;
+        margin-bottom: 30px;
+}
+.content_cards{
+    border-radius: 22px;
+border: 1px solid #024DE5;
+background: #FFF;
+width: 32%;
+}
+.trailcontent_title{
+  color: white;
+  font-size: 16px;
+}
+.blue_box{
+    background: #024DE5;
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+.parent_box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tickbox{
+    border-radius: 10px;
+    padding: 5px;
+border: 1px solid rgba(29, 185, 84, 0.50);
+background: #FFF;
+gap: 10px;
+}
+.content_cards{
+    overflow: hidden;
+}
+.font_white{
+    color: white;
+    font-size: 14px;
+}
+.color_green{
+    color: #1DB954;
+    font-size: 14px;
+}
+.white_box{
+padding: 20px 16px 16px;
+background-color: #fff;
+}
+.optionsin_card{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.condition_topic{
+    margin-right: 5px;
+    color: #000;
+}
+/* .optionsin_card:nth-last-child(1) {
+    color: #024DE5;
+}
+
+.condition_topic:nth-last-child(1) {
+    color: white;
+} */
+ .last_one{
+    color: #024DE5;
+ }
+
+@media (max-width:768px) {
+    
+}
+@media (max-width:476px) {
+    .boxesof_code{
+     display: flex;   
+     flex-direction: row;
+    }
+    .content_cards{
+        flex-shrink: 0;
+    width: 100%;
+    }
+    .need_hidden{
+        overflow: hidden;
+    }
+    .boxesof_code {
+        margin-bottom: 30px;
+        width: 90%;
+        flex-direction: column;
+    }
+    .white_box{
+        padding: 16px;
+    }
+    .knowmore_cta{
+        height: 50px;
+    }
+}
