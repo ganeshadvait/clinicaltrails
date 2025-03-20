@@ -6,6 +6,9 @@ font-weight: 500;
 line-height: normal;
 text-align: center;
 }
+button, a{
+    cursor: pointer;
+}
 .boxesof_code{
     display: flex
     ;

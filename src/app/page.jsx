@@ -6,6 +6,8 @@ import Global from '../components/globalcta/global';
 import Featured from '../components/featured/featured';
 import Location from '../components/location/locations';
 import Benefits from '../components/benefit/benefits';
+import Testimonials from '../components/Testimonials/testimonial';
+import DCT from '../components/dct/dct';
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
     <Featured />
     <Location />
     <Benefits />
+    <Testimonials />
+    <DCT />
    <Global />
     </>
   );
