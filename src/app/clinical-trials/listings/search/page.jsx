@@ -1,5 +1,5 @@
 import Clinical from "../../../../components/searchpage";
-import React, {Suspense} from "react";
+import React, { Suspense } from "react";
 
 export default async function Searchpage() {
   // const searchValue = searchParams?.search || "";
@@ -11,11 +11,10 @@ export default async function Searchpage() {
   // const data = await response.json();
 
   return (
-    <Suspense >
-    <div>
-      <Clinical />
-    </div>
+    <Suspense>
+      <div>
+        <Clinical />
+      </div>
     </Suspense>
-    
   );
 }
