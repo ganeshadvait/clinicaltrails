@@ -16,6 +16,13 @@
 ;
     position: relative;
 }
+.her_section{
+    width: 90%;
+    margin: auto;
+}
+.myclass-2 {
+    width: 80%;
+}
 .section {
     background-color: var(--purple);
     padding: 140px 0;
@@ -33,6 +40,9 @@
         width: 100%;
         display: flex;
         justify-content: center;
+    }
+    .myclass-2 {
+        width: 100%;
     }
 }
 .hero-image{

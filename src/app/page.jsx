@@ -2,6 +2,10 @@
 import HowItWorks from '../components/How/how';
 import HeroSection from '../components/hero/hero';
 import AboutinNumbers from "@/components/about/about";
+import Global from '../components/globalcta/global';
+import Featured from '../components/featured/featured';
+import Location from '../components/location/locations';
+import Benefits from '../components/benefit/benefits';
 
 export default function Home() {
   return (
@@ -9,7 +13,10 @@ export default function Home() {
     <HeroSection />
     <AboutinNumbers />
     <HowItWorks />
-   
+    <Featured />
+    <Location />
+    <Benefits />
+   <Global />
     </>
   );
 }
