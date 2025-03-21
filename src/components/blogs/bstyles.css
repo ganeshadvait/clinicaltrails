@@ -7,7 +7,7 @@
 border: 1px solid var(--Neutral-Colors-Color-600, #D4D2E3);
 background: var(--Neutral-Colors-White, #FFF);
 width: 100%;
-max-width: 380px;
+max-width: 400px;
 padding: 16px;
 height: 100%;
 }
@@ -15,6 +15,8 @@ height: 100%;
     display: flex;
     justify-content: space-between;
     column-gap: 20px;
+    align-items: stretch;
+    margin-bottom: 34px;
 }
 .thumb_nail{
     height: 180px;
@@ -25,7 +27,7 @@ height: 100%;
 }
 .blogs_post_title{
     color: #024de5;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.4em;
 }
 .thumbnails_poster{

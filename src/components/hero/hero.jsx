@@ -21,7 +21,7 @@ const HeroSection = () => {
                         >Search for Clinical Trials Near You – Contribute to Life-Changing Discoveries</h2>
                         <p className='myclass-2'>Empowering research, advancing medicine. Join today as a volunteer or researcher.</p>
 
-                        <a className="wp-block-button__link wp-element-button" href="#">Search 66,000+ Clinical Trials</a>
+                        <a className="wp-block-button__link wp-element-button" href="https://www.decentrialz.com/clinical-trials/listings/">Search 66,000+ Clinical Trials</a>
                     </div>
 
                  
