@@ -8,6 +8,7 @@ import Location from '../components/location/locations';
 import Benefits from '../components/benefit/benefits';
 import Testimonials from '../components/Testimonials/testimonial';
 import DCT from '../components/dct/dct';
+import Blogs from '../components/blogs/blogs';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
     <Benefits />
     <Testimonials />
     <DCT />
+    <Blogs />
    <Global />
     </>
   );
