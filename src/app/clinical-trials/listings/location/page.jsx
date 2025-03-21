@@ -4,7 +4,17 @@ import React from "react";
 export default function LocationPage() {
   return (
     <div>
-      <h1>Location</h1>
+      {["Africa", "Asia", "Europe", "North America", "South America"].map(
+        (continent) => (
+          <li key={continent}>
+            <a
+              href={`/clinical-trials/listings/location/continent/${continent}`}
+            >
+              {continent}
+            </a>
+          </li>
+        )
+      )}
     </div>
   );
 }
