@@ -4,8 +4,9 @@
 width: 70%;
 margin: auto;
 height: 140px;
-padding: 24px 132px;
+padding: 24px 40px;
 align-items: center;
+justify-content: space-between;
 gap: 10px;
 border-radius: 14px;
 border: 1px solid #1A73E8;

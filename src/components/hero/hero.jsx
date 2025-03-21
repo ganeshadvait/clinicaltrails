@@ -4,10 +4,10 @@ import './herostyles.css';
 const HeroSection = () => {
     return (
        <>
-      <section className="pt-12 pb-12 sm:pb-16 lg:pt-8 bg-white" style={{
+      <section className=" her_section pt-12 pb-12 sm:pb-16 lg:pt-8 bg-white" style={{
         marginTop: '40px'
       }}>
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="w-full sm:px-6 lg:px-8">
             <div className="grid max-w-lg grid-cols-1 mx-auto lg:max-w-full lg:items-center lg:grid-cols-2 gap-y-12 lg:gap-x-16">
                 <div>
                     <div className="text-center lg:text-left flex flex-col gap-x-12" style={{
