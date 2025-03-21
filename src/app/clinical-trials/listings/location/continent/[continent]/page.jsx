@@ -1,7 +1,4 @@
-"use client";
-import React from "react";
-
-export default function LocationPage() {
+export function ContinentPage() {
   return (
     <div>
       {["Africa", "Asia", "Europe", "North America", "South America"].map(
