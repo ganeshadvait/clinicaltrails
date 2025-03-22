@@ -1,0 +1,60 @@
+
+.intercom-13kg6np {
+    position: relative;
+    text-align: left;
+    display: flex
+  ;
+    max-width: 280px;
+    flex-direction: column;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    padding: 12px 16px;
+    float: left;
+    border-radius: 20px;
+  }
+  .intercom-3xwhyz img {
+    border-radius: 16.7%;
+}
+.intercom-3xwhyz img {
+    width: 20px;
+    height: 20px;
+}
+.intercom-avtrru {
+    display: flex
+;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.intercom-hiupyl {
+    margin-right: 8px;
+    filter: drop-shadow(rgba(0, 0, 0, 0.2) 0px 1px 5px);
+}
+.intercom-3xwhyz {
+    margin: 0px auto;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: default;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    border-radius: 16.7%;
+}
+.intercom-11cvbht {
+    color: rgb(26, 26, 26);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.intercom-comment .intercom-ks2cl1, .e1axwam71 .intercom-ks2cl1, .e1y9me2v1 .intercom-ks2cl1 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0px;
+    min-height: 10px;
+}

@@ -9,6 +9,7 @@ import Benefits from '../components/benefit/benefits';
 import Testimonials from '../components/Testimonials/testimonial';
 import DCT from '../components/dct/dct';
 import Blogs from '../components/blogs/blogs';
+import Faqs from '@/components/faq/faq';
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
     <DCT />
     <Blogs />
    <Global />
+   <Faqs />
     </>
   );
 }

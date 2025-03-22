@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css"; // Importing global styles
 import Header from "../components/Header/header";
 import Footer from "../components/footer/footer";
+import ChatWindow from '../components/chatwindow/chatwindow';
+
 
 export const metadata: Metadata = {
   title: "Decentrialz",
@@ -20,6 +22,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <ChatWindow />
+       
       </body>
     </html>
   );
