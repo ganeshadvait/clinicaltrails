@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import Loader from "../../../../../components/loader/loader";
 import axios from "axios";
 import Search from "../../../../../components/search/search";
-import Form from "../../../../../components/Testimonials/testimonial";
+import Form from "../../../../../components/form/form";
 
 export default function ListingPage() {
   const params = useParams();

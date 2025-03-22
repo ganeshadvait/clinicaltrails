@@ -9,6 +9,7 @@
     flex-direction: row;
     gap: 22px;
     overflow-x: scroll;
+    justify-content: space-between;
 }
 .testimonials_card{
     width: 100%;
