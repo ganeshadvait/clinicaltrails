@@ -8,7 +8,7 @@ export default function ListingRootLayout({ children }) {
   const pathname = usePathname();
 
   // Skip layout for the search route
-  if (pathname.startsWith("/clinical-trials/listings/search")) {
+  if (pathname.startsWith("/clinical-trials/listings/search") || pathname.startsWith("/clinical-trials/listings/NCT")) {
     return <>{children}</>;
   }
   return (
