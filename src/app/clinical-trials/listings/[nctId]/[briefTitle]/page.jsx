@@ -280,7 +280,13 @@ export default function ListingPage() {
                     ?.detailedDescription || "Nope"}
                 </p>
               </div>
-
+            </div>
+          </div>
+          <div className="right_sidebar flex flex-col">
+            <div className="contact_form_main">
+              <Form />
+            </div>
+            <div className="contact_details">
               <div>
                 <h4
                   style={{
@@ -296,13 +302,6 @@ export default function ListingPage() {
                   <div className="longunderline underline"></div>
                 </h4>
               </div>
-            </div>
-          </div>
-          <div className="flex flex-col right_sidebar">
-            <div className="contact_form_main">
-              <Form />
-            </div>
-            <div className="contact_details">
               {trailData?.protocolSection?.contactsLocationsModule?.locations &&
               trailData?.protocolSection?.contactsLocationsModule.locations
                 .length > 0 ? (
@@ -310,12 +309,33 @@ export default function ListingPage() {
                   (location, ind) => (
                     <div key={ind} className="flex_column">
                       <p className="location_facility">{location.facility}</p>
-                      <p> <span className="address"> City: </span>{location.city}</p>
-                      <p> <span className="address">State: </span>{location.state}</p>
-                      <p> <span className="address">Country: </span>{location.country}</p>
-                      <p><span className="address">Zip: </span>{location.zip}</p>
-                      <p><span className="address">Latitude: </span>{location.geoPoint.lat}</p>
-                      <p><span className="address">Longitude: </span>{location.geoPoint.lon}</p>
+                      <p>
+                        {" "}
+                        <span className="address"> City: </span>
+                        {location.city}
+                      </p>
+                      <p>
+                        {" "}
+                        <span className="address">State: </span>
+                        {location.state}
+                      </p>
+                      <p>
+                        {" "}
+                        <span className="address">Country: </span>
+                        {location.country}
+                      </p>
+                      <p>
+                        <span className="address">Zip: </span>
+                        {location.zip}
+                      </p>
+                      <p>
+                        <span className="address">Latitude: </span>
+                        {location.geoPoint.lat}
+                      </p>
+                      <p>
+                        <span className="address">Longitude: </span>
+                        {location.geoPoint.lon}
+                      </p>
                     </div>
                   )
                 )
