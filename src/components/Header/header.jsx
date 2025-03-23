@@ -9,7 +9,7 @@ export default function Header() {
     <header className="py-4 md:py-6 headers" style={{
         borderBottom: '1px solid #e0e0e0'
     }}>
-      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
+      <div className="container px-0 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
             <a href="/" title="" className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">

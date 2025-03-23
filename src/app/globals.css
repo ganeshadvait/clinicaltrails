@@ -127,7 +127,7 @@ a{
 .sidebar{
   width: 20%;
   height: auto;
-  border-radius: 16px;
+  border-radius: 10px;
   margin: 20px 0;
 }
 .main{
@@ -265,8 +265,9 @@ a{
 }
 @media (max-width:768px) {
   .sidebar{
-    padding: 0.5rem !important;
+    padding: 0 !important;
     position: relative;
+    border: 1px solid #ebe7ff;
   }
   .inner_trailspage{
     flex-direction: column;
@@ -585,7 +586,7 @@ a{
 .sidebar{
   height: auto;
 
-    border-radius: 1.6rem;
+    border-radius: 1rem;
     padding: 1.5rem;
 }
 .additional_title{
@@ -668,9 +669,11 @@ p{
   border-radius: 12px;
 }
 @media (max-width:768px) {
-  .toggle_bar{
-    border: 1px solid #ebe7ff;
+  .headers{
+    width: 95%;
+    margin: auto;
   }
+  
 }
 .height_full{
   height: 100%;
@@ -762,4 +765,80 @@ p{
     height: auto;
     margin-bottom: 14px;
   }
+}
+.right_sidebar {
+  width: 25%;
+}
+@media (max-width:476px) {
+  .right_sidebar {
+    width: 100%;
+  }
+  .abcd_section {
+    width: 100% !important;
+}
+.browse_by_section {
+  width: 100% !important;
+  margin: 20px 10px !important;
+}
+}
+.A-Z_filtering{
+  width: 85%;
+  height: auto;
+  margin: 50px auto;
+}
+button, a{
+  cursor: pointer;
+}
+.browse_by_section{
+  width: 20%;
+}
+.abcd_section{
+  width: 80%;
+}
+.rotate_now{
+  rotate: 90deg;
+}
+.here_border{
+ 
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.expander_container {
+  border-radius: 20px;
+}
+
+.expand_content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.expand_content.show {
+  max-height: 500px; /* Adjust based on your content */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rotate_now {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.abcd_options{
+  background-color: rgb(245, 245, 245);
+    border-radius: 7px;
+    transform: none;
+    transform-origin: 50% 50% 0px;
+    align-items: center;
+    display: flex
+;
+    flex-flow: row;
+    gap: 20px;
+    height: min-content;
+    overflow: visible;
+    padding: 7px 10px;
+    position: relative;
+    text-decoration: none;
+    width: min-content;
 }

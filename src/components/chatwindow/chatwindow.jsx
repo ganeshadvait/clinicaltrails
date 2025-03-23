@@ -106,7 +106,7 @@ export default function ChatWindow() {
             alt="chatbot-logo"
           />
         </span>
-        <span className= {`material-symbols-outlined ${showChatbot ? "flex" : 'hidden'}`}>close</span>
+        <span className= {`material-symbols-outlined ${showChatbot ? "flex" : 'hidden'}`}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="m3 3 10 10M13 3 3 13"/></svg></span>
       </button>
       {showChatbot && (
         <div className={`chatbot ${showChatbot ? "show" : ''}`}>

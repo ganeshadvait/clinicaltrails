@@ -21,13 +21,14 @@ export function AlphabetScroll({ conditionData }) {
   }, {});
 
   return (
+    <>
     <div className="p-4">
-      <div className="mb-4 flex gap-2 overflow-x-auto">
+      <div className="mb-4 flex gap-2 overflow-x-auto flex-wrap">
         {"123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
           <button
             key={letter}
             type="button"
-            className="rounded bg-gray-200 px-2 py-1"
+            className="abcd_options"
             onClick={() => handleScroll(letter)}
           >
             {letter}
@@ -48,5 +49,7 @@ export function AlphabetScroll({ conditionData }) {
         ))}
       </div>
     </div>
+    </>
+    
   );
 }

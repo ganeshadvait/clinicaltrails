@@ -88,7 +88,9 @@ export default function Search() {
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <div className="border-2 border-r-black"></div>
+        <div className="border-2 border h-[30px]" style={{
+          borderColor: 'rgba(0, 0, 0, 0.1)'
+        }}></div>
         <input
           type="text"
           placeholder="Location"
