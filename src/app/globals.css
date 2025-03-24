@@ -842,11 +842,16 @@ button, a{
     text-decoration: none;
     width: min-content;
 }
-.inner_chat_body{
+.inner_chat_body {
   width: 100%;
   max-width: 850px;
   margin: auto;
-
+  padding-bottom: 180px; 
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+}
+.inner_chat_body::-webkit-scrollbar{
+  display: none;
 }
 .fixing_bottom{
   position: fixed;
@@ -872,6 +877,7 @@ button, a{
   border: 1px solid oklch(.928 .006 264.531);
   padding: 14px 14px;
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
 @media (max-width:768px) {
   .prompt_option{
@@ -888,9 +894,7 @@ button, a{
   .fixing_bottom{
     bottom: 0;
   }
-  .inner_chat_body{
-    margin: unset;
-  }
+  
 }
 .prompt_option:hover{
   background: #1a73e8;
