@@ -7,10 +7,12 @@ import Link from "next/link";
 import Loader from "@/components/loader/loader";
 import LocationPage from "@/components/location";
 import { Router } from "next/router";
+import RollingNumber from "@/components/rollingNumbers";
 
 export default function Listing() {
   const [conditionData, setConditionData] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [condition, setCondition] = React.useState("");
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
   const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
 
@@ -26,6 +28,11 @@ export default function Listing() {
       setLoading(false);
     }
   };
+
+  // useEffect(() => {
+  //   if (!condition) return;
+  //   Router.push(`/clinical-trials/listings/condition/${condition}`);
+  // }, [condition]);
 
   useEffect(() => {
     handleList();
@@ -47,13 +54,15 @@ export default function Listing() {
   return (
     <>
       <div className="flex ">
-        
         {loading ? (
           <Loader />
         ) : (
           <div className="">
-            <h2>Browse over 40,000 Clinical Trial Listings</h2>
-            <AlphabetScroll conditionData={conditionData} />
+            <div className="flex items-center">
+              Browse over <RollingNumber number={conditionData.length} />{" "}
+              Clinical Trial Listings
+            </div>
+            <AlphabetScroll data={conditionData} setState={setCondition} />
           </div>
         )}
       </div>

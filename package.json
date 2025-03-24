@@ -12,6 +12,7 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "axios": "^1.8.1",
+    "framer-motion": "^12.5.0",
     "lodash.debounce": "^4.0.8",
     "motion": "^12.5.0",
     "next": "^15.2.3",
