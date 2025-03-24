@@ -4,11 +4,15 @@ import { useEffect } from "react";
 import { useParams } from "next/navigation";
 import Loader from "../../../../../../components/loader/loader";
 import axios from "axios";
+import { AlphabetScroll } from "@/components/alphabetAutoScroll";
+import { useRouter } from "next/navigation";
 
 export default function ContinentPage() {
+  const router = useRouter();
   const { continent } = useParams();
   const [countryData, setCountryData] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [country, setCountry] = React.useState("");
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
   const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
@@ -32,13 +36,21 @@ export default function ContinentPage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (country) {
+      router.push(
+        `/clinical-trials/listings/location/international/${country}`
+      );
+    }
+  }, [country]);
+
   //   return
 
   return (
     <div>
       {loading && <Loader />}
       <h1>Continent Page</h1>
-      {countryData.map((country) => (
+      {/* {conditionData.map((country) => (
         <li key={country}>
           <a
             href={`/clinical-trials/listings/location/international/${country}`}
@@ -46,7 +58,8 @@ export default function ContinentPage() {
             {country}
           </a>
         </li>
-      ))}
+      ))} */}
+      <AlphabetScroll data={countryData} setState={setCountry} />
     </div>
   );
 }
