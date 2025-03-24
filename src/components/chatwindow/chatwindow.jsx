@@ -95,9 +95,9 @@ export default function ChatWindow() {
   return (
     <div>
       
-      <button className="chatbubble" onClick={toggleChatbot}>
+      {/* <button className="chatbubble" onClick={toggleChatbot}>
         chat with us
-      </button>
+      </button> */}
       <button className="chatbot-toggler" onClick={toggleChatbot}>
         <span className="material-symbols-rounded">
           <img
@@ -110,31 +110,34 @@ export default function ChatWindow() {
       </button>
       {showChatbot && (
         <div className={`chatbot ${showChatbot ? "show" : ''}`}>
-            <div className='for_default'>
-            <header className='chat-box_header'>
-            <div className='trails_association flex items-center gap-2'>
-                <div className='w-[44px] h-[44px] bg-white rounded-full'></div>
-                <div className='w-[44px] h-[44px] bg-white rounded-full'></div>
-                <p className='trust_texxt'>Trus logo</p>
-            </div>
-            <div>
-            <h2>Hi there 👋 <br></br> How can we help?</h2>
-            </div>
-          </header>
-
-          <div className='chatbody_chat'>
-            <ul className='chatbody_options_box flex flex-col'>
-                <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>chat with us</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
-            </ul>
-            <ul className='chatbody_options_box _second flex flex-col gap-2 mt-2'>
-                <li className='chatbody_optiosn_box_item flex items-center justify-between'><input placeholder='search' /> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><circle cx="7" cy="7" r="5.5" stroke="currentColor"/><path stroke="currentColor" d="m11 11 4 4"/></svg></span></li>
-            <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>How many trails</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
-            <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>How to join as Volunteer</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
-            <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>what is age limit</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
-            <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>what is age limit</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
-            </ul>
-            </div>
-            </div>
+          <ul className="chatbox" ref={chatboxRef}>
+            {messages.map((msg, index) => (
+              <li key={index} className={`chat ${msg.type}`}>
+                <span className="material-symbols-outlined">
+                  <img
+                    className="chatbot-logo"
+                    src="/favicon.ico"
+                    alt="chatbot-logo"
+                  />
+                </span>
+                <p>{msg.content}</p>
+              </li>
+            ))}
+          </ul>
+          <div className="chat-input">
+            <textarea
+              ref={chatInputRef}
+              placeholder="Enter a message..."
+              value={userMessage}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              spellCheck="false"
+              required
+            />
+            <span id="send-btn" className="material-symbols-rounded" onClick={handleChat}>
+              send
+            </span>
+          </div>
           
         </div>
       )}
@@ -142,31 +145,30 @@ export default function ChatWindow() {
   );
 }
 
-// <ul className="chatbox" ref={chatboxRef}>
-//             {messages.map((msg, index) => (
-//               <li key={index} className={`chat ${msg.type}`}>
-//                 <span className="material-symbols-outlined">
-//                   <img
-//                     className="chatbot-logo"
-//                     src="https://advaithealth.com/wp-content/uploads/2024/05/Untitled-1-e1717074923828.png"
-//                     alt="chatbot-logo"
-//                   />
-//                 </span>
-//                 <p>{msg.content}</p>
-//               </li>
-//             ))}
-//           </ul>
-//           <div className="chat-input">
-//             <textarea
-//               ref={chatInputRef}
-//               placeholder="Enter a message..."
-//               value={userMessage}
-//               onChange={handleChange}
-//               onKeyDown={handleKeyDown}
-//               spellCheck="false"
-//               required
-//             />
-//             <span id="send-btn" className="material-symbols-rounded" onClick={handleChat}>
-//               send
-//             </span>
-//           </div>
+
+
+// <div className='for_default'>
+// <header className='chat-box_header'>
+// <div className='trails_association flex items-center gap-2'>
+//     <div className='w-[44px] h-[44px] bg-white rounded-full'></div>
+//     <div className='w-[44px] h-[44px] bg-white rounded-full'></div>
+//     <p className='trust_texxt'>Trus logo</p>
+// </div>
+// <div>
+// <h2>Hi there 👋 <br></br> How can we help?</h2>
+// </div>
+// </header>
+
+// <div className='chatbody_chat'>
+// <ul className='chatbody_options_box flex flex-col'>
+//     <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>chat with us</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
+// </ul>
+// <ul className='chatbody_options_box _second flex flex-col gap-2 mt-2'>
+//     <li className='chatbody_optiosn_box_item flex items-center justify-between'><input placeholder='search' /> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><circle cx="7" cy="7" r="5.5" stroke="currentColor"/><path stroke="currentColor" d="m11 11 4 4"/></svg></span></li>
+// <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>How many trails</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
+// <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>How to join as Volunteer</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
+// <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>what is age limit</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
+// <li className='chatbody_optiosn_box_item flex items-center justify-between'> <p className='font-600 text_l'>what is age limit</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M5.5 2.5 11 8l-5.5 5.5"/></svg></span></li>
+// </ul>
+// </div>
+// </div>

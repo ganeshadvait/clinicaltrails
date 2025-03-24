@@ -4,7 +4,8 @@
     text-align: left;
     display: flex
   ;
-    max-width: 280px;
+  margin-bottom: 30px;
+    max-width: 320px;
     flex-direction: column;
     background-color: rgb(245, 245, 245);
     border: 1px solid rgba(0, 0, 0, 0.02);
@@ -45,7 +46,7 @@
 }
 .intercom-11cvbht {
     color: rgb(26, 26, 26);
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 600;
     text-overflow: ellipsis;
@@ -56,5 +57,16 @@
     font-size: 14px;
     line-height: 1.4;
     margin: 0px;
-    min-height: 10px;
+    max-width: 300px;
 }
+.custom_linefor_typer {
+    border-right: 2px solid rgb(191, 191, 191);
+    animation: caret 0.8s steps(1) infinite;
+  }
+  
+  @keyframes caret {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
