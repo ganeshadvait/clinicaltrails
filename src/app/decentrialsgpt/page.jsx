@@ -10,14 +10,20 @@ const ChatUIUserResultLayout = () => {
   const [airesponse, setAiResponse] = useState([]);
   const chatContainerRef = useRef(null);
 
-  useEffect(() => {
+  const scrollToBottom = () => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTo({
         top: chatContainerRef.current.scrollHeight,
         behavior: "smooth",
       });
     }
+  };
+
+  // Scroll to bottom when messages update
+  useEffect(() => {
+    scrollToBottom();
   }, [messages]);
+  
   
   
   
@@ -27,12 +33,6 @@ const ChatUIUserResultLayout = () => {
 
   const handleInputChange = (e) => {
     setUserMessage(e.target.value);
-  };
- 
-
-  const getBotResponse = (userMessage, currentMessages) => {
-    const aiMessage = { type: "ai", text: `AI Response to: "${userMessage}"` };
-    setMessages([...currentMessages, aiMessage]);
   };
   
   const handleSendMessage = async () => {
@@ -58,10 +58,7 @@ const ChatUIUserResultLayout = () => {
         console.log("AI Response:", response.data);
         setAiResponse(response.data);
   
-        const aiMessage = { text: response.data.response || "No response from AI", type: "ai" };
-        setMessages((prevMessages) => [...prevMessages, aiMessage]);
-  
-        startTypingEffect(`AI Response to: "${response.data.response || "No response"}"`);
+        startTypingEffect(`AI: "${airesponse || "No response"}"`);
       } catch (error) {
         console.error("Error fetching data:", error);
         const errorMessage = { text: "AI is not responding. Please try again.", type: "ai" };
@@ -81,7 +78,7 @@ const ChatUIUserResultLayout = () => {
     let typedText = "";
     const aiMessage = { text: "", type: "ai" };
     setMessages((prev) => [...prev, aiMessage]);
-
+  
     const interval = setInterval(() => {
       if (i < fullText.length) {
         typedText += fullText[i];
@@ -91,12 +88,13 @@ const ChatUIUserResultLayout = () => {
           return updatedMessages;
         });
         i++;
-        scrollToBottom();
+        scrollToBottom(); 
       } else {
         clearInterval(interval);
       }
     }, 50);
   };
+  
 
   return (
     <div className="min-h-screen bg-[#Fff] flex flex-col justify-between">
@@ -121,7 +119,7 @@ const ChatUIUserResultLayout = () => {
             </div>
             <div tabIndex="-1" className={`intercom-18ztwyf er4a1r20 ${msg.type === "user" ? "flex justify-end " : ""}`}>
               <div className={`intercom-block-paragraph e16pl8n50 intercom-ks2cl1 p-2 rounded-lg max-w-[75%] text-black`}>
-                <p className={` ${msg.type === "user" ? "text-right" : ""}`}>
+                <p className={` ${msg.type === "user" ? "text-right" : "ai_reponse leading-[1.8em]"}`}>
                   {msg.text}
                 </p>
               </div>

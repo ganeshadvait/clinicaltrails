@@ -1,6 +1,7 @@
 'use client'; 
 import { useState } from 'react';
 import Image from 'next/image';
+import GoesOutComesInUnderline from '../GoesOutComesInUnderline'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);  
@@ -33,7 +34,9 @@ export default function Header() {
           </div>
 
           <div className={`${isMenuOpen ? 'flex' : 'hidden'} flex-col lg:hidden absolute bg-white w-full left-0 top-[100px] z-1000 shadow-md transition-all duration-3000 ease-in-out`}>            
-            <a href='/' className='p-4 text-gray-900 hover:bg-gray-100'>Home</a>
+            <a href='/' className='p-4 text-gray-900 hover:bg-gray-100'>
+            <GoesOutComesInUnderline label="Home" />
+            </a>
             <a href='/' className='p-4 text-gray-900 hover:bg-gray-100'> How it works</a>
           
             <a href="/clinical-trials" className="p-4 text-gray-900 hover:bg-gray-100">Find Clinical Trails</a>

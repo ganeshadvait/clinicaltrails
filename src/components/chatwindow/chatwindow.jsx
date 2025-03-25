@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import './chatstyles.css';
+import axios from 'axios';
 
 export default function ChatWindow() {
   const [showChatbot, setShowChatbot] = useState(false);
-  const [userMessage, setUserMessage] = useState('');
-  const [defaultContent, setDefaultContent]  = useState(false);
+  const [userMessage, setUserMessage] = useState('');  
   const [messages, setMessages] = useState([
     { content: 'Hi there 👋 How can I help you today?', type: 'incoming' },
   ]);
@@ -14,39 +14,40 @@ export default function ChatWindow() {
   const chatboxRef = useRef(null);
   const inputInitHeight = useRef(chatInputRef.current ? chatInputRef.current.scrollHeight : 0);
 
-  const API_KEY = 'your-api-key-here'; // Secure the API key properly
 
   const createChatLi = (message, type) => {
     return { content: message, type };
   };
 
-  const generateResponse = (userMessage) => {
-    const API_URL = 'https://api.openai.com/v1/chat/completions';
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${API_KEY}` },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [{ role: 'user', content: userMessage }],
-      }),
-    };
-
-    fetch(API_URL, requestOptions)
-      .then((res) => res.json())
-      .then((data) => {
-        const botMessage = data.choices[0].message.content.trim();
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          createChatLi(botMessage, 'incoming'),
-        ]);
-      })
-      .catch(() => {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          createChatLi('Oops! Something went wrong. Please try again.', 'error'),
-        ]);
+  const generateResponse = async (userMessage) => {
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+    
+    try {
+      const response = await axios.get(`${backendUrl}/ai?query=${userMessage}`, {
+        headers: { accept: "application/json" },
       });
-  };
+
+      console.log("API Response:", response.data); // Debugging
+
+      // Extract the bot's response from 'message'
+      const botMessage = response.data || "Oops! No message received.";
+
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        createChatLi(botMessage, 'incoming'),
+      ]);
+
+    } catch (error) {
+      console.error("ChatWindow Error:", error.message);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        createChatLi('Oops! Something went wrong. Please try again.', 'error'),
+      ]);
+    }
+};
+
+  
+  
 
   const handleChat = () => {
     if (!userMessage.trim()) return;
@@ -72,11 +73,12 @@ export default function ChatWindow() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey && window.innerWidth > 800) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleChat();
     }
   };
+  
 
   const toggleChatbot = () => {
     setShowChatbot(!showChatbot);
@@ -93,11 +95,7 @@ export default function ChatWindow() {
   }, [messages]);
 
   return (
-    <div>
-      
-      {/* <button className="chatbubble" onClick={toggleChatbot}>
-        chat with us
-      </button> */}
+    <div>    
       <button className="chatbot-toggler" onClick={toggleChatbot}>
         <span className="material-symbols-rounded">
           <img
@@ -134,7 +132,8 @@ export default function ChatWindow() {
               spellCheck="false"
               required
             />
-            <span id="send-btn" className="material-symbols-rounded" onClick={handleChat}>
+            <span id="send-btn" className="material-symbols-rounded"           
+            onClick={handleChat}>
               send
             </span>
           </div>

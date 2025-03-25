@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+
 
 :root {
   /*========== Colors ==========*/
@@ -26,6 +29,38 @@
   /*========== z index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 /*========== Responsive typography ==========*/
@@ -41,13 +76,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -364,25 +392,25 @@ a{
     align-items: center;
     overflow: hidden;
   }
-  
+
   .login__blob {
     display: none;
   }
-  
+
   .login__title {
     font-size: var(--big-font-size);
     color: var(--title-color);
     text-align: center;
     margin-bottom: 2rem;
   }
-  
+
   .login__box {
     position: relative;
     display: flex;
     align-items: center;
     border-radius: 1rem;
   }
-  
+
   .login__input {
     background: none;
     width: 100%;
@@ -393,30 +421,30 @@ a{
     z-index: 1;
     transition: border-color .4s;
   }
-  
+
   .login__input:autofill {
     transition: background-color 6000s, color 6000s;
   }
-  
+
   .login__label {
     position: absolute;
     left: 1.25rem;
     font-weight: var(--font-semi-bold);
     transition: transform .4s, font-size .4s, color .4s;
   }
-  
+
   .login__icon {
     position: absolute;
     right: 1rem;
     font-size: 1.25rem;
     transition: color .4s;
   }
-  
+
   .login__password {
     cursor: pointer;
     z-index: 10;
   }
-  
+
   .login__forgot {
     display: block;
     width: max-content;
@@ -426,11 +454,11 @@ a{
     color: var(--text-color);
     transition: color .4s;
   }
-  
+
   .login__forgot:hover {
     color: var(--first-color);
   }
-  
+
   .login__button {
     width: 100%;
     display: inline-flex;
@@ -444,38 +472,37 @@ a{
     cursor: pointer;
     transition: background-color .4s, box-shadow .4s;
   }
-  
+
   .login__button:hover {
     background-color: var(--first-color-alt);
     box-shadow: 0 8px 24px hsla(208, 92%, 32%, .3);
   }
-  
-  
+
   /* Input focus move up label */
   .login__input:focus ~ .login__label {
     transform: translateY(-12px);
     font-size: var(--tiny-font-size);
   }
-  
+
   .login__input:focus {
     padding-block: 2rem 1rem;
   }
-  
+
   /* Input focus sticky top label */
   .login__input:not(:placeholder-shown).login__input:not(:focus) ~ .login__label {
     transform: translateY(-12px);
     font-size: var(--tiny-font-size);
   }
-  
+
   .login__input:not(:placeholder-shown).login__input:not(:focus) {
     padding-block: 2rem 1rem;
   }
-  
+
   /* Input focus color */
   .login__input:focus {
     border-color: var(--first-color);
   }
-  
+
   .login__input:focus ~ .login__label,
   .login__input:focus ~ .login__icon {
     color: var(--first-color);
@@ -673,7 +700,7 @@ p{
     width: 95%;
     margin: auto;
   }
-  
+
 }
 .height_full{
   height: 100%;
@@ -683,7 +710,7 @@ p{
 }
 /* Initial state */
 .empty_box {
- 
+
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -736,7 +763,6 @@ p{
 .fit_content{
   width: fit-content;
 }
-
 
 .parent-container {
   position: relative;
@@ -799,7 +825,7 @@ button, a{
   rotate: 90deg;
 }
 .here_border{
- 
+
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .expander_container {
@@ -894,7 +920,7 @@ button, a{
   .fixing_bottom{
     bottom: 0;
   }
-  
+
 }
 .prompt_option:hover{
   background: #1a73e8;
@@ -916,3 +942,39 @@ button, a{
   background: #000000;
   color: #fff;
 }
+/*---break---*/
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+
