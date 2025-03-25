@@ -7,7 +7,7 @@ export default function PageLayout({ children }) {
   const pathname = usePathname();
 
   
-  const hideFooterRoutes = ["/decentrialsgpt/"];
+  const hideFooterRoutes = ["/decentrialzAI/"];
 
   return (
     <>
