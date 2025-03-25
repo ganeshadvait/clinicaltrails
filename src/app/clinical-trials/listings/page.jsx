@@ -98,7 +98,7 @@ export default function Listing() {
            </div>
          
            <div className={`expand_content ${expand ? "show" : ""}`}>
-             <AlphabetScroll conditionData={conditionData} />
+             <AlphabetScroll data={conditionData} />
            </div>
          </div>
 

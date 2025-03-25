@@ -15,7 +15,7 @@ export function AlphabetScroll({ data, setState }) {
   }
 
   const isTupleFormat = Array.isArray(data[0]) && data[0].length === 2;
-
+  
   const groupedData = data.reduce((acc, item) => {
     if (!item) return acc;
 
@@ -27,49 +27,11 @@ export function AlphabetScroll({ data, setState }) {
     acc[firstLetter].push(
       isTupleFormat ? { name: item[0], value: item[1] } : { name: key }
     );
-
     return acc;
   }, {});
+  
+  const sortedLetters = Object.keys(groupedData).sort();
 
-  useEffect(() => {
-    const navItems = document.querySelectorAll(".nav-item");
-  
-    const toggleSiblingClass = (items, index, offset, className, add) => {
-      const sibling = items[index + offset];
-      if (sibling) {
-        sibling.classList.toggle(className, add);
-      }
-    };
-  
-    const handleMouseEnter = (index) => {
-      navItems[index].classList.add("hover");
-      toggleSiblingClass(navItems, index, -1, "sibling-close", true);
-      toggleSiblingClass(navItems, index, 1, "sibling-close", true);
-      toggleSiblingClass(navItems, index, -2, "sibling-far", true);
-      toggleSiblingClass(navItems, index, 2, "sibling-far", true);
-    };
-  
-    const handleMouseLeave = (index) => {
-      navItems[index].classList.remove("hover");
-      toggleSiblingClass(navItems, index, -1, "sibling-close", false);
-      toggleSiblingClass(navItems, index, 1, "sibling-close", false);
-      toggleSiblingClass(navItems, index, -2, "sibling-far", false);
-      toggleSiblingClass(navItems, index, 2, "sibling-far", false);
-    };
-  
-    navItems.forEach((item, index) => {
-      item.addEventListener("mouseenter", () => handleMouseEnter(index));
-      item.addEventListener("mouseleave", () => handleMouseLeave(index));
-    });
-  
-    // ✅ Cleanup function to prevent memory leaks
-    return () => {
-      navItems.forEach((item, index) => {
-        item.removeEventListener("mouseenter", () => handleMouseEnter(index));
-        item.removeEventListener("mouseleave", () => handleMouseLeave(index));
-      });
-    };
-  }, []);
   
   return (
     <>
