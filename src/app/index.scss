@@ -187,3 +187,42 @@
   stroke-dasharray: 70.5096664428711 9999999;
   stroke-dashoffset: -262.2723388671875;
 }
+.trials_list {
+  margin: 0;
+  padding: 0 16px;
+  list-style: none;
+  width: 100%;
+}
+
+.each_trail {
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative; /* Ensures the button positioning works */
+}
+
+.each_trail button {
+  background: #ECEFFC;
+  color: #646B8C;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin: 0;
+  line-height: 17px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.each_trail:hover button {
+  opacity: 1; /* Show button on hover */
+}

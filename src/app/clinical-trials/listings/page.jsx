@@ -60,7 +60,7 @@ export default function Listing() {
           <Loader />
         ) : (
 
-           <div className={`relative p-4 expander_container ${expand ? "here_border" : "no_border"}`}>
+           <div className={`relative p-4 expander_container ${expand ? " here_border" : "here_border"}`}>
            <div
              className={`expander flex gap-2 items-center ${expand ? "some_Class" : "no_border"}`}
              onClick={() => setExpand(!expand)}
@@ -92,12 +92,12 @@ export default function Listing() {
                <h2 className="cursor-pointer">Browse over 40,000 Clinical Trial Listings</h2>
              </div>
          
-             <span className={`relative ${expand ? "rotate_now" : ""}`}>
+             <span className={`relative ${expand ? " " : "rotate_now"}`}>
              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M13.5 5.5 8 11 2.5 5.5"/></svg>
              </span>
            </div>
          
-           <div className={`expand_content ${expand ? "show" : ""}`}>
+           <div className={`expand_content ${expand ? " " : "show"}`}>
              <AlphabetScroll data={conditionData} />
            </div>
          </div>
