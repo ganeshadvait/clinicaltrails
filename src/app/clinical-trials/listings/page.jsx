@@ -7,11 +7,13 @@ import Link from "next/link";
 import Loader from "@/components/loader/loader";
 import LocationPage from "@/components/location";
 import { Router } from "next/router";
+import RollingNumber from "@/components/rollingNumbers";
 
 export default function Listing() {
   const [conditionData, setConditionData] = React.useState([]);
   const [expand, setExpand] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [condition, setCondition] = React.useState("");
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
   const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
 
@@ -27,6 +29,11 @@ export default function Listing() {
       setLoading(false);
     }
   };
+
+  // useEffect(() => {
+  //   if (!condition) return;
+  //   Router.push(`/clinical-trials/listings/condition/${condition}`);
+  // }, [condition]);
 
   useEffect(() => {
     handleList();
