@@ -1,5 +1,5 @@
 import './cglobalstyles.css';
-export default function message () {
+export default function Message () {
     return(
         <>
         <div className="intercom-13kg6np ekd1qb42">
@@ -12,6 +12,8 @@ export default function message () {
                             <span className="intercom-11cvbht e1jqii292">Kodee</span>
                             <span className="intercom-vvzfff e1jqii291"></span></div>
                             <div tabindex="-1" className="intercom-18ztwyf er4a1r20">
-                                <div className="intercom-block-paragraph e16pl8n50 intercom-ks2cl1">Hello 👋! Please briefly describe your issue so we can help you better.</div></div></div></div></>
+                                <div className="intercom-block-paragraph e16pl8n50 intercom-ks2cl1">Hello 👋! Please briefly describe your issue so we can help you better.</div></div></div>
+                                </div>
+                                </>
     )
 }

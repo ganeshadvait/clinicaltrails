@@ -8,11 +8,11 @@ const Page = () => {
       <Search />
       <div className="my-18">
       <h2 className="text-center text-2xl lg:text-3xl font-semibold text-gray-800 mb-4">
-  Find a Trial Near You
-</h2>
-<p className="text-center text-base lg:text-lg text-gray-600 description">
-  Discover clinical research opportunities that work for you. Explore study details and locations, and take the first steps to participating.
-</p>
+        Find a Trial Near You
+      </h2>
+      <p className="text-center text-base lg:text-lg text-gray-600 description">
+        Discover clinical research opportunities that work for you. Explore study details and locations, and take the first steps to participating.
+      </p>
 
       </div>
       <div className="parent-container">
@@ -20,7 +20,11 @@ const Page = () => {
         <div className="content_image_box flex p-4">
           <div className="flex flex-col gap-2">
           <span className="for_icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M8 9.5H5.232a3 3 0 0 0-2.873 2.138L1.5 14.5H9"/><circle cx="8" cy="4.5" r="3" stroke="currentColor"/><path fill="currentColor" d="m11.5 7.5 1.131 2.869L15.5 11.5l-2.869 1.131L11.5 15.5l-1.131-2.869L7.5 11.5l2.869-1.131L11.5 7.5Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 16 16">
+          <path stroke="currentColor" d="M8 9.5H5.232a3 3 0 0 0-2.873 2.138L1.5 14.5H9"/>
+          <circle cx="8" cy="4.5" r="3" stroke="currentColor"/>
+          <path fill="currentColor" d="m11.5 7.5 1.131 2.869L15.5 11.5l-2.869 1.131L11.5 15.5l-1.131-2.869L7.5 11.5l2.869-1.131L11.5 7.5Z"/>
+          </svg>
           </span>
           <h3 className="for_study">
           Find a study

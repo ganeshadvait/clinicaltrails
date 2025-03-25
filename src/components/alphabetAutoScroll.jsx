@@ -1,3 +1,6 @@
+
+
+
 import React, { useRef, useEffect } from "react";
 
 export function AlphabetScroll({ data, setState }) {
@@ -12,7 +15,7 @@ export function AlphabetScroll({ data, setState }) {
   }
 
   const isTupleFormat = Array.isArray(data[0]) && data[0].length === 2;
-
+  
   const groupedData = data.reduce((acc, item) => {
     if (!item) return acc;
 
@@ -24,27 +27,22 @@ export function AlphabetScroll({ data, setState }) {
     acc[firstLetter].push(
       isTupleFormat ? { name: item[0], value: item[1] } : { name: key }
     );
-
     return acc;
   }, {});
-
-  // 🔤 Sort the grouped keys alphabetically
+  
   const sortedLetters = Object.keys(groupedData).sort();
 
+  
   return (
+    <>
     <div className="p-4">
-      <div className="mb-4 flex gap-2 overflow-x-auto">
-        {"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
+      <div className="mb-4 flex gap-2 overflow-x-auto flex-wrap">
+        {"123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
           <button
             key={letter}
             type="button"
-            className="rounded bg-gray-200 px-2 py-1"
-            onClick={() =>
-              dataRefs.current[letter]?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              })
-            }
+            className="abcd_options nav-item"
+            onClick={() => handleScroll(letter)}
           >
             {letter}
           </button>
@@ -79,5 +77,8 @@ export function AlphabetScroll({ data, setState }) {
         )}
       </div>
     </div>
+    </>
+    
   );
 }
+
