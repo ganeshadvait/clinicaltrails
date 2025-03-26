@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import "./globals.css"; // Importing global styles
 import Header from "../components/Header/header";
-import ChatWindow from '../components/chatwindow/chatwindow';
 import PageLayout from "../components/PageLayout";
 
 
