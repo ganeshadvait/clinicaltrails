@@ -22,16 +22,16 @@ const Global = () => {
             <h2 className='htwo'>Ready to Revolutionize Your Clinical Trials?</h2>
             <p className='hpara'>Join the movement towards patient-centric, technology-driven research.</p>
             <div className='flex gap-3'>
-            <a href="#" className="px-5 py-2 text-base font-bold text-white hover:bg-gray-600" style={{
-              background: 'hsl(208, 92%, 54%)',
+            <a href="#" className="px-5 py-2 text-base font-bold text-white header_contact_cta" style={{              
               borderRadius: '14px',
               paddingBlock: "1rem",
               margin:'10px 0'
             }}>
               Contact now
             </a>
-            <a href="#" className="px-5 py-2 text-base font-bold text-black hover:bg-gray-600" style={{
+            <a href="#" className="px-5 py-2 text-base font-bold text-black header_contact_cta" style={{
               border: '1px solid hsl(208, 92%, 54%)',
+              background: 'transparent',
               borderRadius: '14px',
               paddingBlock: "1rem",
               margin:'10px 0'

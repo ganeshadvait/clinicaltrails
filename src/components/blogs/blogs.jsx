@@ -1,5 +1,6 @@
 import { BLOG_POSTS } from "../../app/data";
 import Link from "next/link";
+import GoesOutComesInUnderline from '../GoesOutComesInUnderline'
 
 import "./bstyles.css";
 export default function Blogs() {
@@ -21,13 +22,17 @@ export default function Blogs() {
                 <img className="thumbnails_poster" src={post.thumbnail} />
               </div>
               <div className="flex flex-col gap-2 space-y-1">
-                <h4 className=" blogs_post_title">{post.title}</h4>
+              <h4 className="blogs_post_title">
+  <GoesOutComesInUnderline label={post.title} />
+</h4>
+
                 <p className="text-zinc-500 dark:text-zinc-400">
                   {post.description}
                 </p>
                 <p className="learnmore_button flex gap-2">
-                  Learn more
-                  <span>
+                  
+                  <GoesOutComesInUnderline label="Learn more" />
+                  <span className="move_right">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="21"

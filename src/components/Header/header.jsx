@@ -64,8 +64,8 @@ export default function Header() {
             <a href="#" className="text-base font-medium text-gray-900 hover:text-opacity-50">
               <GoesOutComesInUnderline label='About Us' />
               </a>
-            <a href="#" className="px-5 py-2 text-base font-bold text-white   hover:bg-gray-600" style={{
-              background: 'hsl(208, 92%, 54%)',
+            <a href="#" className="px-5 py-2 text-base font-bold text-white  header_contact_cta" style={{
+              
               borderRadius: '14px',
               paddingBlock: "1rem"
             }}>
