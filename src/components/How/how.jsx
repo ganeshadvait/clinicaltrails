@@ -43,7 +43,7 @@ const HowItWorks = () => {
                   <div className="relative grid grid-cols-1 text-center gap-y-12 md:grid-cols-3 gap-x-12">
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 1 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 1 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Volunteers</h3>
                           <p className="mt-4 text-base text-gray-600">Search from 66,000+ clinical trials based on your location, condition, or area of interest.</p>
@@ -51,7 +51,7 @@ const HowItWorks = () => {
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 2 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 2 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Check Eligibility</h3>
                           <p className="mt-4 text-base text-gray-600">Review the study details and see if you meet the requirements to participate.</p>
@@ -59,7 +59,7 @@ const HowItWorks = () => {
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 3 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 3 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Join & Contribute</h3>
                           <p className="mt-4 text-base text-gray-600">Enroll in the trial and play a vital role in advancing medical research and treatments.</p>
@@ -80,7 +80,7 @@ const HowItWorks = () => {
                   <div className="relative grid grid-cols-1 text-center gap-y-12 md:grid-cols-3 gap-x-12">
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 1 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 1 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Researchers</h3>
                           <p className="mt-4 text-base text-gray-600">Search from 66,000+ clinical trials based on your location, condition, or area of interest.</p>
@@ -88,7 +88,7 @@ const HowItWorks = () => {
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 2 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 2 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Check Eligibility</h3>
                           <p className="mt-4 text-base text-gray-600">Review the study details and see if you meet the requirements to participate.</p>
@@ -96,7 +96,7 @@ const HowItWorks = () => {
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 3 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 3 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Join & Contribute</h3>
                           <p className="mt-4 text-base text-gray-600">Enroll in the trial and play a vital role in advancing medical research and treatments.</p>
@@ -117,7 +117,7 @@ const HowItWorks = () => {
                   <div className="relative grid grid-cols-1 text-center gap-y-12 md:grid-cols-3 gap-x-12">
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 1 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 1 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Sponsers</h3>
                           <p className="mt-4 text-base text-gray-600">Search from 66,000+ clinical trials based on your location, condition, or area of interest.</p>
@@ -125,7 +125,7 @@ const HowItWorks = () => {
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 2 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 2 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Check Eligibility</h3>
                           <p className="mt-4 text-base text-gray-600">Review the study details and see if you meet the requirements to participate.</p>
@@ -133,7 +133,7 @@ const HowItWorks = () => {
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
-                              <span className="text-xl text-white font-semibold text-gray-700"> 3 </span>
+                              <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 3 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Join & Contribute</h3>
                           <p className="mt-4 text-base text-gray-600">Enroll in the trial and play a vital role in advancing medical research and treatments.</p>

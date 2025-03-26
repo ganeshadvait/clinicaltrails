@@ -33,8 +33,8 @@ export default function Benefits () {
 </svg></span> <p className='benefits-point'>Recieve Professional Health Screenings</p>
                 </div>
                 <div className='flex items-center justify-center'>
-                <a href="#" className="flex  px-5 py-2 w-[300px] text-base font-bold text-white hover:bg-gray-600" style={{
-              background: 'hsl(208, 92%, 54%)',
+                <a href="#" className="flex  px-5 py-2 w-[300px] text-base font-bold text-white knowmore_cta" style={{
+              
               borderRadius: '14px',
               paddingBlock: "1rem",
               margin:'10px 0',
@@ -73,8 +73,8 @@ export default function Benefits () {
 </svg></span> <p className='benefits-point'>Recieve Professional Health Screenings</p>
                 </div>
                 <div className='flex items-center justify-center'>
-                <a href="#" className="flex  px-5 py-2 w-[300px] text-base font-bold text-white hover:bg-gray-600" style={{
-              background: 'hsl(208, 92%, 54%)',
+                <a href="#" className="flex  px-5 py-2 w-[300px] text-base font-bold text-white knowmore_cta" style={{
+              
               borderRadius: '14px',
               paddingBlock: "1rem",
               margin:'10px 0',

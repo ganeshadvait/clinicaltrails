@@ -44,8 +44,11 @@ margin-bottom: 12px;
     height: auto;
     position: relative !important;
     border-radius: 20px;
+    transition: box-shadow .3s, transform .3s; 
 }
-
+.global_image:hover{   
+        transform: scale(0.95);            
+}
 .hpara{
     font-size: 18px;
 font-style: normal;

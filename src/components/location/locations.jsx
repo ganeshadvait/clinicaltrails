@@ -1,4 +1,5 @@
 import './lstyles.css';
+import GoesOutComesInUnderline from '../GoesOutComesInUnderline'
 export default function Location () {
     return(
         <>
@@ -13,10 +14,14 @@ export default function Location () {
                     </span>
                     <h3 className='location_hthree'>Discover Clinical Trials Happening Near You</h3>
                     <p className='location_para'>Get real-time updates on clinical research and opportunities in your location.</p>
-                    <a className='links_trail'>Explore trial now</a>
+                    <a className='links_trail'>
+                    <GoesOutComesInUnderline label="Explore trial now" />
+                        </a>
                 </div>
             </div>
-            <div className="content_right"></div>
+            <div className="content_right">
+                <img src='/world.svg' />
+            </div>
         </div>
         </section>
         </>
