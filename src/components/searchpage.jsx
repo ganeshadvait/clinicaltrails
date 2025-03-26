@@ -13,6 +13,7 @@ import { useStore } from "../strore/useStore";
 import "../app/index.scss";
 import { FilterSection } from "./filterSection";
 // import { useRouter } from "next/router";
+import GoesOutComesInUnderline from "../components/GoesOutComesInUnderline";
 
 export default function Clinical() {
   // const router = useRouter();
@@ -33,7 +34,6 @@ export default function Clinical() {
     locationValueInURL = pathSegments.pop();
   }
 
-  
   const searchParams = useSearchParams();
   const searchValue =
     searchParams.get("q") || decodeURIComponent(condition) || "";
@@ -322,16 +322,16 @@ export default function Clinical() {
                                 .briefTitle
                             )}`}
                           >
-                            
                             <h3
                               className="trail_title text-500"
                               style={{ cursor: "pointer" }}
                             >
-                              <GoesOutComesInUnderline label={
-                                trail.protocolSection.identificationModule
-                                  .briefTitle
-                              }/>
-                              
+                              <GoesOutComesInUnderline
+                                label={
+                                  trail.protocolSection.identificationModule
+                                    .briefTitle
+                                }
+                              />
                             </h3>
                           </Link>
                           <p className="trailsdescription text-400">
@@ -432,7 +432,6 @@ export default function Clinical() {
                             }}
                           >
                             <GoesOutComesInUnderline label="Know More" />
-                            
                           </button>
                         </div>
                       </div>
