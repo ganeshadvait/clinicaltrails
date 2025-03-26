@@ -30,17 +30,22 @@ export default function Clinical() {
     pathname.startsWith("/clinical-trials/listings/location/international/") &&
     pathname.split("/").length >= 6
   ) {
+    console.log("pathname", pathname);
     const pathSegments = pathname?.split("/").filter(Boolean);
     locationValueInURL = pathSegments.pop();
+    console.log("locationValueInURL", locationValueInURL);
   }
 
   const searchParams = useSearchParams();
   const searchValue =
     searchParams.get("q") || decodeURIComponent(condition) || "";
 
-  const location = searchParams.get("location") || "";
-  const locationValue =
-    location || decodeURIComponent(locationValueInURL) || "";
+  const location =
+    searchParams.get("location") ||
+    decodeURIComponent(locationValueInURL) ||
+    "";
+  // const locationValue =
+  //   location ||  || "";
 
   const [pageNumber, setPageNumber] = useState(1);
   const [active, setActive] = useState(false);
@@ -231,8 +236,8 @@ export default function Clinical() {
                     style={{ cursor: "pointer" }}
                     className="resultsfor flex items-center"
                   >
-                    {locationValue.slice(0, 6) || "location empty"}{" "}
-                    {locationValue && (
+                    {location.slice(0, 6) || "location empty"}{" "}
+                    {location && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"

@@ -13,7 +13,7 @@ export default function ListingRootLayout({ children }) {
     pathname.startsWith("/clinical-trials/listings/NCT") ||
     pathname.startsWith("/clinical-trials/listings/condition") ||
     (pathname.startsWith("/clinical-trials/listings/location/international/") &&
-      pathname.split("/").length >= 6)
+      pathname.split("/").length > 7)
   ) {
     return <>{children}</>;
   }
