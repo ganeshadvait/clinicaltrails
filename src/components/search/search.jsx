@@ -88,7 +88,7 @@ export default function Search() {
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <div className="border-2 border h-[30px]" style={{
+        <div className=" border h-[30px]" style={{
           borderColor: 'rgba(0, 0, 0, 0.1)'
         }}></div>
         <input

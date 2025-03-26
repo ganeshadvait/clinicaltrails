@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 import Loader from "../../../../../../../components/loader/loader";
 import axios from "axios";
+import Clinical from "../../../../../../../components/searchpage";
+import React, { Suspense } from "react";
 
 export default function CityPage() {
   const { city } = useParams();
@@ -33,18 +34,11 @@ export default function CityPage() {
   //   return
 
   return (
-    <div>
-      {loading && <Loader />}
-      <h1>Condition Page</h1>
-      {conditionData.map((condition) => (
-        <li key={condition}>
-          <a
-          // href={`/clinical-trials/listings/location/international/${city}/${city}`}
-          >
-            {condition}
-          </a>
-        </li>
-      ))}
-    </div>
+      <Suspense>
+        <div>
+          <Clinical />
+        </div>
+      </Suspense>
+    // <h1>Aleballeyy aleballeyy mawoooo.....</h1>
   );
 }

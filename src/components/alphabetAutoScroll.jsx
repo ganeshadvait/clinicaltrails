@@ -1,6 +1,3 @@
-
-
-
 import React, { useRef, useEffect } from "react";
 
 export function AlphabetScroll({ data, setState }) {
@@ -15,12 +12,12 @@ export function AlphabetScroll({ data, setState }) {
   }
 
   const isTupleFormat = Array.isArray(data[0]) && data[0].length === 2;
-  
+
   const groupedData = data.reduce((acc, item) => {
     if (!item) return acc;
 
-    const key = isTupleFormat ? item[0] : item; // Extract country or condition name
-    if (typeof key !== "string") return acc; // Skip invalid values
+    const key = isTupleFormat ? item[0] : item;
+    if (typeof key !== "string") return acc;
 
     const firstLetter = key.charAt(0).toUpperCase();
     if (!acc[firstLetter]) acc[firstLetter] = [];
@@ -29,56 +26,62 @@ export function AlphabetScroll({ data, setState }) {
     );
     return acc;
   }, {});
-  
+
+  const handleScroll = (letter) => {
+    if (dataRefs.current[letter]) {
+      dataRefs.current[letter].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   const sortedLetters = Object.keys(groupedData).sort();
 
-  
   return (
     <>
-    <div className="p-4">
-      <div className="mb-4 flex gap-2 overflow-x-auto flex-wrap">
-        {"123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
-          <button
-            key={letter}
-            type="button"
-            className="abcd_options nav-item"
-            onClick={() => handleScroll(letter)}
-          >
-            {letter}
-          </button>
-        ))}
-      </div>
+      <div className="p-4">
+        <div className="mb-4 flex flex-wrap gap-2 overflow-x-auto">
+          {"123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
+            <button
+              key={letter}
+              type="button"
+              className="abcd_options nav-item"
+              onClick={() => handleScroll(letter)}
+            >
+              {letter}
+            </button>
+          ))}
+        </div>
 
-      <div className="flex max-h-[80vh] flex-col gap-4 overflow-y-auto">
-        {sortedLetters.length === 0 ? (
-          <p className="text-center text-gray-500">No matching results</p>
-        ) : (
-          sortedLetters.map((letter) => (
-            <div key={letter} ref={(el) => (dataRefs.current[letter] = el)}>
-              <h2 className="text-lg font-bold text-blue-500">{letter}</h2>
-              {groupedData[letter]
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map(({ name, value }, ind) => (
-                  <p
-                    key={ind}
-                    className="rounded border p-2"
-                    onClick={() => setState(name)}
-                  >
-                    {name}{" "}
-                    {value && (
-                      <span className="rounded-2xl border border-slate-400 p-1">
-                        {value} Clinical Trials
-                      </span>
-                    )}
-                  </p>
-                ))}
-            </div>
-          ))
-        )}
+        <div className="flex max-h-[80vh] flex-col gap-4 overflow-y-auto">
+          {sortedLetters.length === 0 ? (
+            <p className="text-center text-gray-500">No matching results</p>
+          ) : (
+            sortedLetters.map((letter) => (
+              <div key={letter} ref={(el) => (dataRefs.current[letter] = el)}>
+                <h2 className="text-lg font-bold text-blue-500">{letter}</h2>
+                {groupedData[letter]
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map(({ name, value }, ind) => (
+                    <p
+                      key={ind}
+                      className="rounded border p-2"
+                      onClick={() => setState(name)}
+                    >
+                      {name}{" "}
+                      {value && (
+                        <span className="rounded-2xl border border-slate-400 p-1">
+                          {value} Clinical Trials
+                        </span>
+                      )}
+                    </p>
+                  ))}
+              </div>
+            ))
+          )}
+        </div>
       </div>
-    </div>
     </>
-    
   );
 }
-
