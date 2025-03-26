@@ -20,11 +20,20 @@ export default function Listing() {
   const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
 
   const handleList = async () => {
+    const cachedData = localStorage.getItem("conditionData");
+    if (cachedData) {
+      setConditionData(JSON.parse(cachedData));
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await axios.get(`${backendUrl}/conditions`);
-      console.log("Response:", response.data);
       setConditionData(response.data.conditions);
+      localStorage.setItem(
+        "conditionData",
+        JSON.stringify(response.data.conditions)
+      );
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
