@@ -30,7 +30,7 @@ export function AutoComplete({ searchValue, setSearchValue, url }) {
       console.log("API Response:", response.data);
 
       // Check if this is the suggestions endpoint.
-      if (url.includes("writerapi.decentrialz.com")) {
+      if (url.includes("api.decentrialz.com")) {
         const results = response.data?.suggestions || [];
         setSuggestions(results);
         setActive(results.length > 0);
