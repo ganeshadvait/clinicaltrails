@@ -10,11 +10,13 @@ import Testimonials from '../components/Testimonials/testimonial';
 import DCT from '../components/dct/dct';
 import Blogs from '../components/blogs/blogs';
 import Faqs from '@/components/faq/faq';
+import GptChat from '../components/gptchat/gptchat';
 
 export default function Home() {
   return (
     <>
     <HeroSection />
+    <GptChat />
     <AboutinNumbers />
     <HowItWorks />
     <Featured />

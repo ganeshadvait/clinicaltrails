@@ -1,3 +1,6 @@
+
+import '../app/index.scss';
+
 import React, { useRef, useEffect } from "react";
 
 export function AlphabetScroll({ data, setState }) {

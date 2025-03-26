@@ -322,14 +322,16 @@ export default function Clinical() {
                                 .briefTitle
                             )}`}
                           >
+                            
                             <h3
                               className="trail_title text-500"
                               style={{ cursor: "pointer" }}
                             >
-                              {
+                              <GoesOutComesInUnderline label={
                                 trail.protocolSection.identificationModule
                                   .briefTitle
-                              }
+                              }/>
+                              
                             </h3>
                           </Link>
                           <p className="trailsdescription text-400">
@@ -429,7 +431,8 @@ export default function Clinical() {
                               cursor: "pointer",
                             }}
                           >
-                            Read More
+                            <GoesOutComesInUnderline label="Know More" />
+                            
                           </button>
                         </div>
                       </div>

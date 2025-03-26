@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import "./globals.css"; // Importing global styles
 import Header from "../components/Header/header";
-import ChatWindow from '../components/chatwindow/chatwindow';
 import PageLayout from "../components/PageLayout";
 
 
@@ -23,9 +22,7 @@ export default function RootLayout({
       <link rel="icon" href="/favicon.ico.png" type="image/png" sizes="32x32" />
       <body className="your-custom-class">
         <Header />
-        <PageLayout>{children}</PageLayout>
-        <ChatWindow />
-       
+        <PageLayout>{children}</PageLayout>       
       </body>
     </html>
   );

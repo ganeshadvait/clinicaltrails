@@ -48,12 +48,8 @@ export default function Featured() {
                 <p className='optionsin_card'><span className='font-[500]  condition_topic'>Started Date:</span>{trialsOne.startDate}</p>
                 <p className='optionsin_card'><span className='font-[500]  condition_topic'>End Date:</span>{trialsOne.endDate}</p>
                 <p className='optionsin_card last_one'><span className='font-[500]  condition_topic'>Condition:</span>{trialsOne.condition}</p>
-                <button className='knowmore_cta w-full h-[60px] bg-[]' style={{
+                <button className='knowmore_cta w-full h-[60px] ' style={{
                     borderRadius: '14px',
-                    border: "1px solid #024DE5",
-                    color:'white',
-                    
-                    background: "#024DE5"
                 }}>Know more</button>
             </div>
 
@@ -84,11 +80,7 @@ export default function Featured() {
                 <p className='optionsin_card'><span className='font-[500]  condition_topic'>End Date:</span>{trialsOne.endDate}</p>
                 <p className='optionsin_card last_one'><span className='font-[500]  condition_topic'>Condition:</span>{trialsOne.condition}</p>
                 <button className='knowmore_cta w-full h-[60px] bg-[]' style={{
-                    borderRadius: '14px',
-                    border: "1px solid #024DE5",
-                    color:'white',
-                    
-                    background: "#024DE5"
+                    borderRadius: '14px'
                 }}>Know more</button>
             </div>
             </div>
@@ -118,11 +110,8 @@ export default function Featured() {
                 <p className='optionsin_card'><span className='font-[500]  condition_topic'>End Date:</span>{trialsOne.endDate}</p>
                 <p className='optionsin_card last_one'><span className='font-[500]  condition_topic'>Condition:</span>{trialsOne.condition}</p>
                 <button className='knowmore_cta w-full h-[60px] bg-[]' style={{
-                    borderRadius: '14px',
-                    border: "1px solid #024DE5",
-                    color:'white',
-                    
-                    background: "#024DE5"
+                    borderRadius: '14px'
+                   
                 }}>Know more</button>
             </div>
             </div>

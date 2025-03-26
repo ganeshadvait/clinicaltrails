@@ -43,7 +43,7 @@ const LoginForm = () => {
         </div>
       </div>
 
-      <button type="submit" className="login__button">Login</button>
+      <button type="submit" className="login__button">Contact now</button>
     </form>
   );
 };
