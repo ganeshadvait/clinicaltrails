@@ -19,21 +19,46 @@ export default function Listing() {
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
   const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
 
-  const handleList = async () => {
-    const cachedData = localStorage.getItem("conditionData");
-    if (cachedData) {
-      setConditionData(JSON.parse(cachedData));
-      return;
-    }
+  // const handleList = async () => {
+  //   const cachedData = localStorage.getItem("conditionData");
+  //   if (cachedData) {
+  //     setConditionData(JSON.parse(cachedData));
+  //     return;
+  //   }
 
+  //   setLoading(true);
+  //   try {
+  //     const response = await axios.get(`${backendUrl}/conditions`);
+  //     setConditionData(response.data.conditions);
+  //     localStorage.setItem(
+  //       "conditionData",
+  //       JSON.stringify(response.data.conditions)
+  //     );
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  const handleList = async () => {
     setLoading(true);
+    let allConditions = [];
+    let pageNumber = 1;
+
     try {
-      const response = await axios.get(`${backendUrl}/conditions`);
-      setConditionData(response.data.conditions);
-      localStorage.setItem(
-        "conditionData",
-        JSON.stringify(response.data.conditions)
-      );
+      while (216 > pageNumber) {
+        const response = await axios.get(
+          `https://api.decentrialz.com/conditions?page_number=${pageNumber}`
+        );
+
+        if (response.data && response.data.conditions.length > 0) {
+          allConditions = [...allConditions, ...response.data.conditions];
+          pageNumber++;
+        }
+      }
+
+      setConditionData(allConditions);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
