@@ -318,7 +318,11 @@ export default function Clinical() {
                   {trails.map((trail, ind) => (
                     <div key={ind} className="trail_card my-4 border p-4">
                       <div className="flex items-start">
-                        <div>
+                        <div className="flex items-start gap-4">
+                          <div className="trial_icon_box"> 
+                            <img className="add_width_45" src="/Building_02.svg" alt="trail-icon" />
+                          </div>
+                          <div className="title_meta_card">
                           <Link
                             href={`/clinical-trials/listings/${
                               trail.protocolSection.identificationModule.nctId
@@ -345,6 +349,8 @@ export default function Clinical() {
                               200
                             )}
                           </p>
+                          </div>
+                          
                         </div>
                         <div className="status_card">
                           <span>

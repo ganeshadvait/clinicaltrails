@@ -94,10 +94,9 @@ p{
 h1, h2, h3, h4, h5, h6{
   font-family: 'Parkinsans', sans-serif;
   font-weight: 500;
+  color: #121224;
 }
-a{
-  font-weight: 400;
-}
+
 @font-face {
   font-family: 'Parkinsans';
   src: url('/fonts/Parkinsans-Light.ttf') format('truetype');
@@ -167,9 +166,11 @@ a{
     transition: border-color .3s, transform .3s;
     transform: none;
     transform-style: preserve-3d;
-    border: 1px solid #e7e7e7;
-    background-color: #fff;
-    border-radius: 14px;
+    border: 1px solid #ebeff6;
+    background-color: white;
+    box-shadow: 0 6px 20px 0 #14142b0f;
+    border-radius: 16px;
+    transform: translate(0);
   margin: 20px 0;
   display: flex;
       flex-direction: column;
@@ -183,10 +184,9 @@ a{
     --tw-border-opacity: 1;
     border-color: rgb(137 132 255 / var(--tw-border-opacity));
     border: 1px solid rgb(137 132 255);
-    background: oklch(.98 .016 73.684);
     transform: translate(0, -0.5rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
 }
-.trail_card:hover .trail_title:hover{
+.trail_card:hover .trail_title{
   color: hsl(208, 92%, 54%);
 }
 
@@ -227,7 +227,7 @@ a{
 .trailsdescription{
   font-size: 13px;
   font-weight: 400;
-  margin: 12px 0;
+  margin: 9px 0;
   width: 70%;
 }
 .title_status{
@@ -260,7 +260,7 @@ a{
   font-size: 15px;
   line-height: 1.6em;
   letter-spacing: 0.2px;
-  margin-bottom: 20px;
+  
 }
 
 .featuredabsolute{
@@ -1098,5 +1098,47 @@ margin-bottom: 30px;
   }
   .content_right {
     width: 100%;
+}
+}
+.add_width_45{
+  width: 45px;
+  height: 45px;
+}
+.trial_icon_box{
+  width: 70px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ebeff6;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.title_meta_card {
+  width: 100%;
+}
+
+@media (max-width:768px) {
+  
+.opened_show{
+  display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 70vh;
+    background: #fff;
+    width: 100%;
+    z-index: 1000;
+    overflow-y: scroll;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border:1px solid #ebeff6;
+    box-shadow: 0 6px 20px 0 #14142b0f;
+    transform: translateY(0);
+    padding: 10px;
+}
+.no_show{
+  transform: translateY(100%);
+    transition: transform 0.4s ease-in-out;
 }
 }
