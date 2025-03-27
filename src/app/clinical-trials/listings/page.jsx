@@ -1,7 +1,7 @@
 "use client";
 
 import { AlphabetScroll } from "../../../components/alphabetAutoScroll";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Loader from "@/components/loader/loader";
@@ -73,6 +73,20 @@ export default function Listing() {
 
   useEffect(() => {
     handleList();
+  }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setExpand(true); 
+      } else {
+        setExpand(false); 
+      }
+    };
+
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
