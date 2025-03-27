@@ -4,7 +4,9 @@ export function FilterButton({ text, isSelect, setIsSelect }) {
   return (
     <div
       onClick={() => setIsSelect(!isSelect)}
-      className={`radio-input cursor-pointer w-[100%] ${isSelect ? "radio-input_checked" : ""}`}
+      className={`radio-input w-[100%] cursor-pointer ${
+        isSelect ? "radio-input_checked" : ""
+      }`}
     >
       <label className={`label ${isSelect ? "label_checked" : ""}`}>
         <input
@@ -15,7 +17,9 @@ export function FilterButton({ text, isSelect, setIsSelect }) {
           readOnly
           className={`inputradio ${isSelect ? "checked-input" : ""}`}
         />
-        <p className={`small-font ${isSelect ? "selected-text" : ""}`}>{text}</p>
+        <p className={`small-font ${isSelect ? "selected-text" : ""}`}>
+          {text}
+        </p>
       </label>
     </div>
   );
@@ -70,7 +74,7 @@ export function FilterButton({ text, isSelect, setIsSelect }) {
 //     onChange={handleCheckboxChange}
 //   />
 //    </label>
-           
+
 //  {sidebarOpen }
 //             <div className="empty_box">
 //             <div className="side_bar_item">
@@ -114,10 +118,10 @@ export function FilterButton({ text, isSelect, setIsSelect }) {
 //                 />
 //               </div>
 //             </div>
-//             </div>  
+//             </div>
 //             <div className="side_bar_item">
 //             <h4>Gender</h4>
-            
+
 //             <FilterButton
 //               text={"Female"}
 //               isSelect={isFemale}
@@ -134,9 +138,9 @@ export function FilterButton({ text, isSelect, setIsSelect }) {
 //             <h4 className="mb-6">Phases</h4>
 //             <div className="flex flex-col gap-3">
 //               {["phase1", "phase2", "phase3", "phase4"].map((phase) => (
-               
+
 //                 <label className="checkbox_container flex gap-4 items-center"
-               
+
 //                 >
 //                 <input type="checkbox"
 //                  name={phase}
@@ -152,7 +156,7 @@ export function FilterButton({ text, isSelect, setIsSelect }) {
 //             </div>
 //             </div>
 // //             </div>
-// <div className="sidebar">  
+// <div className="sidebar">
 //             <div className="flex toggle_bar"
 //             onClick={() => setSidebarOpen(!sidebarOpen)}
 //             >
@@ -232,10 +236,9 @@ export function FilterButton({ text, isSelect, setIsSelect }) {
 //       </div>
 //     </div>
 //   </div>
-// )}  
-//                 </div> 
-              
-//             </div>                    
-          
+// )}
+//                 </div>
+
+//             </div>
 
 //           </div>
