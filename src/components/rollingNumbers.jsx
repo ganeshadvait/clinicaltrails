@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
-const RollingDigit = ({ targetDigit, duration }) => {
+const RollingDigit = ({ targetDigit, duration, styling }) => {
   const rollingNumbers = [targetDigit, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(
     String
   );
 
   return (
-    <div className="relative h-8 w-3 overflow-hidden text-center">
+    <div className="relative h-8  overflow-hidden text-center">
       <motion.div
         key={targetDigit} // Re-renders when digit changes
         initial={{ y: "-100%" }} // Start above
@@ -17,7 +17,7 @@ const RollingDigit = ({ targetDigit, duration }) => {
         {rollingNumbers.map((num, index) => (
           <div
             key={index}
-            className="flex h-8 items-center justify-center font-bold"
+            className={`flex h-8 items-center justify-center font-bold ${styling}`}
           >
             {num}
           </div>
@@ -27,7 +27,7 @@ const RollingDigit = ({ targetDigit, duration }) => {
   );
 };
 
-const RollingNumber = ({ number, duration = 1 }) => {
+const RollingNumber = ({ number, duration = 1, styling = "" }) => {
   const digits = String(number).split("");
 
   return (
@@ -37,6 +37,7 @@ const RollingNumber = ({ number, duration = 1 }) => {
           key={index}
           targetDigit={digit}
           duration={duration * index}
+          styling={styling}
         />
       ))}
     </div>
