@@ -2,13 +2,25 @@ import React from "react";
 
 export function FilterCard({ label, setState }) {
   function handleState() {
+    console.log("Label:", label);
     if (["Female", "Male", "Actively recruiting"].includes(label)) {
       setState(false);
-    } else if (label.includes("Phase")) {
+    } else if (label.toLowerCase().startsWith("p")) {
       setState((prev) => {
-        if (!Array.isArray(prev)) return [];
+        console.log("Before update:", prev);
 
-        return prev.filter((phase) => phase !== label);
+        // Ensure `prev` is an array before filtering
+        if (!Array.isArray(prev)) {
+          console.warn("Expected an array, but got:", prev);
+          return [];
+        }
+
+        // Remove only the clicked phase
+        const updatedPhases = prev.filter((phase) => phase !== label);
+
+        console.log("After update:", updatedPhases);
+
+        return updatedPhases.length > 0 ? updatedPhases : []; // Ensure it always returns an array
       });
     } else {
       setState("");
