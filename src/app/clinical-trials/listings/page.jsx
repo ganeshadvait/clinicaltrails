@@ -50,19 +50,6 @@ export default function Listing() {
     handleList();
   }, []);
 
-  // const handleLocation = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await axios.get(`${backendUrl}/locations`);
-  //     console.log("Response:", response.data);
-  //     setConditionData({ ...response.data });
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     <>
       <div className="abcd_section flex">
