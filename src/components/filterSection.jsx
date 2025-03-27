@@ -47,7 +47,7 @@ export function FilterSection({
         <div
           className={`h-auto ${
             sidebarOpen ? "fade-in block h-full" : "hidden"
-          } lg:block ${sidebarOpen ? "block" : "hidden"}`}
+          } lg:block ${sidebarOpen ? " opened_show" : "hidden no_show"}`}
         >
           <div className="empty_box">
             <div className="side_bar_item">

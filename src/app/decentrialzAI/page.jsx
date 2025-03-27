@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ChatLoader from '../../components/cahtloader/chatsloaders';
 import '../../components/cglobalstyles.css';
 import axios from "axios";
+import CSingleHeader from '../../components/chatbotHeader/singlepage/singlepage';
 
 const ChatUIUserResultLayout = () => {
   const [userMessage, setUserMessage] = useState('');
@@ -109,7 +110,7 @@ const ChatUIUserResultLayout = () => {
   
 
   return (
-    <div className="min-h-screen bg-[#Fff] flex flex-col justify-between">
+    <div className="min-h-screen bg-[#Fff] flex flex-col justify-between relative">
       {/* Chat Messages */}
       <div  ref={chatContainerRef} className="inner_chat_body p-4 sm:p-6 flex flex-col items-center">
       {messages.map((msg, index) => (
@@ -241,6 +242,7 @@ const ChatUIUserResultLayout = () => {
          
         </div>
       </div>
+      <CSingleHeader />
     </div>
   );
 };

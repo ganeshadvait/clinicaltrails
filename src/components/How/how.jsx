@@ -16,13 +16,13 @@ const HowItWorks = () => {
                     className={`tabs_forcontent ${tabActive === 'volunteers' ? 'active' : ''}`} 
                     onClick={() => setTabActive('volunteers')}
                 >
-                    Volunteers
+                    Participants
                 </div>
                 <div 
                     className={`tabs_forcontent ${tabActive === 'researchers' ? 'active' : ''}`} 
                     onClick={() => setTabActive('researchers')}
                 >
-                    Researchers
+                    Sites
                 </div>
                 <div 
                     className={`tabs_forcontent ${tabActive === 'sponsors' ? 'active' : ''}`} 

@@ -20,8 +20,7 @@ export default function Faqs() {
         answer: "Recusandae fugit, quis, ad alias quisquam? Error, expedita incidunt fuga vitae sit eligendi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, expedita incidunt fuga vitae sit eligendi!" },
         { question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
           answer: "Recusandae fugit, quis, ad alias quisquam? Error, expedita incidunt fuga vitae sit eligendi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, expedita incidunt fuga vitae sit eligendi!" },
-          { question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-            answer: "Recusandae fugit, quis, ad alias quisquam? Error, expedita incidunt fuga vitae sit eligendi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, expedita incidunt fuga vitae sit eligendi!" }
+
   ];
 
   return (
