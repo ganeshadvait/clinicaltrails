@@ -14,46 +14,19 @@ import "../app/index.scss";
 import { FilterSection } from "./filterSection";
 // import { useRouter } from "next/router";
 import GoesOutComesInUnderline from "../components/GoesOutComesInUnderline";
+import { FilterCard } from "./filterCard";
 
 export default function Clinical() {
-  // const router = useRouter();
-  // const { condition } = router.query;
-  let condition = "";
-  let locationValueInURL = "";
   const pathname = usePathname();
-  if (pathname.startsWith("/clinical-trials/listings/condition")) {
-    const pathSegments = pathname?.split("/").filter(Boolean);
-    condition = pathSegments.pop();
-  }
-
-  if (
-    pathname.startsWith("/clinical-trials/listings/location/international/") &&
-    pathname.split("/").length >= 6
-  ) {
-    console.log("pathname", pathname);
-    const pathSegments = pathname?.split("/").filter(Boolean);
-    locationValueInURL = pathSegments.pop();
-    console.log("locationValueInURL", locationValueInURL);
-  }
-
   const searchParams = useSearchParams();
-  const searchValue =
-    searchParams.get("q") || decodeURIComponent(condition) || "";
-
-  const location =
-    searchParams.get("location") ||
-    decodeURIComponent(locationValueInURL) ||
-    "";
-  // const locationValue =
-  //   location ||  || "";
-
+  const [searchValue, setSearchValue] = useState("");
+  const [location, setLocation] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [active, setActive] = useState(false);
   const [isRecruit, setIsRecruit] = useState(false);
   const [isFemale, setIsFemale] = useState(false);
   const [isMale, setIsMale] = useState(false);
   const [isError, setIsError] = useState("");
-  // Ensure age is always a number by default.
   const [age, setAge] = useState({ minAge: 0, maxAge: 100 });
   const [selectedPhases, setSelectedPhases] = useState([]);
 
@@ -69,6 +42,29 @@ export default function Clinical() {
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
   const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
+
+  useEffect(() => {
+    let condition = "";
+    let locationValueInURL = "";
+
+    if (pathname.startsWith("/clinical-trials/listings/condition")) {
+      const pathSegments = pathname.split("/").filter(Boolean);
+      condition = decodeURIComponent(pathSegments.pop() || "");
+    }
+
+    if (
+      pathname.startsWith(
+        "/clinical-trials/listings/location/international/"
+      ) &&
+      pathname.split("/").length >= 6
+    ) {
+      const pathSegments = pathname.split("/").filter(Boolean);
+      locationValueInURL = decodeURIComponent(pathSegments.pop() || "");
+    }
+
+    setSearchValue(searchParams.get("q") || condition || "");
+    setLocation(searchParams.get("location") || locationValueInURL || "");
+  }, [pathname, searchParams]);
 
   // Helper function to build filter query string from current filters
   const buildFilterString = () => {
@@ -213,42 +209,32 @@ export default function Clinical() {
             <div className="main">
               <Search />
               <div className="filters_bar">
-                <div className="flex items-center" style={{ gap: "10px" }}>
+                <div className="flex items-center gap-2">
                   Results for{" "}
-                  <span
-                    style={{ cursor: "pointer" }}
-                    className="resultsfor flex items-center"
-                  >
-                    {searchValue.slice(0, 6) || "No search term"}{" "}
-                    {searchValue && (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path stroke="currentColor" d="m3 3 10 10M13 3 3 13" />
-                      </svg>
-                    )}
-                  </span>
-                  <span
-                    style={{ cursor: "pointer" }}
-                    className="resultsfor flex items-center"
-                  >
-                    {location.slice(0, 6) || "location empty"}{" "}
-                    {location && (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path stroke="currentColor" d="m3 3 10 10M13 3 3 13" />
-                      </svg>
-                    )}
-                  </span>
+                  {searchValue && (
+                    <FilterCard label={searchValue} setState={setSearchValue} />
+                  )}
+                  {location && (
+                    <FilterCard label={location} setState={setLocation} />
+                  )}
+                  {isRecruit && (
+                    <FilterCard
+                      label={"Actively recruiting"}
+                      setState={setIsRecruit}
+                    />
+                  )}
+                  {isFemale && (
+                    <FilterCard label={"Female"} setState={setIsFemale} />
+                  )}
+                  {isMale && <FilterCard label={"Male"} setState={setIsMale} />}
+                  {Array.isArray(selectedPhases) &&
+                    selectedPhases.map((phase) => (
+                      <FilterCard
+                        key={phase}
+                        label={phase}
+                        setState={setSelectedPhases}
+                      />
+                    ))}
                 </div>
 
                 <button
@@ -453,7 +439,7 @@ export default function Clinical() {
               {nextPageToken && (
                 <div className="pagination">
                   <p>
-                    {totalTrails} of {pageNumber * 10}
+                    {pageNumber * 10} of {totalTrails}
                   </p>
                   <button
                     type="button"

@@ -1,5 +1,4 @@
-
-import '../app/index.scss';
+import "../app/index.scss";
 
 import React, { useRef, useEffect } from "react";
 
@@ -63,7 +62,12 @@ export function AlphabetScroll({ data, setState }) {
           ) : (
             sortedLetters.map((letter) => (
               <div key={letter} ref={(el) => (dataRefs.current[letter] = el)}>
-                <h2 className="text-lg font-bold text-blue-500">{letter}</h2>
+                <h2 className="pb-2 text-lg font-bold text-blue-500">
+                  {letter}
+                  <span className="ml-2 rounded-full border p-1">
+                    {groupedData[letter].length}
+                  </span>
+                </h2>
                 {groupedData[letter]
                   .sort((a, b) => a.name.localeCompare(b.name))
                   .map(({ name, value }, ind) => (
