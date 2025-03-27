@@ -433,7 +433,7 @@ export default function Clinical() {
               {nextPageToken && (
                 <div className="pagination">
                   <p>
-                    {totalTrails} of {pageNumber * 10}
+                    {pageNumber * 10} of {totalTrails}
                   </p>
                   <button
                     type="button"
