@@ -47,7 +47,7 @@ export default function Listing() {
     let pageNumber = 1;
 
     try {
-      while (216 > pageNumber) {
+      do {
         const response = await axios.get(
           `https://api.decentrialz.com/conditions?page_number=${pageNumber}`
         );
@@ -56,7 +56,8 @@ export default function Listing() {
           allConditions = [...allConditions, ...response.data.conditions];
           pageNumber++;
         }
-      }
+        length = response.data.conditions.length;
+      } while (length > pageNumber);
 
       setConditionData(allConditions);
     } catch (error) {
@@ -77,9 +78,9 @@ export default function Listing() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setExpand(true); 
+        setExpand(true);
       } else {
-        setExpand(false); 
+        setExpand(false);
       }
     };
 
