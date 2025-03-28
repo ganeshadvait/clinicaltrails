@@ -1,0 +1,82 @@
+.vision_misson_boxex{
+    border-radius: 14px;
+    background-color: #fff;
+    border: 1px solid #ebeff6;
+    box-shadow: 0 6px 20px #14142b0f;
+padding: 20px;
+}
+.vision_misson_boxex h3{
+    color: #024DE5;
+text-align: center;
+font-feature-settings: 'liga' off, 'clig' off;
+
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: 30px; /* 166.667% */
+}
+.lefts_columns{
+    width: 50%;
+    min-height: 570px;
+}
+.columns_right{
+    width: 50%;
+}
+.columns_right{
+    width: 50%;
+    height: 100%;
+    min-height: 570px;
+    background: #024DE5;
+    padding: 32px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+     gap: 14px;
+     position: relative;
+}
+.columns_right h2{
+    color: #FFF;
+font-size: 34px;
+font-style: normal;
+font-weight: 500;
+line-height: 48px; /* 141.176% */
+}
+.columns_right p{
+    color: #FFF;
+font-size: 18px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+.columns_right button{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: #fff;
+    color: #000;
+    border-radius: 12px;
+    padding: 12px 24px;
+}
+
+@media (max-width:768px) {
+    .items_in_HML{
+        flex-direction: column;
+    }
+    .lefts_columns{
+        width: 100%;
+        min-height: 570px;
+    }
+    .columns_right{
+        width: 100%;
+        min-height: 400px;
+        padding: 20px;
+    }
+    .columns_right h2{
+        color: #FFF;
+    font-size: 24px;
+    line-height: 1.4em;
+    }
+    .columns_right p{
+        font-size: 16px;
+    }
+}

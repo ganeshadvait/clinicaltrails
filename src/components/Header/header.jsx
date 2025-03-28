@@ -39,7 +39,7 @@ export default function Header() {
             </a>
             <a href='/' className='p-4 text-gray-900 hover:bg-gray-100'> How it works</a>
           
-            <a href="/clinical-trials" className="p-4 text-gray-900 hover:bg-gray-100">Find Clinical Trails</a>
+            <a href="/clinical-trials" className="p-4 text-gray-900 hover:bg-gray-100">Find Clinical Trialz</a>
             <a href="/clinical-trials/listings" className="p-4 text-gray-900 hover:bg-gray-100">Clinical Trialz Listings</a>
             <a href='/' className='p-4 text-gray-900 hover:bg-gray-100'>Blogs</a>
           </div>
@@ -53,7 +53,7 @@ export default function Header() {
              </a>
           
             <a href="/clinical-trials" className="text-base font-medium text-gray-900 hover:text-opacity-50">
-            <GoesOutComesInUnderline label="Find Clinical Trails" />
+            <GoesOutComesInUnderline label="Find Clinical Trialz" />
             </a>
             <a href="/clinical-trials/listings" className="text-base font-medium text-gray-900 hover:text-opacity-50">
             <GoesOutComesInUnderline label='Clinical Trialz Listings' />

@@ -1184,8 +1184,18 @@ margin-bottom: 30px;
   width: 100%;
 }
 .abcd_row {
-  display: flex
-;
+  display: flex;
   flex-direction: row;
   overflow-x: scroll;
+}
+.common_page_body{
+ width: 85%;
+ height: auto;
+ margin: auto;
+}
+@media (max-width:768px) {
+  .common_page_body{
+    width: 90%;
+    margin: auto;
+  }
 }

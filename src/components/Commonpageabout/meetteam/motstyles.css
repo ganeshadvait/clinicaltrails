@@ -1,0 +1,13 @@
+.big_header{
+    color: #000;
+text-align: center;
+font-size: 56px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+@media (max-width:768px) {
+    .big_header{
+        font-size: 26px;
+    }
+}
