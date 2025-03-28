@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ChatLoader from "../../components/cahtloader/chatsloaders";
 import "../../components/cglobalstyles.css";
 import axios from "axios";
+import CSingleHeader from '../../components/chatbotHeader/singlepage/singlepage';
 import { SpeachRecognition } from "../../components/speechRecognition";
 
 const ChatUIUserResultLayout = () => {
@@ -112,7 +113,7 @@ const ChatUIUserResultLayout = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col justify-between bg-[#Fff]">
+    <div className="min-h-screen bg-[#Fff] flex flex-col justify-between relative">
       {/* Chat Messages */}
       <div
         ref={chatContainerRef}
@@ -298,6 +299,7 @@ const ChatUIUserResultLayout = () => {
           </div>
         </div>
       </div>
+      <CSingleHeader />
     </div>
   );
 };

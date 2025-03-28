@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './chatstyles.css';
 import axios from 'axios';
+import ChatHeader from '../chatbotHeader/chatHeader';
 
 export default function ChatWindow() {
   const [showChatbot, setShowChatbot] = useState(false);
@@ -72,16 +73,16 @@ export default function ChatWindow() {
       </button>
       {showChatbot && (
         <div className="chatbot show">
-          <div className="chatbox" ref={chatboxRef}>
+          <div className="chatbox " ref={chatboxRef}>
             {messages.map((msg, idx) => (
               <div
                 key={idx}
                 className={`intercom-13kg6np ekd1qb42 flex ${
-                  msg.type === 'outgoing' ? 'justify-end' : 'justify-start'
+                  msg.type === 'outgoing' ? 'justify-end self-end' : 'justify-start self-start'
                 }`}
               >
                 <div className="intercom-comment intercom-18ciyg5 ekd1qb41">
-                  <div className={`intercom-avtrru e1jqii293 ${msg.type === 'outgoing' ? 'justify-end' : ''}`}>
+                  <div className={`intercom-avtrru e1jqii293 ${msg.type === 'outgoing' ? 'justify-end ' : ''}`}>
                     <div className="intercom-hiupyl e1jqii290">
                       <div className="intercom-3xwhyz e2rn66r0">
                         <img
@@ -90,13 +91,13 @@ export default function ChatWindow() {
                               ? '/chat user img.png'
                               : '/favicon.ico'
                           }
-                          alt={msg.type === 'outgoing' ? 'You' : 'Kodee'}
+                          alt={msg.type === 'outgoing' ? 'You' : 'DecentrialzAI'}
                           className="w-8 h-8 rounded-full"
                         />
                       </div>
                     </div>
                     <span className="intercom-11cvbht e1jqii292">
-                      {msg.type === 'outgoing' ? 'You' : 'Kodee'}
+                      {msg.type === 'outgoing' ? 'You' : 'DecentrialzAI'}
                     </span>
                   </div>
                   <div tabIndex="-1" className="intercom-18ztwyf er4a1r20">
@@ -107,6 +108,7 @@ export default function ChatWindow() {
                 </div>
               </div>
             ))}
+            <ChatHeader />
           </div>
 
           <div className="chat-input">
