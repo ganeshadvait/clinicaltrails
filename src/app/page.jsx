@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
     <HeroSection />
-    <GptChat />
+    
     <AboutinNumbers />
     <HowItWorks />
     <Featured />
@@ -25,6 +25,7 @@ export default function Home() {
     <Testimonials />
     <DCT />
     <Blogs />
+    <GptChat />
    <Global />
    <Faqs />
     </>
