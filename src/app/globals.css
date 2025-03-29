@@ -363,6 +363,7 @@ h1, h2, h3, h4, h5, h6{
 }
 .single_trails_sidebar{
   width: 20%;
+  border: none;
 }
 .single_trails_main{
   width: 50%;
@@ -1198,4 +1199,29 @@ margin-bottom: 30px;
     width: 90%;
     margin: auto;
   }
+}
+.info_cards_accordion_body{
+  border: 1px solid #ebeff6;
+    background-color: #fff;
+    padding: 24px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.icon {
+  transition: transform 0.3s ease-in-out;
+}
+.icon.rotate {
+  transform: rotate(180deg);
+}
+.expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.expandable-content.show {
+  max-height: fit-content; /* Adjust as needed */
+  opacity: 1;
 }

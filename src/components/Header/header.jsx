@@ -26,7 +26,7 @@ export default function Header() {
           </div>
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
             <a href='/clinical-trials' className='text-base font-medium text-gray-900 hover:text-opacity-50'>
-            <GoesOutComesInUnderline label="All clinical Trials" /></a>
+            <GoesOutComesInUnderline label="Search clinical Trials" /></a>
             <a href='/clinical-trials/listings' className='text-base font-medium text-gray-900 hover:text-opacity-50'>
             <GoesOutComesInUnderline label="List Clinical Trials" />
              </a>

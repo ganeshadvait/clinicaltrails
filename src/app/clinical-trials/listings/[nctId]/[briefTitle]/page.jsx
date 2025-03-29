@@ -10,6 +10,10 @@ export default function ListingPage() {
   const params = useParams();
   const [trailData, setTrailData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [studyDescription, setStudyDescription] = useState(false);
+  const [expandSummary, setExpandSummary] = useState(false);
+const [expandEligibility, setExpandEligibility] = useState(false);
+
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
   const backendUrlGOVT = process.env.NEXT_PUBLIC_GOVT_URL || "";
@@ -66,10 +70,16 @@ export default function ListingPage() {
           <div className="main single_trails_main">
             <div className="single_info">
               <div className="trail_card">
-                <h4 className="summary-card__title">
+                <div className="flex flex-wrap items-stretch gap-4">
+                <div className="trial_icon_box"> 
+                            <img className="add_width_45" src="/Building_02.svg" alt="trail-icon" />
+                          </div>
+                          <h4 className="summary-card__title">
                   {trailData?.protocolSection?.identificationModule
                     ?.briefTitle || "N/A"}
                 </h4>
+                </div>
+                
                 <div className="before_info">
                   <p
                     style={{
@@ -148,24 +158,34 @@ export default function ListingPage() {
               </div>
 
               <div
-                style={{
-                  margin: "40px 0",
-                }}
+               className="info_cards_accordion_body mb-6 mt-6"
               >
+                <div
+                className="info_cards_accordion flex justify-between items-center"
+                onClick={() => setExpandSummary(!expandSummary)}
+                >
                 <h4
                   style={{
                     fontWeight: "500",
-                    fontSize: "1.2rem",
-                    marginBottom: "12px",
+                    fontSize: "1.2rem",                    
                     color: "#1a73e8",
                     width: "fit-content",
                   }}
                   className="studysummery"
                 >
                   Study Summary
-                  <div className="underline"></div>
+                  
                 </h4>
-
+                <p className={`icon ${expandSummary ? "rotate" : ""}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path stroke="currentColor" d="M13.5 5.5 8 11 2.5 5.5" />
+                    </svg>
+                  </p>
+                </div>
+                <div
+                 className={`expandable-content  ${expandSummary ? "show mt-6" : ""}`}
+                >
+                
                 <p>
                   {trailData?.protocolSection?.identificationModule
                     ?.briefTitle || "N/A"}
@@ -177,26 +197,39 @@ export default function ListingPage() {
                       ?.studyPopulation || "N/A"}
                   </p>
                 </div>
+                </div>
+
               </div>
 
               <div
-                style={{
-                  margin: "40px 0",
-                }}
+                className="info_cards_accordion_body mb-6 mt-6"
               >
+                 <div
+                className="info_cards_accordion flex justify-between items-center"
+                onClick={() => setExpandEligibility(!expandEligibility)}
+                >
                 <h4
                   style={{
                     fontWeight: "500",
-                    fontSize: "1.2rem",
-                    marginBottom: "22px",
+                    fontSize: "1.2rem",                    
                     color: "#1a73e8",
                     width: "fit-content",
                   }}
                   className="Eligibilitycriteria"
                 >
                   Eligibility Criteria
-                  <div className="underline"></div>
+                
                 </h4>
+                <p className={`icon ${expandEligibility ? "rotate" : ""}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path stroke="currentColor" d="M13.5 5.5 8 11 2.5 5.5" />
+                    </svg>
+                  </p>
+                </div>
+
+                <div
+                 className={`expandable-content  ${expandEligibility ? "show mt-6" : ""}`}
+                >
                 <div className="flex flex-wrap gap-3">
                   <div>
                     <strong>
@@ -254,32 +287,53 @@ export default function ListingPage() {
                     )}
                   </div>
                 </div>
+                </div>
               </div>
+          
 
-              <div>
-                <h4
-                  style={{
-                    fontWeight: "500",
-                    fontSize: "1.2rem",
-                    marginBottom: "22px",
-                    color: "#1a73e8",
-                    width: "fit-content",
-                  }}
-                  className="studydescription"
-                >
-                  Study Description
-                  <div className="underline"></div>
-                </h4>
-                <p
-                  style={{
-                    margin: "14px 0",
-                  }}
-                  className="studypara"
-                >
-                  {trailData?.protocolSection?.descriptionModule
-                    ?.detailedDescription || "Nope"}
-                </p>
-              </div>
+{/* Study Description Section */}
+<div className="info_cards_accordion_body mb-6 mt-6">
+  <div
+    className="info_cards_accordion flex justify-between items-center"
+    onClick={() => setStudyDescription(!studyDescription)}
+  >
+    <h4
+      style={{
+        fontWeight: "500",
+        fontSize: "1.2rem",
+        color: "#1a73e8",
+        width: "fit-content",
+      }}
+      className="studydescription"
+    >
+      Study Description
+    </h4>
+    <p className={`icon ${studyDescription ? "rotate" : ""}`}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="none"
+        viewBox="0 0 16 16"
+      >
+        <path stroke="currentColor" d="M13.5 5.5 8 11 2.5 5.5" />
+      </svg>
+    </p>
+  </div>
+  <div className={`expandable-content ${studyDescription ? "show mt-6" : ""}`}>
+    <p
+      style={{
+        margin: "14px 0",
+      }}
+      className="studypara"
+    >
+      {trailData?.protocolSection?.descriptionModule?.detailedDescription ||
+        "Nope"}
+    </p>
+  </div>
+</div>
+
+            
             </div>
           </div>
           <div className="right_sidebar flex flex-col">
@@ -383,3 +437,28 @@ function extractEligibilityCriteria(eligibilityText) {
 
   return criteria;
 }
+
+// <div>
+// <h4
+//   style={{
+//     fontWeight: "500",
+//     fontSize: "1.2rem",
+ 
+//     color: "#1a73e8",
+//     width: "fit-content",
+//   }}
+//   className="studydescription"
+// >
+//   Study Description
+
+// </h4>
+// <p
+//   style={{
+//     margin: "14px 0",
+//   }}
+//   className="studypara"
+// >
+//   {trailData?.protocolSection?.descriptionModule
+//     ?.detailedDescription || "Nope"}
+// </p>
+// </div>
