@@ -24,7 +24,20 @@ export default function Header() {
               />
             </a>
           </div>
-
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
+            <a href='/clinical-trials' className='text-base font-medium text-gray-900 hover:text-opacity-50'>
+            <GoesOutComesInUnderline label="All clinical Trials" /></a>
+            <a href='/clinical-trials/listings' className='text-base font-medium text-gray-900 hover:text-opacity-50'>
+            <GoesOutComesInUnderline label="List Clinical Trials" />
+             </a>
+          
+            <a href="/clinical-trials" className="text-base font-medium text-gray-900 hover:text-opacity-50">
+            <GoesOutComesInUnderline label="Blogs" />
+            </a>
+            <a href="/clinical-trials/listings" className="text-base font-medium text-gray-900 hover:text-opacity-50">
+            <GoesOutComesInUnderline label='About us' />
+          </a>                    
+          </div>
           <div className="flex lg:hidden">
             <button type="button" className="text-gray-900" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,25 +58,7 @@ export default function Header() {
           </div>
 
           
-          <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <a href='/' className='text-base font-medium text-gray-900 hover:text-opacity-50'>
-            <GoesOutComesInUnderline label="Home" /></a>
-            <a href='/' className='text-base font-medium text-gray-900 hover:text-opacity-50'>
-            <GoesOutComesInUnderline label="How it works" />
-             </a>
-          
-            <a href="/clinical-trials" className="text-base font-medium text-gray-900 hover:text-opacity-50">
-            <GoesOutComesInUnderline label="Find Clinical Trialz" />
-            </a>
-            <a href="/clinical-trials/listings" className="text-base font-medium text-gray-900 hover:text-opacity-50">
-            <GoesOutComesInUnderline label='Clinical Trialz Listings' />
-          </a>
-            <a href='/' className='text-base font-medium text-gray-900 hover:text-opacity-50'>
-            <GoesOutComesInUnderline label='Blogs' />
-            </a>
-            <a href="#" className="text-base font-medium text-gray-900 hover:text-opacity-50">
-              <GoesOutComesInUnderline label='About Us' />
-              </a>
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">                   
             <a href="#" className="px-5 py-2 text-base font-bold text-white  header_contact_cta" style={{
               
               borderRadius: '14px',
