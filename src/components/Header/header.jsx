@@ -34,7 +34,7 @@ export default function Header() {
             <a href="/clinical-trials" className="text-base font-medium text-gray-900 hover:text-opacity-50">
             <GoesOutComesInUnderline label="Blogs" />
             </a>
-            <a href="/clinical-trials/listings" className="text-base font-medium text-gray-900 hover:text-opacity-50">
+            <a href="/about" className="text-base font-medium text-gray-900 hover:text-opacity-50">
             <GoesOutComesInUnderline label='About us' />
           </a>                    
           </div>

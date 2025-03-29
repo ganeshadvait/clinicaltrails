@@ -27,8 +27,8 @@ export default function Testimonials () {
 </svg>
         </span>
         <div>
-          <h3>Sarah M</h3>
-          <p>Clinical Trial Volunteer</p>
+          <h3>Dr. Michael Chen</h3>
+          <p>Clinical Researcher</p>
           </div></div>
      </div>
      <div className="testimonials_card">
@@ -40,12 +40,12 @@ export default function Testimonials () {
 </svg>
         </span>
         <div>
-          <h3>Sarah M</h3>
-          <p>Clinical Trial Volunteer</p>
+          <h3>Emily R.</h3>
+          <p>SiteCoordinator GreenMed Hospital</p>
           </div></div>
      </div>
      <div className="testimonials_card">
-      <p className='testi_content'>Participating in a decentraliz clinical trial made the process so much easier. I could contribute to research without leaving home, and the virtual check-ins were smooth and professional.</p>
+      <p className='testi_content'>Participating in a decentraliz clinical trial made the process so much easier. I could contribute to research without leaving home, and the virtual check-ins were smooth and professional. </p>
       <div className='flex gap-4'>
         <span className='icons-box'>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 33 33" fill="none">

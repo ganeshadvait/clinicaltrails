@@ -19,7 +19,7 @@ export default function Aboutsecond () {
             </div>
            </div>
            <div className="images_box_three images_boxess">
-            <div className='w-full h-full flex flex-col justify-center gap-4 alluris'>
+            <div className='w-full h-full flex flex-col justify-around gap-4 alluris'>
             <span>About Decentrialz Clinical Trials</span>
             <h2>Revolutionizing Medical Research</h2>
             <p>At Decentrialz, we are pioneering the future of clinical trials by leveraging cutting-edge technology to make medical research more accessible, efficient, and patient-centric. Our decentralize approach breaks down traditional barriers, 

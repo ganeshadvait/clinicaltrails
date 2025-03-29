@@ -12,12 +12,14 @@ export default function About () {
             height:"100%"
         }}>
          <AboutHero />
-         <div className='common_page_body'>
+         <div className='common_page_body mb-10'>
          <Aboutsecond />
          <HMV />
          <AboutinNumbers />
          </div>
+
          <MeetourTeam />
+       
         </section>
         
         </>

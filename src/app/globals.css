@@ -1191,7 +1191,7 @@ margin-bottom: 30px;
 .common_page_body{
  width: 85%;
  height: auto;
- margin: auto;
+ margin: auto auto 40px auto;
 }
 @media (max-width:768px) {
   .common_page_body{

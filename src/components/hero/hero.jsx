@@ -18,7 +18,9 @@ const HeroSection = () => {
                             lineHeight: '1.4em'
                         }}
                         
-                        >Search for Clinical Trials Near You – Contribute to Life-Changing Discoveries</h2>
+                        >Search for Clinical Trials
+                        Near You Contribute to
+                        Life-Changing Discoveries</h2>
                         <p className='myclass-2 mb-4'>Empowering research, advancing medicine. Join today as a volunteer or researcher.</p>
 
                         <a className="wp-block-button__link wp-element-button" href="/clinical-trials/">Search 66,000+ Clinical Trials</a>

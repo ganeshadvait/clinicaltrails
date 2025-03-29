@@ -35,7 +35,7 @@ export default function AboutinNumbers() {
         <div className="numbers_bar">
           <div className="flex flex-col items-center">
             <h2>
-              <RollingNumber number={metrics.Active} styling="text-4xl gap-2" />
+              <RollingNumber number={metrics.Active} styling="text-[22px] md:text-4xl gap-2"  />
             </h2>
             <p>Active Trials</p>
           </div>
@@ -43,7 +43,7 @@ export default function AboutinNumbers() {
             <h2>
               <RollingNumber
                 number={metrics.countries}
-                styling="text-4xl gap-2"
+                styling="text-[22px] md:text-4xl gap-2" 
               />
             </h2>
 
@@ -51,13 +51,13 @@ export default function AboutinNumbers() {
           </div>
           <div className="flex flex-col items-center">
             <h2>
-              <RollingNumber number={metrics.cities} styling="text-4xl gap-2" />
+              <RollingNumber number={metrics.cities} styling="text-[22px] md:text-4xl gap-2"  />
             </h2>
             <p>Cities</p>
           </div>
           <div className="flex flex-col items-center">
             <h2>
-              <RollingNumber number={metrics.sites} styling="text-4xl gap-2" />
+              <RollingNumber number={metrics.sites} styling="text-[22px] md:text-4xl gap-2"  />
             </h2>
             <p>Sites</p>
           </div>
