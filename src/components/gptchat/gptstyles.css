@@ -1,0 +1,62 @@
+.for_right{
+    width: 40%;
+    max-width: 400px;
+    height: 350px;
+}
+.makechat_gpt{
+    width: 85%;
+    border-radius: 20px;
+    margin: 40px auto;
+    padding: 20px;
+}
+@media (max-width:768px) {
+    .makechat_gpt{
+        width: 90%;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .for-left{
+        width: 100% !important;
+        height: auto;
+        
+    }
+    .for_right{
+        width: 100%;
+        max-width: 400px;
+        height: 350px;
+    }
+    .for-left p{
+        width: 100% !important;
+        font-size: 14px !important;
+    }
+    .for-left h2{
+        font-size: 24px !important;
+    }
+}
+.relative_image{
+    position: relative !important;
+    border-radius: 14px;
+}
+.for-left{
+    width: 60%;
+    height: auto;
+}
+.for-left h2{
+    color: #FFF;
+font-size: 32px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%; /* 60px */
+text-transform: capitalize;
+}
+.for-left p{
+    color: rgb(239, 239, 239);
+    font-size: 16px;
+    text-align: left;
+    line-height: 1.6em;
+    margin: 14px 0 16px 0;
+    width: 80%;
+}
+.rotate_please{
+    transform: rotate(180deg);
+}

@@ -45,8 +45,8 @@ const HowItWorks = () => {
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 1 </span>
                           </div>
-                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Volunteers</h3>
-                          <p className="mt-4 text-base text-gray-600">Search from 66,000+ clinical trials based on your location, condition, or area of interest.</p>
+                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Discover Trials Near You</h3>
+                          <p className="mt-4 text-base text-gray-600">Search 66,000+ clinical trials worldwide by condition, location, or treatment type. Filter by phase, study type (paid/volunteer), or eligibility.</p>
                       </div>
               
                       <div>
@@ -54,7 +54,7 @@ const HowItWorks = () => {
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 2 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Check Eligibility</h3>
-                          <p className="mt-4 text-base text-gray-600">Review the study details and see if you meet the requirements to participate.</p>
+                          <p className="mt-4 text-base text-gray-600">Get clear, jargon-free details on what the trial involves. Pre-screen yourself with simple questions before applying.</p>
                       </div>
               
                       <div>
@@ -62,7 +62,7 @@ const HowItWorks = () => {
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 3 </span>
                           </div>
                           <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Join & Contribute</h3>
-                          <p className="mt-4 text-base text-gray-600">Enroll in the trial and play a vital role in advancing medical research and treatments.</p>
+                          <p className="mt-4 text-base text-gray-600">One-click applications or guided onboarding. Get matched with nearest sites for in-person/virtual visits.</p>
                       </div>
                   </div>
               </div>
@@ -82,24 +82,24 @@ const HowItWorks = () => {
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 1 </span>
                           </div>
-                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Researchers</h3>
-                          <p className="mt-4 text-base text-gray-600">Search from 66,000+ clinical trials based on your location, condition, or area of interest.</p>
+                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Partner with Us</h3>
+                          <p className="mt-4 text-base text-gray-600">Join our network of trusted research sites and institutions to access a global pool of volunteers and cutting-edge trials.</p>
                       </div>
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 2 </span>
                           </div>
-                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Check Eligibility</h3>
-                          <p className="mt-4 text-base text-gray-600">Review the study details and see if you meet the requirements to participate.</p>
+                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Discover Trials & Collaborate</h3>
+                          <p className="mt-4 text-base text-gray-600">Browse 66,000+ active clinical trials and connect with sponsors looking for sites like yours.</p>
                       </div>
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 3 </span>
                           </div>
-                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Join & Contribute</h3>
-                          <p className="mt-4 text-base text-gray-600">Enroll in the trial and play a vital role in advancing medical research and treatments.</p>
+                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Manage Volunteers Efficiently</h3>
+                          <p className="mt-4 text-base text-gray-600">Get matched with eligible participants from our organic traffic and streamline study enrollment.</p>
                       </div>
                   </div>
               </div>
@@ -119,24 +119,24 @@ const HowItWorks = () => {
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 1 </span>
                           </div>
-                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Sponsers</h3>
-                          <p className="mt-4 text-base text-gray-600">Search from 66,000+ clinical trials based on your location, condition, or area of interest.</p>
+                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Find the Right Trial & Sites</h3>
+                          <p className="mt-4 text-base text-gray-600">Search from thousands of clinical trials and identify ideal sites with proven recruitment potential.</p>
                       </div>
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 2 </span>
                           </div>
-                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Check Eligibility</h3>
-                          <p className="mt-4 text-base text-gray-600">Review the study details and see if you meet the requirements to participate.</p>
+                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Recruit Participants Effortlessly</h3>
+                          <p className="mt-4 text-base text-gray-600">Tap into our organic traffic and participant database to accelerate enrollment.</p>
                       </div>
               
                       <div>
                           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-[#1a73e8] border-2 border-gray-200 rounded-full shadow">
                               <span className="text-xl text-white font-semibold text-gray-700 cursor-pointer"> 3 </span>
                           </div>
-                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Join & Contribute</h3>
-                          <p className="mt-4 text-base text-gray-600">Enroll in the trial and play a vital role in advancing medical research and treatments.</p>
+                          <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Close Studies Efficiently</h3>
+                          <p className="mt-4 text-base text-gray-600">Track progress, manage site performance, and complete studies on time with our support.</p>
                       </div>
                   </div>
               </div>

@@ -1,0 +1,18 @@
+.big_header{
+    color: #000;
+text-align: left;
+font-size: 56px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+@media (max-width:768px) {
+    .big_header{
+        font-size: 26px;
+    }
+}
+.about_page_team_section{
+    width: 85%;
+    height: auto;
+    margin: auto;
+}
